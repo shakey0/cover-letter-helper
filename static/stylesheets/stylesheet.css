@@ -1,3 +1,168 @@
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    align-items: center;
+}
+
+.page-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 48px;
+}
+
+.sub-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 36px;
+}
+
+.main-menu-btn {
+    position: absolute;
+    left: 8px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #e4e7eb;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.main-menu-btn:hover {
+    background-color: #d4d8dd;
+    transform: scale(1.05);
+}
+
+.center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-container {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 95%;
+    max-width: 1600px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #f4efe7;
+}
+
+.section-container {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.two-fifths {
+    flex: 2;
+}
+
+.three-fifths {
+    flex: 3;
+}
+
+.big-btn-box, .med-btn-box {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 80%;
+    max-width: 800px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #ffd46e;
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.big-btn-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #ffd46e;
+    font-size: 24px;
+}
+
+.med-btn-box {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #c7f1b7;
+    font-size: 21px;
+}
+
+.big-btn-box:hover {
+    background-color: #ffdb9e;
+    transform: scale(1.05);
+}
+
+.med-btn-box:hover {
+    background-color: #b0f7a1;
+    transform: scale(1.05);
+}
+
+.paragraph-click-box, .variables-click-box {
+    box-sizing: border-box;
+    margin: 10px;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: justify;
+    word-break: keep-all;
+    color: black;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.paragraph-click-box {
+    padding: 10px 20px;
+    background-color: #fbfaf9;
+}
+
+.paragraph-click-box:hover {
+    background-color: #f0efee;
+    transform: scale(1.01);
+}
+
+.variables-click-box {
+    padding: 5px 20px;
+    background-color: #f6f6e9;
+}
+
+.variables-click-box:hover {
+    background-color: #ffffea;
+    transform: scale(1.01);
+}
+
+.variables-list-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.variables-list-box p {
+    margin: 0 12px 12px 0;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #fdeedb;
+}
+
 .container {
     min-height: 50px;
+}
+
+.flex-test {
+    display: flex;
+    justify-content: center;
 }

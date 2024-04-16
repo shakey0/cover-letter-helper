@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stylesheet.css') }}">
+    </head>
+    <body>
+        <a class="main-menu-btn" href="{{ url_for('index') }}">Main Menu</a>
+        <h1 class="page-title">Your Base Data</h1>
+        <div class="center-wrapper">
+            <div class="main-container">
+                <div class="section-container two-fifths">
+                    <h1 class="sub-title">Your Skillsets and Variables</h1>
+                    {% for variables in variables_set %}
+                        <a class="variables-click-box" href="">
+                            <h1 style="margin: 12px 0;">{{variables.name}}</h1>
+                            <div class="variables-list-box">
+                                {% for variable in variables.values %}
+                                    <p>{{variable}}</p>
+                                {% endfor %}
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+                <div style="border: 1px solid black;"></div>
+                <div class="section-container three-fifths">
+                    <h1 class="sub-title">Your Paragraphs</h1>
+                    {% for paragraph in paragraphs %}
+                        <a class="paragraph-click-box" href="">
+                            <h1>{{paragraph.name}}</h1>
+                            <p>{{paragraph.text}}</p>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
