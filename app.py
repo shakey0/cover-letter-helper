@@ -20,8 +20,9 @@ def index():
 
 
 class Variables:
-    def __init__(self, name, values):
+    def __init__(self, name, code, values):
         self.name = name
+        self.code = code
         self.values = values
 
 class Paragraph:
@@ -33,11 +34,11 @@ class Paragraph:
 @app.route('/edit_base')
 def edit_base():
     variables_set = [
-        Variables('Frontend', ['JavaScript', 'React', 'HTML', 'CSS']),
-        Variables('Backend', ['Python', 'Flask', 'Django', 'PostgreSQL', 'Ruby', 'Rails', 'Node.js', 'Express', 'MongoDB', 'Java', 'Spring']),
-        Variables('DevOps', ['Docker', 'Kubernetes', 'AWS', 'Terraform']),
-        Variables('Product Management', ['Agile', 'Scrum', 'Jira', 'Product Roadmap']),
-        Variables('Soft Skills', ['Communication', 'Problem Solving', 'Teamwork', 'Time Management'])
+        Variables('Frontend', '**fr', ['JavaScript', 'React', 'HTML', 'CSS']),
+        Variables('Backend', '**ba', ['Python', 'Flask', 'Django', 'PostgreSQL', 'Ruby', 'Rails', 'Node.js', 'Express', 'MongoDB', 'Java', 'Spring']),
+        Variables('DevOps', '**de', ['Docker', 'Kubernetes', 'AWS', 'Terraform']),
+        Variables('Product Management', '**pm', ['Agile', 'Scrum', 'Jira', 'Product Roadmap']),
+        Variables('Soft Skills', '**ss', ['Communication', 'Problem Solving', 'Teamwork', 'Time Management'])
     ]
     lorem_texts = [" ".join(fake.sentences(nb=10)) for _ in range(3)]
     paragraphs = [

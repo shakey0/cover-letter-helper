@@ -58,8 +58,7 @@ body {
     display: flex;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 30px;
     width: 95%;
     max-width: 1600px;
     border-radius: 40px;
@@ -67,18 +66,24 @@ body {
 }
 
 .section-container {
-    padding: 0 20px;
+    position: relative;
+    padding: 0 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    border-radius: 30px;
 }
 
 .two-fifths {
     flex: 2;
+    padding-top: 20px;
+    box-shadow: 0 0 5px 0 #c6c6c6;
+    background-color: #fffff0;
 }
 
 .three-fifths {
+    padding-right: 0;
     flex: 3;
 }
 
@@ -122,12 +127,12 @@ body {
     text-align: justify;
     word-break: keep-all;
     color: #1f1f1f;
-    box-shadow: 0 0 5px 0 #e0e0e0;
     transition: box-shadow 0.3s, transform 0.3s;
 }
 
 .paragraph-click-box {
     padding: 10px 20px;
+    box-shadow: 0 0 5px 0 #e0e0e0;
     background-color: #fbfaf9;
     border-radius: 20px;
 }
@@ -137,13 +142,15 @@ body {
 }
 
 .variables-click-box {
-    padding: 5px 20px;
-    background-color: #fffff0;
+    padding: 0 20px;
+    box-shadow: 0 0 10px 0 #e0e0e0;
+    background-color: #fbfaf9;
     border-radius: 20px;
 }
 
 .variables-click-box h1 {
-    font-size: 28px;
+    color: #7e7e7e;
+    font-size: 20px;
 }
 
 .paragraph-click-box:hover, .variables-click-box:hover {
@@ -154,21 +161,35 @@ body {
 .variables-list-box {
     display: flex;
     flex-wrap: wrap;
+    row-gap: 12px;
+    column-gap: 24px;
+    padding-bottom: 12px;
 }
 
 .variables-list-box p {
-    margin: 0 12px 12px 0;
-    padding: 10px;
+    margin: 0;
     border-radius: 10px;
-    background-color: #f3e7d2;
     font-weight: bold;
 }
 
-.container {
-    min-height: 50px;
+.reorder-btn {
+    position: absolute;
+    left: 20px;
+    margin: 14px 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #686868;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 0 10px 0 #e0e0e0;
+    transition: box-shadow 0.3s, transform 0.3s;
+    cursor: pointer;
 }
 
-.flex-test {
-    display: flex;
-    justify-content: center;
+.reorder-btn:hover {
+    box-shadow: 0 0 15px 0 #c1c1c1;
+    transform: scale(1.03);
 }
+
