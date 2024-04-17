@@ -15,26 +15,32 @@
             <div class="main-container">
                 <div class="section-container two-fifths">
                     <h1 class="sub-title">Your Skillsets and Variables</h1>
-                    {% for variables in variables_set %}
-                        <a class="variables-click-box" href="">
-                            <h1 style="margin: 12px 0;">{{variables.name}}</h1>
-                            <div class="variables-list-box">
-                                {% for variable in variables.values %}
-                                    <p>{{variable}}</p>
-                                {% endfor %}
-                            </div>
-                        </a>
-                    {% endfor %}
+                    <button onclick="toggleToForm('reorder-variables')">Reorder</button>
+                    <div class="add-flex" id="reorder-variables">
+                        {% for variables in variables_set %}
+                            <a class="variables-click-box" href="">
+                                <h1 style="margin: 12px 0;">{{variables.name}}</h1>
+                                <div class="variables-list-box">
+                                    {% for variable in variables.values %}
+                                        <p>{{variable}}</p>
+                                    {% endfor %}
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div style="border: 1px solid black;"></div>
+                <div style="border: 0.5px solid #999999;"></div>
                 <div class="section-container three-fifths">
                     <h1 class="sub-title">Your Paragraphs</h1>
-                    {% for paragraph in paragraphs %}
-                        <a class="paragraph-click-box" href="">
-                            <h1>{{paragraph.name}}</h1>
-                            <p>{{paragraph.text}}</p>
-                        </a>
-                    {% endfor %}
+                    <button onclick="toggleToForm('reorder-paragraphs')">Reorder</button>
+                    <div class="add-flex" id="reorder-paragraphs">
+                        {% for paragraph in paragraphs %}
+                            <a class="paragraph-click-box" href="">
+                                <h1>{{paragraph.name}}</h1>
+                                <p>{{paragraph.text}}</p>
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
