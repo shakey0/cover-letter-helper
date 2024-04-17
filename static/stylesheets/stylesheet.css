@@ -172,24 +172,26 @@ body {
     font-weight: bold;
 }
 
-.reorder-btn {
+.reorder-btn-var, .reorder-btn-par {
     position: absolute;
-    left: 20px;
-    margin: 14px 10px;
-    padding: 10px;
+    margin: 12px 10px;
     border-radius: 10px;
-    background-color: #686868;
-    color: white;
-    font-size: 16px;
+    background-color: #e9e9e900;
+    font-size: 32px;
     text-decoration: none;
     border: none;
-    box-shadow: 0 0 10px 0 #e0e0e0;
-    transition: box-shadow 0.3s, transform 0.3s;
+    transition: transform 0.3s;
     cursor: pointer;
 }
 
-.reorder-btn:hover {
-    box-shadow: 0 0 15px 0 #c1c1c1;
-    transform: scale(1.03);
+.reorder-btn-var {
+    right: 15px;
 }
 
+.reorder-btn-par {
+    right: -15px;
+}
+
+.reorder-btn-var:hover, .reorder-btn-par:hover {
+    transform: scale(1.1);
+}
