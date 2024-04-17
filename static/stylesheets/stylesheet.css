@@ -31,7 +31,8 @@ body {
 
 .main-menu-btn {
     position: absolute;
-    left: 8px;
+    left: 12px;
+    top: 12px;
     padding: 10px;
     border-radius: 10px;
     background-color: #e9e9e9;
