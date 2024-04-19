@@ -6,9 +6,11 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='scripts/dragula/dragula.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stylesheet.css') }}">
     </head>
     <body>
+        <div class="top-line"></div>
         <a class="main-menu-btn" href="{{ url_for('index') }}">Main Menu</a>
         <h1 class="page-title">Your Base Data</h1>
         <div class="center-wrapper">
@@ -43,5 +45,7 @@
                 </div>
             </div>
         </div>
+        <script src="{{ url_for('static', filename='scripts/dragula/dragula.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
     </body>
 </html>

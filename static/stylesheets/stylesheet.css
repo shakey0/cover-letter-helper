@@ -13,6 +13,12 @@ body {
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .top-line {
+        height: 56px;
+    }
+}
+
 .page-title {
     margin-top: 0;
     margin-bottom: 0;
@@ -22,8 +28,7 @@ body {
 }
 
 .sub-title {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0 60px;
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 36px;
