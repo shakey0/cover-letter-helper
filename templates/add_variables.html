@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='scripts/dragula/dragula.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stylesheet.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/add_variables.css') }}">
+    </head>
+    <body>
+        <div>
+            <input type="text" id="wordInput" placeholder="Type a word" />
+            <button onclick="addWord()">Add</button>
+        </div>
+        <div id="wordContainer"></div>
+
+        <script src="{{ url_for('static', filename='scripts/dragula/dragula.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+        <script src="{{ url_for('static', filename='scripts/add_variables.js') }}"></script>
+    </body>
+</html>

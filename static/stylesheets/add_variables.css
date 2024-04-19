@@ -1,0 +1,27 @@
+.word-box {
+    padding: 8px 12px;
+    display: inline-block;
+    margin: 5px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    position: relative;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 5px;
+    color: #fff;
+    background-color: #f00;
+    border: none;
+    cursor: pointer;
+}
+
+#wordContainer {
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    margin-right: 5px;
+}

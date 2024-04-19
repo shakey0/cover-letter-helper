@@ -17,7 +17,9 @@
             <div class="main-container">
                 <div class="section-container two-fifths">
                     <h1 class="sub-title">Your Variables</h1>
-                    <button class="reorder-btn-var" onclick="toggleToForm('reorder-variables')">🔁</button>
+                    <a class="reorder-btn-var" href="">
+                        <img class="plus-sign" src="static/images/plus_2795.png" alt="Add variable">
+                    </a>
                     <div class="add-flex" id="reorder-variables">
                         {% for variables in variables_set %}
                             <a class="variables-click-box" href="">
@@ -33,7 +35,9 @@
                 </div>
                 <div class="section-container three-fifths">
                     <h1 class="sub-title">Your Paragraphs</h1>
-                    <button class="reorder-btn-par" onclick="toggleToForm('reorder-paragraphs')">🔁</button>
+                    <a class="reorder-btn-par" href="">
+                        <img class="plus-sign" src="static/images/plus_2795.png" alt="Add paragraph">
+                    </a>
                     <div class="add-flex" id="reorder-paragraphs">
                         {% for paragraph in paragraphs %}
                             <a class="paragraph-click-box" href="">

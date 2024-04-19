@@ -49,6 +49,11 @@ def edit_base():
     return render_template('edit_base.html', variables_set=variables_set, paragraphs=paragraphs)
 
 
+@app.route('/add_variables')
+def add_variables():
+    return render_template('add_variables.html')
+
+
 @app.route('/drag_test')
 def drag_test():
     return render_template('drag_test.html')
