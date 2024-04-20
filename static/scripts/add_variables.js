@@ -31,6 +31,17 @@ function addVarCode() {
         input.value = '';
         input.style.display = 'none';
         document.getElementById('var-code-btn').style.display = 'none';
+        
+        varCodeMesLc = document.getElementById('var-code-mes-lc')
+        varCodeMesMin = document.getElementById('var-code-mes-min')
+        varCodeMes = document.getElementById('var-code-mes')
+        varCodeMesLc.style.color = '#1f1f1f'
+        varCodeMesMin.style.color = '#1f1f1f'
+        varCodeMes.style.display = 'none'
+
+    } else if (varCode && varCode.length < 4) {
+        varCodeMesMin = document.getElementById('var-code-mes-min')
+        varCodeMesMin.style.color = 'red'
     }
 }
 
@@ -39,6 +50,8 @@ function editVarCode() {
     input.style.display = 'block';
     const varCodeAct = document.getElementById('var-code-act')
     input.value = varCodeAct.textContent
+    varCodeMes = document.getElementById('var-code-mes')
+    varCodeMes.style.display = 'block'
     document.getElementById('var-code-btn').style.display = 'block';
     varCodeAct.style.display = 'none';
     document.getElementById('edit-var-code-btn').style.display = 'none';
@@ -47,6 +60,10 @@ function editVarCode() {
 const varCodeController = document.getElementById('var-code-input')
 if (varCodeController) {
     varCodeController.addEventListener('input', function() {
+        if (/[^a-z*]/.test(this.value)) {
+            varCodeMesLc = document.getElementById('var-code-mes-lc')
+            varCodeMesLc.style.color = 'red'
+        }
         cleanInput = this.value = this.value.toLowerCase().replace(/[^a-z]/g, '');
         if (!cleanInput.startsWith('**')) {
             cleanInput = '**' + cleanInput;
