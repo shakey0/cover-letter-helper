@@ -11,11 +11,24 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/add_variables.css') }}">
     </head>
     <body>
-        <div>
-            <input type="text" id="wordInput" placeholder="Type a word" />
-            <button onclick="addWord()">Add</button>
+        <div class="top-line"></div>
+        <a class="main-menu-btn" href="{{ url_for('index') }}">Main Menu</a>
+        <a class="edit-base-btn" href="{{ url_for('edit_base') }}">Back</a>
+        <h1 class="page-title">New Variables List</h1>
+        <div class="center-wrapper">
+            <div class="main-container" style="max-width: 1000px;">
+                <div class="var-code-box">
+                    <p>Type code:</p>
+                    <input type="text" id="var-code-input" />
+                    <button onclick="addVarCode()">Add</button>
+                </div>
+                <div class="add-var-box">
+                    <input type="text" id="var-input" placeholder="Variable to add" />
+                    <button onclick="addVar()">Add</button>
+                </div>
+                <div id="var-container"></div>
+            </div>
         </div>
-        <div id="wordContainer"></div>
 
         <script src="{{ url_for('static', filename='scripts/dragula/dragula.min.js') }}"></script>
         <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>

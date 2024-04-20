@@ -4,4 +4,4 @@ dragula([document.getElementById('reorder-variables')]);
 
 dragula([document.getElementById('reorder-paragraphs')]);
 
-dragula([document.getElementById('wordContainer')]);
+dragula([document.getElementById('var-container')]);

@@ -1,10 +1,10 @@
-function addWord() {
-    const input = document.getElementById('wordInput');
-    const word = input.value.trim();
-    if (word) {
+function addVar() {
+    const input = document.getElementById('var-input');
+    const variable = input.value.trim();
+    if (variable) {
         const box = document.createElement('div');
-        box.className = 'word-box';
-        box.textContent = word;
+        box.className = 'var-box';
+        box.textContent = variable;
 
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'x';
@@ -14,7 +14,19 @@ function addWord() {
         };
 
         box.appendChild(deleteBtn);
-        document.getElementById('wordContainer').appendChild(box);
+        document.getElementById('var-container').appendChild(box);
         input.value = ''; // Clear input after adding
+    }
+}
+
+function addVarCode() {
+    const input = document.getElementById('var-code-input');
+    const varCode = input.value.trim();
+    if (varCode) {
+        const box = document.createElement('div');
+        box.className = 'var-code'
+        box.textContent = varCode
+
+        
     }
 }
