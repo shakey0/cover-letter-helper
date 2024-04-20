@@ -17,10 +17,13 @@
         <h1 class="page-title">New Variables List</h1>
         <div class="center-wrapper">
             <div class="main-container" style="max-width: 1000px;">
+                <p style="margin: 0;">Always begins with **. Let's keep it simple by using <span id="var-code-mes-lc">only lowercase letters</span>, <span id="var-code-mes-min">at least 2</span>.</p>
                 <div class="var-code-box">
                     <p>Type code:</p>
                     <input type="text" id="var-code-input" />
-                    <button onclick="addVarCode()">Add</button>
+                    <div class="var-code-act" id="var-code-act" style="display: none;"></div>
+                    <img id="edit-var-code-btn" style="display: none;" onclick="editVarCode()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
+                    <button id="var-code-btn" onclick="addVarCode()">Add</button>
                 </div>
                 <div class="add-var-box">
                     <input type="text" id="var-input" placeholder="Variable to add" />
