@@ -148,19 +148,33 @@
 }
 
 .paragraph-text-box p {
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.var-code-act, .list-name-act, .input-code-act, .input-name-act, .paragraph-name-act, .paragraph-text-act {
+.var-code-act, .list-name-act, .input-code-act, .input-name-act, .paragraph-name-act {
     font-size: 24px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     margin-left: 8px;
 }
 
-.var-code-box img, .list-name-box img, .input-code-box img, .input-name-box img, .paragraph-name-box img, .paragraph-text-box img {
+.paragraph-text-act {
+    font-size: 18px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: justify;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.var-code-box img, .list-name-box img, .input-code-box img, .input-name-box img, .paragraph-name-box img {
     height: 24px;
     margin-left: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.paragraph-text-box img {
+    height: 28px;
     transition: transform 0.2s ease-in-out;
 }
 
