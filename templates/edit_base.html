@@ -41,8 +41,8 @@
                     <div class="add-flex" id="reorder-paragraphs">
                         {% for paragraph in paragraphs %}
                             <a class="paragraph-click-box" href="">
-                                <h1>{{paragraph.name}}</h1>
-                                <p>{{paragraph.text}}</p>
+                                <h1>{{ paragraph.name }}</h1>
+                                <p>{{ paragraph.text | safe }}</p>
                             </a>
                         {% endfor %}
                     </div>

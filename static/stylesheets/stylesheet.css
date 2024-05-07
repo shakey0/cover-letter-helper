@@ -171,6 +171,10 @@ body {
     color: #a8a8a8;
 }
 
+.paragraph-click-box p {
+    line-height: 1.5;
+}
+
 .variables-click-box {
     padding: 0 20px;
     box-shadow: 0 0 10px 0 #e0e0e0;
