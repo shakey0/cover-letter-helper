@@ -27,6 +27,12 @@ function addVar() {
     }
 }
 
+document.getElementById('var-input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        addVar();
+    }
+});
+
 function addListName() {
     const input = document.getElementById('list-name-input');
     const listName = input.value.trim();
@@ -42,6 +48,12 @@ function addListName() {
         document.getElementById('list-name-btn').style.display = 'none';
     }
 }
+
+document.getElementById('list-name-input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        addListName();
+    }
+});
 
 function editListName() {
     const input = document.getElementById('list-name-input');
@@ -77,6 +89,12 @@ function addVarCode() {
     }
 }
 
+document.getElementById('var-code-input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        addVarCode();
+    }
+});
+
 function editVarCode() {
     const input = document.getElementById('var-code-input');
     input.style.display = 'block';
@@ -105,6 +123,11 @@ if (varCodeController) {
 
 const saveListBtn = document.getElementById('save-list-btn');
 const saveListForm = saveListBtn.closest('form');
+saveListForm.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+    }
+});
 
 saveListForm.addEventListener('submit', function(event) {
     const listNameActInput = document.getElementById('list-name-act-input');
