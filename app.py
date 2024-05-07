@@ -53,6 +53,9 @@ def edit_base():
 def add_variables():
     return render_template('add_variables.html')
 
+@app.route('/edit_variables')
+def edit_variables():
+    return render_template('add_variables.html', edit=True, list_name='Frontend', type_code='**fr', values=['JavaScript', 'React', 'HTML', 'CSS'])
 
 @app.route('/drag_test')
 def drag_test():

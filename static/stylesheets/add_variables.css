@@ -1,3 +1,9 @@
+@media (max-width: 968px) {
+    .top-line {
+        height: 56px;
+    }
+}
+
 .var-box {
     display: inline-block;
     margin: 10px;
@@ -36,7 +42,7 @@
     transform: scale(1.05);
 }
 
-.add-var-box, .var-code-box {
+.add-var-box, .var-code-box, .list-name-box {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -48,7 +54,7 @@
     margin-bottom: 20px;
 }
 
-.add-var-box input[type="text"], .var-code-box input[type="text"] {
+.add-var-box input[type="text"], .var-code-box input[type="text"], .list-name-box input[type="text"] {
     margin-right: 8px;
     padding: 8px 10px;
     border-radius: 8px;
@@ -67,7 +73,12 @@
     width: 80px;
 }
 
-.add-var-box button, .var-code-box button {
+.list-name-box input[type="text"] {
+    margin-left: 8px;
+    width: 220px;
+}
+
+.add-var-box button, .var-code-box button, .list-name-box button {
     padding: 8px 12px;
     border-radius: 10px;
     font-size: 20px;
@@ -81,29 +92,29 @@
     cursor: pointer;
 }
 
-.add-var-box button:hover, .var-code-box button:hover {
+.add-var-box button:hover, .var-code-box button:hover, .list-name-box button:hover {
     box-shadow: 0 0 10px 0 #c1c1c1;
     transform: scale(1.03);
 }
 
-.var-code-box p {
+.var-code-box p, .list-name-box p {
     font-size: 22px;
 }
 
-.var-code-act {
+.var-code-act, .list-name-act {
     font-size: 24px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     margin-left: 8px;
 }
 
-.var-code-box img {
+.var-code-box img, .list-name-box img {
     height: 24px;
     margin-left: 5px;
     transition: transform 0.2s ease-in-out;
 }
 
-.var-code-box img:hover {
+.var-code-box img:hover, .list-name-box img:hover {
     cursor: pointer;
     transform: scale(1.3);
 }
