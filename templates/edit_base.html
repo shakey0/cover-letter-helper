@@ -59,7 +59,7 @@
                         {% for paragraph in paragraphs %}
                             <a class="paragraph-click-box" href="">
                                 <h1>{{ paragraph.name }}</h1>
-                                <p>{{ paragraph.text | safe }}</p>
+                                <p class="emphasise-vars">{{ paragraph.text }}</p>
                             </a>
                         {% endfor %}
                     </div>

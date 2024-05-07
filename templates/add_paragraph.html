@@ -31,9 +31,9 @@
                             <p>Paragraph text:
                                 <img {% if not edit %}style="display: none;" {% endif %}id="edit-paragraph-text-btn" onclick="editParagraphText()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             </p>
-                            <textarea {% if edit %}style="display: none;" {% endif %} class="paragraph-text-input" id="paragraph-text-input" rows="4"></textarea>
+                            <textarea {% if edit %}style="display: none;" {% endif %} class="paragraph-text-input" id="paragraph-text-input" rows="8"></textarea>
                             <input type="hidden" id="paragraph-text-act-input" name="paragraph-text-act-input" {% if edit %}value={{ paragraph_text }} {% endif %}/>
-                            <div {% if not edit %}style="display: none;" {% endif %}class="paragraph-text-act" id="paragraph-text-act">{% if edit %}{{ paragraph_text }}{% endif %}</div>
+                            <div {% if not edit %}style="display: none;" {% endif %}class="paragraph-text-act emphasise-vars" id="paragraph-text-act">{% if edit %}{{ paragraph_text }}{% endif %}</div>
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="paragraph-text-btn" onclick="addParagraphText()">Preview Paragraph</button>
                         </div>
                         <input class="save-paragraph-btn" id="save-paragraph-btn" type="submit" value="Save Paragraph" />

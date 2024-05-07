@@ -73,8 +73,8 @@ saveParagraphForm.addEventListener('keydown', function(event) {
 });
 
 saveParagraphForm.addEventListener('submit', function(event) {
-    const paragraphNameActInput = document.getElementById('input-name-act-input');
-    const paragraphTextActInput = document.getElementById('input-code-act-input');
+    const paragraphNameActInput = document.getElementById('paragraph-name-act-input');
+    const paragraphTextActInput = document.getElementById('paragraph-text-act-input');
 
     if (paragraphNameActInput.value.length < 1 || paragraphTextActInput.value.length < 1) {
         event.preventDefault();

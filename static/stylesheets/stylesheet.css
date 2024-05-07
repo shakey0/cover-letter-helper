@@ -233,3 +233,8 @@ body {
 .add-btn-input:hover, .add-btn-var:hover, .add-btn-par:hover {
     transform: scale(1.1);
 }
+
+.emphasise {
+    color: black;
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
+}
