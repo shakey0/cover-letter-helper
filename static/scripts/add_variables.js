@@ -31,38 +31,33 @@ function addVarCode() {
     const varCode = input.value.trim();
     if (varCode && varCode.length >= 4) {
         const varCodeAct = document.getElementById('var-code-act');
-        varCodeAct.textContent = varCode
-        const varCodeActInput = document.getElementById('var-code-act-input');
-        varCodeActInput.value = varCode
-        varCodeAct.style.display = 'block'
+        varCodeAct.textContent = varCode;
+        varCodeAct.style.display = 'block';
+        document.getElementById('var-code-act-input').value = varCode;
         document.getElementById('edit-var-code-btn').style.display = 'block';
 
         input.value = '';
         input.style.display = 'none';
         document.getElementById('var-code-btn').style.display = 'none';
         
-        const varCodeMesLc = document.getElementById('var-code-mes-lc')
-        const varCodeMesMin = document.getElementById('var-code-mes-min')
-        const varCodeMes = document.getElementById('var-code-mes')
-        varCodeMesLc.style.color = '#1f1f1f'
-        varCodeMesMin.style.color = '#1f1f1f'
-        varCodeMes.style.display = 'none'
+        document.getElementById('var-code-mes-lc').style.color = '#1f1f1f';
+        document.getElementById('var-code-mes-min').style.color = '#1f1f1f';
+        document.getElementById('var-code-mes').style.display = 'none';
 
     } else if (varCode && varCode.length < 4) {
-        const varCodeMesMin = document.getElementById('var-code-mes-min')
-        varCodeMesMin.style.color = 'red'
+        document.getElementById('var-code-mes-min').style.color = 'red';
     }
 }
 
 function editVarCode() {
     const input = document.getElementById('var-code-input');
     input.style.display = 'block';
-    const varCodeAct = document.getElementById('var-code-act')
-    input.value = varCodeAct.textContent
-    const varCodeMes = document.getElementById('var-code-mes')
-    varCodeMes.style.display = 'block'
-    document.getElementById('var-code-btn').style.display = 'block';
+    const varCodeAct = document.getElementById('var-code-act');
+    input.value = varCodeAct.textContent;
     varCodeAct.style.display = 'none';
+
+    document.getElementById('var-code-mes').style.display = 'block';
+    document.getElementById('var-code-btn').style.display = 'block';
     document.getElementById('edit-var-code-btn').style.display = 'none';
 }
 
@@ -70,8 +65,7 @@ const varCodeController = document.getElementById('var-code-input')
 if (varCodeController) {
     varCodeController.addEventListener('input', function() {
         if (/[^a-z*]/.test(this.value)) {
-            const varCodeMesLc = document.getElementById('var-code-mes-lc')
-            varCodeMesLc.style.color = 'red'
+            document.getElementById('var-code-mes-lc').style.color = 'red';
         }
         let cleanInput = this.value = this.value.toLowerCase().replace(/[^a-z]/g, '');
         if (!cleanInput.startsWith('**')) {
@@ -81,12 +75,14 @@ if (varCodeController) {
     });
 }
 
-// const saveListBtn = document.getElementById('save-list-btn');
-// saveListBtn.addEventListener('submit', function(event) {
-//     const varCodeActInput = document.getElementById('var-code-act')
-//     const varContainer = document.getElementById('var-container')
-//     if (varCodeActInput.value.length < 4 && varContainer.children.length < 1) {
-//         event.preventDefault();
-//         alert('Please add at least one variable and a variable code');
-//     }
-// });
+const saveListBtn = document.getElementById('save-list-btn');
+const saveListForm = saveListBtn.closest('form');
+
+saveListForm.addEventListener('submit', function(event) {
+    const varCodeActInput = document.getElementById('var-code-act-input');
+    const varContainer = document.getElementById('var-container');
+
+    if (varCodeActInput.value.length < 4 || varContainer.children.length < 1) {
+        event.preventDefault();
+    }
+});
