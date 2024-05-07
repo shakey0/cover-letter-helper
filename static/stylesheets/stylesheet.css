@@ -154,7 +154,7 @@ body {
     transform: scale(1.03);
 }
 
-.paragraph-click-box, .variables-click-box, .inputs-click-box {
+.paragraph-click-box, .variables-click-box, .input-click-box {
     box-sizing: border-box;
     margin: 10px;
     width: 100%;
@@ -180,19 +180,19 @@ body {
     line-height: 1.5;
 }
 
-.variables-click-box, .inputs-click-box {
+.variables-click-box, .input-click-box {
     padding: 0 20px;
     box-shadow: 0 0 10px 0 #e0e0e0;
     background-color: #fbfaf9;
     border-radius: 20px;
 }
 
-.variables-click-box h1, .inputs-click-box h1 {
+.variables-click-box h1, .input-click-box h1 {
     color: #909090;
     font-size: 20px;
 }
 
-.paragraph-click-box:hover, .variables-click-box:hover, .inputs-click-box:hover {
+.paragraph-click-box:hover, .variables-click-box:hover, .input-click-box:hover {
     box-shadow: 0 0 10px 0 #c1c1c1;
     transform: scale(1.01);
 }
