@@ -133,8 +133,10 @@ saveListForm.addEventListener('submit', function(event) {
     const listNameActInput = document.getElementById('list-name-act-input');
     const varCodeActInput = document.getElementById('var-code-act-input');
     const varContainer = document.getElementById('var-container');
+    const varCodeAct = document.getElementById('var-code-act');
+    const listNameAct = document.getElementById('list-name-act');
 
-    if (listNameActInput.value.length < 1 || varCodeActInput.value.length < 4 || varContainer.children.length < 1) {
+    if (listNameActInput.value.length < 1 || varCodeActInput.value.length < 4 || varContainer.children.length < 1 || listNameAct.style.display === 'none' || varCodeAct.style.display === 'none') {
         event.preventDefault();
     }
 });

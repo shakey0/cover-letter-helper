@@ -75,8 +75,10 @@ saveParagraphForm.addEventListener('keydown', function(event) {
 saveParagraphForm.addEventListener('submit', function(event) {
     const paragraphNameActInput = document.getElementById('paragraph-name-act-input');
     const paragraphTextActInput = document.getElementById('paragraph-text-act-input');
+    const paragraphNameAct = document.getElementById('paragraph-name-act');
+    const paragraphTextAct = document.getElementById('paragraph-text-act');
 
-    if (paragraphNameActInput.value.length < 1 || paragraphTextActInput.value.length < 1) {
+    if (paragraphNameActInput.value.length < 1 || paragraphTextActInput.value.length < 1 || paragraphNameAct.style.display === 'none' || paragraphTextAct.style.display === 'none') {
         event.preventDefault();
     }
 });

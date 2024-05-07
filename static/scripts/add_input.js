@@ -97,8 +97,10 @@ saveInputForm.addEventListener('keydown', function(event) {
 saveInputForm.addEventListener('submit', function(event) {
     const inputNameActInput = document.getElementById('input-name-act-input');
     const inputCodeActInput = document.getElementById('input-code-act-input');
+    const inputNameAct = document.getElementById('input-name-act');
+    const inputCodeAct = document.getElementById('input-code-act');
 
-    if (inputNameActInput.value.length < 1 || inputCodeActInput.value.length < 4) {
+    if (inputNameActInput.value.length < 1 || inputCodeActInput.value.length < 4 || inputNameAct.style.display === 'none' || inputCodeAct.style.display === 'none') {
         event.preventDefault();
     }
 });
