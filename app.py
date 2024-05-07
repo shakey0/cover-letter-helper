@@ -60,6 +60,13 @@ def edit_base():
     ]
     return render_template('edit_base.html', inputs=inputs, variables_sets=variables_sets, paragraphs=paragraphs)
 
+@app.route('/add_input')
+def add_input():
+    return render_template('add_input.html')
+
+@app.route('/edit_input')
+def edit_input():
+    return render_template('add_input.html', edit=True, input_name='Company Name', type_code='##cn')
 
 @app.route('/add_variables')
 def add_variables():
