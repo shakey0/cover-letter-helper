@@ -19,18 +19,22 @@
             <div class="main-container" style="max-width: 1000px;">
                 <div class="section-container">
                     <p style="margin: 0;" id="var-code-mes">Always begins with **. Let's keep it simple by using <span id="var-code-mes-lc">only lowercase letters</span>, <span id="var-code-mes-min">at least 2</span>.</p>
-                    <div class="var-code-box">
-                        <p>Type code:</p>
-                        <input type="text" value="**" id="var-code-input" />
-                        <div class="var-code-act" id="var-code-act" style="display: none;"></div>
-                        <img id="edit-var-code-btn" style="display: none;" onclick="editVarCode()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
-                        <button id="var-code-btn" onclick="addVarCode()">Add</button>
-                    </div>
-                    <div class="add-var-box">
-                        <input type="text" id="var-input" placeholder="Variable to add" />
-                        <button onclick="addVar()">Add</button>
-                    </div>
-                    <div id="var-container"></div>
+                    <form action="" method="post">
+                        <div class="var-code-box">
+                            <p>Type code:</p>
+                            <input type="text" value="**" id="var-code-input" />
+                            <input type="hidden" id="var-code-act-input" name="var-code-act-input" />
+                            <div class="var-code-act" id="var-code-act" style="display: none;"></div>
+                            <img id="edit-var-code-btn" style="display: none;" onclick="editVarCode()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
+                            <button type="button" id="var-code-btn" onclick="addVarCode()">Add</button>
+                        </div>
+                        <div class="add-var-box">
+                            <input type="text" id="var-input" placeholder="Variable to add" />
+                            <button type="button" onclick="addVar()">Add</button>
+                        </div>
+                        <div class="var-container" id="var-container"></div>
+                        <input class="save-list-btn" id="save-list-btn" type="submit" value="Save List" />
+                    </form>
                 </div>
             </div>
         </div>
