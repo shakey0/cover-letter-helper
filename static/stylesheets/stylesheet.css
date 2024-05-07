@@ -13,6 +13,11 @@ body {
     align-items: center;
 }
 
+.add-position {
+    position: relative;
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     .top-line {
         height: 56px;
@@ -149,7 +154,7 @@ body {
     transform: scale(1.03);
 }
 
-.paragraph-click-box, .variables-click-box {
+.paragraph-click-box, .variables-click-box, .inputs-click-box {
     box-sizing: border-box;
     margin: 10px;
     width: 100%;
@@ -175,19 +180,19 @@ body {
     line-height: 1.5;
 }
 
-.variables-click-box {
+.variables-click-box, .inputs-click-box {
     padding: 0 20px;
     box-shadow: 0 0 10px 0 #e0e0e0;
     background-color: #fbfaf9;
     border-radius: 20px;
 }
 
-.variables-click-box h1 {
-    color: #7e7e7e;
+.variables-click-box h1, .inputs-click-box h1 {
+    color: #909090;
     font-size: 20px;
 }
 
-.paragraph-click-box:hover, .variables-click-box:hover {
+.paragraph-click-box:hover, .variables-click-box:hover, .inputs-click-box:hover {
     box-shadow: 0 0 10px 0 #c1c1c1;
     transform: scale(1.01);
 }
@@ -206,7 +211,7 @@ body {
     font-weight: bold;
 }
 
-.reorder-btn-var, .reorder-btn-par {
+.add-btn-input, .add-btn-var, .add-btn-par {
     position: absolute;
     transition: transform 0.3s;
 }
@@ -216,14 +221,15 @@ body {
     height: 40px;
 }
 
-.reorder-btn-var {
-    right: 30px;
-}
-
-.reorder-btn-par {
+.add-btn-input, .add-btn-var {
+    top: 0px;
     right: 0px;
 }
 
-.reorder-btn-var:hover, .reorder-btn-par:hover {
+.add-btn-par {
+    right: 0px;
+}
+
+.add-btn-input:hover, .add-btn-var:hover, .add-btn-par:hover {
     transform: scale(1.1);
 }

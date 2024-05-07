@@ -16,26 +16,42 @@
         <div class="center-wrapper">
             <div class="main-container">
                 <div class="section-container two-fifths">
-                    <h1 class="sub-title">Your Variables</h1>
-                    <a class="reorder-btn-var" href="{{ url_for('add_variables') }}">
-                        <img class="plus-sign" src="static/images/plus_2795.png" alt="Add variable">
-                    </a>
-                    <div class="add-flex" id="reorder-variables">
-                        {% for variables in variables_set %}
-                            <a class="variables-click-box" href="">
-                                <h1 style="margin: 12px 0;">{{variables.name}} ({{variables.code}})</h1>
-                                <div class="variables-list-box">
-                                    {% for variable in variables.values %}
-                                        <p>{{variable}}</p>
-                                    {% endfor %}
-                                </div>
-                            </a>
-                        {% endfor %}
+                    <div class="add-position">
+                        <h1 class="sub-title">Your Inputs</h1>
+                        <a class="add-btn-input" href="">
+                            <img class="plus-sign" src="static/images/plus_2795.png" alt="Add input">
+                        </a>
+                        <div class="add-flex" id="reorder-inputs">
+                            {% for input in inputs %}
+                                <a class="inputs-click-box" href="">
+                                    <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{input.code}}</strong> - {{input.name}}</h1>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div style="height: 15px;"></div>
+                    <div class="add-position">
+                        <h1 class="sub-title">Your Variables</h1>
+                        <a class="add-btn-var" href="{{ url_for('add_variables') }}">
+                            <img class="plus-sign" src="static/images/plus_2795.png" alt="Add variable">
+                        </a>
+                        <div class="add-flex" id="reorder-variables">
+                            {% for variables in variables_sets %}
+                                <a class="variables-click-box" href="">
+                                    <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{variables.code}}</strong> - {{variables.name}}</h1>
+                                    <div class="variables-list-box">
+                                        {% for variable in variables.values %}
+                                            <p>{{variable}}</p>
+                                        {% endfor %}
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="section-container three-fifths">
                     <h1 class="sub-title">Your Paragraphs</h1>
-                    <a class="reorder-btn-par" href="">
+                    <a class="add-btn-par" href="">
                         <img class="plus-sign" src="static/images/plus_2795.png" alt="Add paragraph">
                     </a>
                     <div class="add-flex" id="reorder-paragraphs">

@@ -19,6 +19,11 @@ def index():
     return render_template('index.html', cover_letters=cover_letters)
 
 
+class Input:
+    def __init__(self, name, code):
+        self.name = name
+        self.code = code
+
 class Variables:
     def __init__(self, name, code, values):
         self.name = name
@@ -33,7 +38,13 @@ class Paragraph:
 
 @app.route('/edit_base')
 def edit_base():
-    variables_set = [
+    inputs = [
+        Input('Company Name', '##cn'),
+        Input('Industry', '##in'),
+        Input('Job Title', '##jt'),
+        Input('Job Focus', '##jf')
+    ]
+    variables_sets = [
         Variables('Frontend', '**fr', ['JavaScript', 'React', 'HTML', 'CSS']),
         Variables('Backend', '**ba', ['Python', 'Flask', 'Django', 'PostgreSQL', 'Ruby', 'Rails', 'Node.js', 'Express', 'MongoDB', 'Java', 'Spring']),
         Variables('DevOps', '**de', ['Docker', 'Kubernetes', 'AWS', 'Terraform']),
@@ -41,13 +52,13 @@ def edit_base():
         Variables('Soft Skills', '**ss', ['Communication', 'Problem Solving', 'Teamwork', 'Time Management'])
     ]
     var_codes = ['**ba', '**de', '**ss', '**pm', '**ba', '**fr', '**de', '**ss', '**fr', '**pm']
-    var_codes = [f' <strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{var_code}</strong> ' for var_code in var_codes]
+    var_codes = [f'<strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{var_code}</strong>' for var_code in var_codes]
     paragraphs = [
         Paragraph('Introduction', f'Official wonder result {var_codes[0]} crime item be fact. Than answer happy break. Likely school turn security service perform surface. Care account how figure author. Run instead evidence direction add {var_codes[1]}. Company experience provide reach sing. Discuss particularly these kitchen where police most. Nearly same effect. Color {var_codes[2]} girl generation professor writer trade result. Beyond year out challenge much over only.'),
         Paragraph('Experience', f'Deal relate individual attorney. Want will attack check dark {var_codes[3]} charge white. Customer challenge rich {var_codes[4]} trade exactly. Western deal writer small. Decade you rock else. Shoulder little white prevent western public {var_codes[5]}. Interesting wear chair really wish Democrat discover. Nothing wife too front heart than church pull. Police civil before team society {var_codes[6]} common strategy. Rather traditional eye less even including.'),
         Paragraph('Skills', f'Factor international usually herself benefit though need meeting {var_codes[7]}. Instead personal dark would appear difference state. Culture ten represent appear allow find language {var_codes[8]} music. Ball blood require reduce person while. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert {var_codes[9]}. Board again candidate among child daughter their. Among event although likely turn.')
     ]
-    return render_template('edit_base.html', variables_set=variables_set, paragraphs=paragraphs)
+    return render_template('edit_base.html', inputs=inputs, variables_sets=variables_sets, paragraphs=paragraphs)
 
 
 @app.route('/add_variables')
