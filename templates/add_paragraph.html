@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='scripts/dragula/dragula.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/stylesheet.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/add_inputs_variables.css') }}">
+    </head>
+    <body>
+        <div class="top-line"></div>
+        <a class="main-menu-btn" href="{{ url_for('index') }}">Main Menu</a>
+        <a class="edit-base-btn" href="{{ url_for('edit_base') }}">Back</a>
+        <h1 class="page-title">{% if edit %}Edit{% else %}New{% endif %} Paragraph</h1>
+        <div class="center-wrapper">
+            <div class="main-container" style="max-width: 1000px;">
+                <div class="section-container">
+                    <form action="" method="post">
+                        <div class="paragraph-name-box">
+                            <p>Paragraph name:</p>
+                            <input {% if edit %}style="display: none;" {% endif %}type="text" id="paragraph-name-input" />
+                            <input type="hidden" id="paragraph-name-act-input" name="paragraph-name-act-input" {% if edit %}value={{ paragraph_name }} {% endif %}/>
+                            <div {% if not edit %}style="display: none;" {% endif %}class="paragraph-name-act" id="paragraph-name-act">{% if edit %}{{ paragraph_name }}{% endif %}</div>
+                            <img {% if not edit %}style="display: none;" {% endif %}id="edit-paragraph-name-btn" onclick="editParagraphName()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
+                            <button {% if edit %}style="display: none;" {% endif %}type="button" id="paragraph-name-btn" onclick="addParagraphName()">Add</button>
+                        </div>
+                        <div class="paragraph-text-box">
+                            <p>Paragraph text:</p>
+                            <textarea {% if edit %}style="display: none;" {% endif %} class="paragraph-text-input" id="paragraph-text-input" rows="4"></textarea>
+                            <input type="hidden" id="paragraph-text-act-input" name="paragraph-text-act-input" {% if edit %}value={{ paragraph_text }} {% endif %}/>
+                            <div {% if not edit %}style="display: none;" {% endif %}class="paragraph-text-act" id="paragraph-text-act">{% if edit %}{{ paragraph_text }}{% endif %}</div>
+                            <img {% if not edit %}style="display: none;" {% endif %}id="edit-paragraph-text-btn" onclick="editParagraphText()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
+                            <button {% if edit %}style="display: none;" {% endif %}type="button" id="paragraph-text-btn" onclick="addParagraphText()">Preview Paragraph</button>
+                        </div>
+                        <input class="save-paragraph-btn" id="save-paragraph-btn" type="submit" value="Save Paragraph" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='scripts/dragula/dragula.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+        <script src="{{ url_for('static', filename='scripts/add_paragraph.js') }}"></script>
+    </body>
+</html>

@@ -42,11 +42,44 @@
     transform: scale(1.05);
 }
 
-.add-var-box, .var-code-box, .list-name-box, .input-code-box, .input-name-box {
+.add-var-box, .var-code-box, .list-name-box, .input-code-box, .input-name-box, .paragraph-name-box {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.paragraph-text-box {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+@media (max-width: 1200px) {
+    .paragraph-text-box {
+        width: 700px;
+    }
+}
+@media (max-width: 900px) {
+    .paragraph-text-box {
+        width: 620px;
+    }
+}
+@media (max-width: 768px) {
+    .paragraph-text-box {
+        width: 580px;
+    }
+}
+@media (max-width: 720px) {
+    .paragraph-text-box {
+        width: 540px;
+    }
+}
+@media (max-width: 660px) {
+    .paragraph-text-box {
+        width: 100%;
+    }
 }
 
 .add-var-box {
@@ -54,7 +87,7 @@
     margin-bottom: 20px;
 }
 
-.add-var-box input[type="text"], .var-code-box input[type="text"], .list-name-box input[type="text"], .input-code-box input[type="text"], .input-name-box input[type="text"] {
+.add-var-box input[type="text"], .var-code-box input[type="text"], .list-name-box input[type="text"], .input-code-box input[type="text"], .input-name-box input[type="text"], .paragraph-name-box input[type="text"] {
     margin-right: 8px;
     padding: 8px 10px;
     border-radius: 8px;
@@ -62,6 +95,19 @@
     font-size: 18px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     outline: none;
+}
+
+.paragraph-text-input {
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1.5px solid lightgrey;
+    font-size: 18px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    outline: none;
+    width: 100%;
+    resize: vertical;
 }
 
 .add-var-box input[type="text"] {
@@ -73,12 +119,12 @@
     width: 80px;
 }
 
-.list-name-box input[type="text"], .input-name-box input[type="text"] {
+.list-name-box input[type="text"], .input-name-box input[type="text"], .paragraph-name-box input[type="text"] {
     margin-left: 8px;
     width: 220px;
 }
 
-.add-var-box button, .var-code-box button, .list-name-box button, .input-code-box button, .input-name-box button {
+.add-var-box button, .var-code-box button, .list-name-box button, .input-code-box button, .input-name-box button, .paragraph-name-box button, .paragraph-text-box button {
     padding: 8px 12px;
     border-radius: 10px;
     font-size: 20px;
@@ -92,29 +138,33 @@
     cursor: pointer;
 }
 
-.add-var-box button:hover, .var-code-box button:hover, .list-name-box button:hover, .input-code-box button:hover, .input-name-box button:hover {
+.add-var-box button:hover, .var-code-box button:hover, .list-name-box button:hover, .input-code-box button:hover, .input-name-box button:hover, .paragraph-name-box button:hover, .paragraph-text-box button:hover {
     box-shadow: 0 0 10px 0 #c1c1c1;
     transform: scale(1.03);
 }
 
-.var-code-box p, .list-name-box p, .input-code-box p, .input-name-box p {
+.var-code-box p, .list-name-box p, .input-code-box p, .input-name-box p, .paragraph-name-box p, .paragraph-text-box p {
     font-size: 22px;
 }
 
-.var-code-act, .list-name-act, .input-code-act, .input-name-act {
+.paragraph-text-box p {
+    margin-bottom: 10px;
+}
+
+.var-code-act, .list-name-act, .input-code-act, .input-name-act, .paragraph-name-act, .paragraph-text-act {
     font-size: 24px;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     margin-left: 8px;
 }
 
-.var-code-box img, .list-name-box img, .input-code-box img, .input-name-box img {
+.var-code-box img, .list-name-box img, .input-code-box img, .input-name-box img, .paragraph-name-box img, .paragraph-text-box img {
     height: 24px;
     margin-left: 5px;
     transition: transform 0.2s ease-in-out;
 }
 
-.var-code-box img:hover, .list-name-box img:hover, .input-code-box img:hover, .input-name-box img:hover {
+.var-code-box img:hover, .list-name-box img:hover, .input-code-box img:hover, .input-name-box img:hover, .paragraph-name-box img:hover, .paragraph-text-box img:hover {
     cursor: pointer;
     transform: scale(1.3);
 }
@@ -124,7 +174,7 @@
     padding: 0 20px;
 }
 
-.save-list-btn, .save-input-btn {
+.save-list-btn, .save-input-btn, .save-paragraph-btn {
     margin-top: 20px;
     padding: 10px 20px;
     border-radius: 12px;
@@ -139,7 +189,7 @@
     cursor: pointer;
 }
 
-.save-list-btn:hover, .save-input-btn:hover {
+.save-list-btn:hover, .save-input-btn:hover, .save-paragraph-btn:hover {
     box-shadow: 0 0 10px 0 #c1c1c1;
     transform: scale(1.03);
 }
