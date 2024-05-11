@@ -34,16 +34,20 @@ def add_input():
     if request.method == 'POST':
         name = request.form['input-name-act-input']
         code = request.form['input-code-act-input']
-        slug = get_slug(name)
-        base_data_repository.add_data('inputs', name=name, code=code, slug=slug)
+        base_data_repository.add_data('inputs', get_slug(name), name=name, code=code)
         return redirect(url_for('edit_base'))
     return render_template('add_input.html')
 
 
-@app.route('/edit_input/<string:slug>')
+@app.route('/edit_input/<string:slug>', methods=['GET', 'POST'])
 def edit_input(slug):
+    if request.method == 'POST':
+        name = request.form['input-name-act-input']
+        code = request.form['input-code-act-input']
+        base_data_repository.update_data('inputs', slug, name=name, code=code)
+        return redirect(url_for('edit_base'))
     item = base_data_repository.get_data_by_slug('inputs', slug)
-    return render_template('add_input.html', edit=True, input_name=item['name'], type_code=item['code'])
+    return render_template('add_input.html', edit=True, input_name=item['name'], type_code=item['code'], slug=slug)
 
 
 @app.route('/add_variables')

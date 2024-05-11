@@ -6,11 +6,11 @@
         },
         {
             "name": "Industry",
-            "code": "##in"
+            "code": "##ind"
         },
         {
-            "name": "Job Title",
-            "code": "##jt"
+            "name": "Job Title Test",
+            "code": "##jtt"
         },
         {
             "name": "Job Focus",
@@ -21,8 +21,12 @@
             "code": "##bs"
         },
         {
-            "name": "Clothes",
-            "code": "##cl"
+            "name": "Clothing",
+            "code": "##clo"
+        },
+        {
+            "name": "Pillow Case",
+            "code": "##pc"
         }
     ],
     "variables_sets": [
