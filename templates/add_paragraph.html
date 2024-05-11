@@ -15,8 +15,8 @@
         <a class="main-menu-btn" href="{{ url_for('index') }}">Main Menu</a>
         <a class="edit-base-btn" href="{{ url_for('edit_base') }}">Back</a>
         <h1 class="page-title">{% if edit %}Edit{% else %}New{% endif %} Paragraph</h1>
-        <div class="center-wrapper">
-            <div class="main-container" style="max-width: 1000px;">
+        <div class="center-wrapper" style="flex-direction: column;">
+            <div class="main-container" style="max-width: 1000px; margin-bottom: 15px;">
                 <div class="section-container">
                     <form action="" method="post">
                         <div class="paragraph-name-box">
@@ -38,6 +38,37 @@
                         </div>
                         <input class="save-paragraph-btn" id="save-paragraph-btn" type="submit" value="Save Paragraph" />
                     </form>
+                </div>
+            </div>
+            <div class="main-container" style="margin-top: 0;">
+                <div class="section-container half" style="margin-right: 10px;">
+                    <div class="add-position">
+                        <h1 class="sub-title">Your Inputs</h1>
+                        <div class="add-flex">
+                            {% for input in inputs %}
+                                <span class="input-click-box">
+                                    <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{input.code}}</strong> - {{input.name}}</h1>
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="section-container half" style="margin-left: 10px;">
+                    <div class="add-position">
+                        <h1 class="sub-title">Your Variables</h1>
+                        <div class="add-flex">
+                            {% for variables in variables_sets %}
+                                <span class="variables-click-box">
+                                    <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{variables.code}}</strong> - {{variables.name}}</h1>
+                                    <div class="variables-list-box">
+                                        {% for variable in variables.values %}
+                                            <p>{{variable}}</p>
+                                        {% endfor %}
+                                    </div>
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

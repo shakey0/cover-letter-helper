@@ -108,6 +108,14 @@ body {
     flex: 3;
 }
 
+.half {
+    flex: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: 0 0 5px 0 #c6c6c6;
+    background-color: #fffff0;
+}
+
 @media (max-width: 1080px) {
     .main-container {
         flex-direction: column;

@@ -78,7 +78,20 @@ def edit_variables():
 
 @app.route('/add_paragraph')
 def add_paragraph():
-    return render_template('add_paragraph.html')
+    inputs = [
+        Input('Company Name', '##cn'),
+        Input('Industry', '##in'),
+        Input('Job Title', '##jt'),
+        Input('Job Focus', '##jf')
+    ]
+    variables_sets = [
+        Variables('Frontend', '**fr', ['JavaScript', 'React', 'HTML', 'CSS']),
+        Variables('Backend', '**ba', ['Python', 'Flask', 'Django', 'PostgreSQL', 'Ruby', 'Rails', 'Node.js', 'Express', 'MongoDB', 'Java', 'Spring']),
+        Variables('DevOps', '**de', ['Docker', 'Kubernetes', 'AWS', 'Terraform']),
+        Variables('Product Management', '**pm', ['Agile', 'Scrum', 'Jira', 'Product Roadmap']),
+        Variables('Soft Skills', '**ss', ['Communication', 'Problem Solving', 'Teamwork', 'Time Management'])
+    ]
+    return render_template('add_paragraph.html', inputs=inputs, variables_sets=variables_sets)
 
 @app.route('/edit_paragraph')
 def edit_paragraph():
