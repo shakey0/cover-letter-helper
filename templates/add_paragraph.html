@@ -44,9 +44,9 @@
                 <div class="section-container half" style="margin-right: 10px;">
                     <div class="add-position">
                         <h1 class="sub-title">Your Inputs</h1>
-                        <div class="add-flex">
+                        <div class="add-flex" id="reorder-inputs">
                             {% for input in inputs %}
-                                <span class="input-click-box">
+                                <span class="input-click-box" style="cursor: pointer;">
                                     <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{input.code}}</strong> - {{input.name}}</h1>
                                 </span>
                             {% endfor %}
@@ -56,9 +56,9 @@
                 <div class="section-container half" style="margin-left: 10px;">
                     <div class="add-position">
                         <h1 class="sub-title">Your Variables</h1>
-                        <div class="add-flex">
+                        <div class="add-flex" id="reorder-variables">
                             {% for variables in variables_sets %}
-                                <span class="variables-click-box">
+                                <span class="variables-click-box" style="cursor: pointer;">
                                     <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{variables.code}}</strong> - {{variables.name}}</h1>
                                     <div class="variables-list-box">
                                         {% for variable in variables.values %}
