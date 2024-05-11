@@ -17,46 +17,46 @@
             "code": "##jf"
         }
     ],
-    "variables" : [
+    "variables_sets" : [
         {
             "name": "Frontend",
             "code": "**fe",
-            "items": [
+            "variables": [
                 "HTML", "CSS", "JavaScript", "React", "Tailwind"
             ]
         },
         {
             "name": "Backend",
             "code": "**be",
-            "items": [
+            "variables": [
                 "Node.js", "Express", "MongoDB", "SQL", "GraphQL"
             ]
         },
         {
             "name": "DevOps",
             "code": "**do",
-            "items": [
+            "variables": [
                 "Docker", "Kubernetes", "AWS", "Azure", "Google Cloud"
             ]
         },
         {
             "name": "Testing",
             "code": "**te",
-            "items": [
+            "variables": [
                 "Jest", "Mocha", "Chai", "Cypress", "Selenium"
             ]
         },
         {
             "name": "Mobile",
             "code": "**mo",
-            "items": [
+            "variables": [
                 "React Native", "Swift", "Kotlin", "Flutter", "Xamarin"
             ]
         },
         {
             "name": "Other",
             "code": "**ot",
-            "items": [
+            "variables": [
                 "Python", "Java", "C#", "Ruby", "PHP"
             ]
         }
@@ -64,15 +64,15 @@
     "paragraphs": [
         {
             "name": "Intro",
-            "text": "I am a ##fe developer with experience in ##be and ##do. I have worked on projects in various industries such as ##in and I am currently looking for a new opportunity as a ##jt."
+            "text": "Official wonder result **ba crime item be fact. Than answer happy break. Likely school turn security service perform surface. Care account how figure author. Run instead evidence direction add **de. Company experience provide reach sing. Discuss particularly these kitchen where police most. Nearly same effect. Color **ss girl generation professor writer trade result. Beyond year out challenge much over only."
         },
         {
             "name": "Experience",
-            "text": "I have worked on projects using ##fe, ##be, and ##do. I have experience in ##jf and have worked on projects in various industries such as ##in."
+            "text": "Deal relate individual attorney. Want will attack check dark **pm charge white. Customer challenge rich **ba trade exactly. Western deal writer small. Decade you rock else. Shoulder little white prevent western public **fr. Interesting wear chair really wish Democrat discover. Nothing wife too front heart than church pull. Police civil before team society **de common strategy. Rather traditional eye less even including."
         },
         {
             "name": "Skills",
-            "text": "My skills include ##fe, ##be, ##do, ##te, ##mo, and ##ot. I am proficient in various programming languages and have experience working on projects in different industries."
+            "text": "Factor international usually herself benefit though need meeting **ss. Instead personal dark would appear difference state. Culture ten represent appear allow find language **fr music. Ball blood require reduce person while. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert **pm. Board again candidate among child daughter their. Among event although likely turn."
         }
     ]
 }
