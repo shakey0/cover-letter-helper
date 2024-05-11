@@ -15,49 +15,81 @@
         {
             "name": "Job Focus",
             "code": "##jf"
+        },
+        {
+            "name": "Bed Sheet",
+            "code": "##bs"
+        },
+        {
+            "name": "Clothes",
+            "code": "##cl"
         }
     ],
-    "variables_sets" : [
+    "variables_sets": [
         {
             "name": "Frontend",
             "code": "**fe",
             "variables": [
-                "HTML", "CSS", "JavaScript", "React", "Tailwind"
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "React",
+                "Tailwind"
             ]
         },
         {
             "name": "Backend",
             "code": "**be",
             "variables": [
-                "Node.js", "Express", "MongoDB", "SQL", "GraphQL"
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "SQL",
+                "GraphQL"
             ]
         },
         {
             "name": "DevOps",
             "code": "**do",
             "variables": [
-                "Docker", "Kubernetes", "AWS", "Azure", "Google Cloud"
+                "Docker",
+                "Kubernetes",
+                "AWS",
+                "Azure",
+                "Google Cloud"
             ]
         },
         {
             "name": "Testing",
             "code": "**te",
             "variables": [
-                "Jest", "Mocha", "Chai", "Cypress", "Selenium"
+                "Jest",
+                "Mocha",
+                "Chai",
+                "Cypress",
+                "Selenium"
             ]
         },
         {
             "name": "Mobile",
             "code": "**mo",
             "variables": [
-                "React Native", "Swift", "Kotlin", "Flutter", "Xamarin"
+                "React Native",
+                "Swift",
+                "Kotlin",
+                "Flutter",
+                "Xamarin"
             ]
         },
         {
             "name": "Other",
             "code": "**ot",
             "variables": [
-                "Python", "Java", "C#", "Ruby", "PHP"
+                "Python",
+                "Java",
+                "C#",
+                "Ruby",
+                "PHP"
             ]
         }
     ],

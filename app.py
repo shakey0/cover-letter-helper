@@ -1,5 +1,6 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 from lib.base_data_repository import base_data_repository
+from lib.base_models import get_slug
 from lib.constants import process_all_data
 from faker import Faker
 fake = Faker()
@@ -28,8 +29,14 @@ def edit_base():
     return render_template('edit_base.html', inputs=inputs, variables_sets=variables_sets, paragraphs=paragraphs)
 
 
-@app.route('/add_input')
+@app.route('/add_input', methods=['GET', 'POST'])
 def add_input():
+    if request.method == 'POST':
+        name = request.form['input-name-act-input']
+        code = request.form['input-code-act-input']
+        slug = get_slug(name)
+        base_data_repository.add_data('inputs', name=name, code=code, slug=slug)
+        return redirect(url_for('edit_base'))
     return render_template('add_input.html')
 
 

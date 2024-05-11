@@ -18,7 +18,7 @@
         <div class="center-wrapper">
             <div class="main-container" style="max-width: 1000px;">
                 <div class="section-container">
-                    <form action="" method="post">
+                    <form action="{{ url_for('add_input') }}" method="post">
                         <div class="input-name-box">
                             <p>Input name:</p>
                             <input {% if edit %}style="display: none;" {% endif %}type="text" id="input-name-input" />
