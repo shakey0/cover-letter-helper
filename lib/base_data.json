@@ -1,0 +1,78 @@
+{
+    "inputs": [
+        {
+            "name": "Company Name",
+            "code": "##cn"
+        },
+        {
+            "name": "Industry",
+            "code": "##in"
+        },
+        {
+            "name": "Job Title",
+            "code": "##jt"
+        },
+        {
+            "name": "Job Focus",
+            "code": "##jf"
+        }
+    ],
+    "variables" : [
+        {
+            "name": "Frontend",
+            "code": "**fe",
+            "items": [
+                "HTML", "CSS", "JavaScript", "React", "Tailwind"
+            ]
+        },
+        {
+            "name": "Backend",
+            "code": "**be",
+            "items": [
+                "Node.js", "Express", "MongoDB", "SQL", "GraphQL"
+            ]
+        },
+        {
+            "name": "DevOps",
+            "code": "**do",
+            "items": [
+                "Docker", "Kubernetes", "AWS", "Azure", "Google Cloud"
+            ]
+        },
+        {
+            "name": "Testing",
+            "code": "**te",
+            "items": [
+                "Jest", "Mocha", "Chai", "Cypress", "Selenium"
+            ]
+        },
+        {
+            "name": "Mobile",
+            "code": "**mo",
+            "items": [
+                "React Native", "Swift", "Kotlin", "Flutter", "Xamarin"
+            ]
+        },
+        {
+            "name": "Other",
+            "code": "**ot",
+            "items": [
+                "Python", "Java", "C#", "Ruby", "PHP"
+            ]
+        }
+    ],
+    "paragraphs": [
+        {
+            "name": "Intro",
+            "text": "I am a ##fe developer with experience in ##be and ##do. I have worked on projects in various industries such as ##in and I am currently looking for a new opportunity as a ##jt."
+        },
+        {
+            "name": "Experience",
+            "text": "I have worked on projects using ##fe, ##be, and ##do. I have experience in ##jf and have worked on projects in various industries such as ##in."
+        },
+        {
+            "name": "Skills",
+            "text": "My skills include ##fe, ##be, ##do, ##te, ##mo, and ##ot. I am proficient in various programming languages and have experience working on projects in different industries."
+        }
+    ]
+}
