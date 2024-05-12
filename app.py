@@ -42,7 +42,7 @@ def add_input():
 @app.route('/edit_input/<string:slug>', methods=['GET', 'POST'])
 def edit_input(slug):
     if request.method == 'POST':
-        name = request.form['input-name-act-input']
+        name = request.form['input-name-act-input'] # FIX SINGLE WORD NAME ISSUE
         code = request.form['input-code-act-input']
         base_data_repository.update_data('inputs', slug, name=name, code=code)
         return redirect(url_for('edit_base'))
@@ -50,15 +50,27 @@ def edit_input(slug):
     return render_template('add_input.html', edit=True, input_name=item['name'], type_code=item['code'], slug=slug)
 
 
-@app.route('/add_variables')
+@app.route('/add_variables', methods=['GET', 'POST'])
 def add_variables():
+    if request.method == 'POST':
+        name = request.form['list-name-act-input']
+        code = request.form['var-code-act-input']
+        variables = request.form.getlist('variables[]')
+        base_data_repository.add_data('variables_sets', get_slug(name), name=name, code=code, variables=variables)
+        return redirect(url_for('edit_base'))
     return render_template('add_variables.html')
 
 
-@app.route('/edit_variables/<string:slug>')
+@app.route('/edit_variables/<string:slug>', methods=['GET', 'POST'])
 def edit_variables(slug):
+    if request.method == 'POST':
+        name = request.form['list-name-act-input'] # FIX SINGLE WORD NAME ISSUE
+        code = request.form['var-code-act-input']
+        variables = request.form.getlist('variables[]')
+        base_data_repository.update_data('variables_sets', slug, name=name, code=code, variables=variables)
+        return redirect(url_for('edit_base'))
     item = base_data_repository.get_data_by_slug('variables_sets', slug)
-    return render_template('add_variables.html', edit=True, list_name=item['name'], type_code=item['code'], values=item['variables'])
+    return render_template('add_variables.html', edit=True, list_name=item['name'], type_code=item['code'], values=item['variables'], slug=slug)
 
 
 @app.route('/add_paragraph')

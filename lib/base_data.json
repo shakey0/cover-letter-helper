@@ -1,8 +1,8 @@
 {
     "inputs": [
         {
-            "name": "Company Name",
-            "code": "##cn"
+            "name": "Company",
+            "code": "##cna"
         },
         {
             "name": "Industry",
@@ -17,8 +17,8 @@
             "code": "##jf"
         },
         {
-            "name": "Bed Sheet",
-            "code": "##bs"
+            "name": "Bed",
+            "code": "##bsh"
         },
         {
             "name": "Clothing",
@@ -94,6 +94,25 @@
                 "C#",
                 "Ruby",
                 "PHP"
+            ]
+        },
+        {
+            "name": "Nice",
+            "code": "**nf",
+            "variables": [
+                "apples",
+                "oranges",
+                "pie",
+                "cake"
+            ]
+        },
+        {
+            "name": "Lovely",
+            "code": "**ld",
+            "variables": [
+                "cola",
+                "apple juice",
+                "fizzy stuff"
             ]
         }
     ],
