@@ -26,7 +26,7 @@
                         <div class="list-name-box">
                             <p>List name:</p>
                             <input {% if edit %}style="display: none;" {% endif %}type="text" id="list-name-input" />
-                            <input type="hidden" id="list-name-act-input" name="list-name-act-input" {% if edit %}value={{ list_name }} {% endif %}/>
+                            <input type="hidden" id="list-name-act-input" name="list-name-act-input" {% if edit %}value="{{ list_name }}" {% endif %}/>
                             <div {% if not edit %}style="display: none;" {% endif %}class="list-name-act" id="list-name-act">{% if edit %}{{ list_name }}{% endif %}</div>
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-list-name-btn" onclick="editListName()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="list-name-btn" onclick="addListName()">Add</button>
@@ -35,7 +35,7 @@
                         <div class="var-code-box">
                             <p>Type code:</p>
                             <input {% if edit %}style="display: none;" {% endif %}type="text" value="**" id="var-code-input" />
-                            <input type="hidden" id="var-code-act-input" name="var-code-act-input" {% if edit %}value={{ type_code }} {% endif %}/>
+                            <input type="hidden" id="var-code-act-input" name="var-code-act-input" {% if edit %}value="{{ type_code }}" {% endif %}/>
                             <div {% if not edit %}style="display: none;" {% endif %}class="var-code-act" id="var-code-act">{% if edit %}{{ type_code }}{% endif %}</div>
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-var-code-btn" onclick="editVarCode()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="var-code-btn" onclick="addVarCode()">Add</button>

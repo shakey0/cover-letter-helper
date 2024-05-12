@@ -22,7 +22,7 @@
                         <div class="paragraph-name-box">
                             <p>Paragraph name:</p>
                             <input {% if edit %}style="display: none;" {% endif %}type="text" id="paragraph-name-input" />
-                            <input type="hidden" id="paragraph-name-act-input" name="paragraph-name-act-input" {% if edit %}value={{ paragraph_name }} {% endif %}/>
+                            <input type="hidden" id="paragraph-name-act-input" name="paragraph-name-act-input" {% if edit %}value="{{ paragraph_name }}" {% endif %}/>
                             <div {% if not edit %}style="display: none;" {% endif %}class="paragraph-name-act" id="paragraph-name-act">{% if edit %}{{ paragraph_name }}{% endif %}</div>
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-paragraph-name-btn" onclick="editParagraphName()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="paragraph-name-btn" onclick="addParagraphName()">Add</button>
@@ -32,7 +32,7 @@
                                 <img {% if not edit %}style="display: none;" {% endif %}id="edit-paragraph-text-btn" onclick="editParagraphText()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             </p>
                             <textarea {% if edit %}style="display: none;" {% endif %} class="paragraph-text-input" id="paragraph-text-input" rows="8"></textarea>
-                            <input type="hidden" id="paragraph-text-act-input" name="paragraph-text-act-input" {% if edit %}value={{ paragraph_text }} {% endif %}/>
+                            <input type="hidden" id="paragraph-text-act-input" name="paragraph-text-act-input" {% if edit %}value="{{ paragraph_text }}" {% endif %}/>
                             <div {% if not edit %}style="display: none;" {% endif %}class="paragraph-text-act emphasise-vars" id="paragraph-text-act">{% if edit %}{{ paragraph_text }}{% endif %}</div>
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="paragraph-text-btn" onclick="addParagraphText()">Preview Paragraph</button>
                         </div>

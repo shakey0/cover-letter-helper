@@ -26,7 +26,7 @@
                         <div class="input-name-box">
                             <p>Input name:</p>
                             <input {% if edit %}style="display: none;" {% endif %}type="text" id="input-name-input" />
-                            <input type="hidden" id="input-name-act-input" name="input-name-act-input" {% if edit %}value={{ input_name }} {% endif %}/>
+                            <input type="hidden" id="input-name-act-input" name="input-name-act-input" {% if edit %}value="{{ input_name }}" {% endif %}/>
                             <div {% if not edit %}style="display: none;" {% endif %}class="input-name-act" id="input-name-act">{% if edit %}{{ input_name }}{% endif %}</div>
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-input-name-btn" onclick="editInputName()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="input-name-btn" onclick="addInputName()">Add</button>
@@ -35,7 +35,7 @@
                         <div class="input-code-box">
                             <p>Type code:</p>
                             <input {% if edit %}style="display: none;" {% endif %}type="text" value="##" id="input-code-input" />
-                            <input type="hidden" id="input-code-act-input" name="input-code-act-input" {% if edit %}value={{ type_code }} {% endif %}/>
+                            <input type="hidden" id="input-code-act-input" name="input-code-act-input" {% if edit %}value="{{ type_code }}" {% endif %}/>
                             <div {% if not edit %}style="display: none;" {% endif %}class="input-code-act" id="input-code-act">{% if edit %}{{ type_code }}{% endif %}</div>
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-input-code-btn" onclick="editInputCode()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="input-code-btn" onclick="addInputCode()">Add</button>
