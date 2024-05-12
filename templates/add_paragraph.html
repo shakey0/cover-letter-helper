@@ -18,7 +18,11 @@
         <div class="center-wrapper" style="flex-direction: column;">
             <div class="main-container" style="max-width: 1000px; margin-bottom: 15px;">
                 <div class="section-container">
-                    <form action="" method="post">
+                    {% if edit %}
+                    <form action="{{ url_for('edit_paragraph', slug=slug) }}" method="post">
+                    {% else %}
+                    <form action="{{ url_for('add_paragraph') }}" method="post">
+                    {% endif %}
                         <div class="paragraph-name-box">
                             <p>Paragraph name:</p>
                             <input {% if edit %}style="display: none;" {% endif %}type="text" id="paragraph-name-input" />

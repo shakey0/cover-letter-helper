@@ -42,7 +42,7 @@ def add_input():
 @app.route('/edit_input/<string:slug>', methods=['GET', 'POST'])
 def edit_input(slug):
     if request.method == 'POST':
-        name = request.form['input-name-act-input'] # FIX SINGLE WORD NAME ISSUE
+        name = request.form['input-name-act-input']
         code = request.form['input-code-act-input']
         base_data_repository.update_data('inputs', slug, name=name, code=code)
         return redirect(url_for('edit_base'))
@@ -64,28 +64,40 @@ def add_variables():
 @app.route('/edit_variables/<string:slug>', methods=['GET', 'POST'])
 def edit_variables(slug):
     if request.method == 'POST':
-        name = request.form['list-name-act-input'] # FIX SINGLE WORD NAME ISSUE
+        name = request.form['list-name-act-input']
         code = request.form['var-code-act-input']
         variables = request.form.getlist('variables[]')
         base_data_repository.update_data('variables_sets', slug, name=name, code=code, variables=variables)
         return redirect(url_for('edit_base'))
     item = base_data_repository.get_data_by_slug('variables_sets', slug)
-    return render_template('add_variables.html', edit=True, list_name=item['name'], type_code=item['code'], values=item['variables'], slug=slug)
+    return render_template('add_variables.html', edit=True, list_name=item['name'], type_code=item['code'],
+                           values=item['variables'], slug=slug)
 
 
-@app.route('/add_paragraph')
+@app.route('/add_paragraph', methods=['GET', 'POST'])
 def add_paragraph():
+    if request.method == 'POST':
+        name = request.form['paragraph-name-act-input']
+        text = request.form['paragraph-text-act-input']
+        base_data_repository.add_data('paragraphs', get_slug(name), name=name, text=text)
+        return redirect(url_for('edit_base'))
     all_data = base_data_repository.get_data()
     inputs, variables_sets, paragraphs = process_all_data(all_data)
     return render_template('add_paragraph.html', inputs=inputs, variables_sets=variables_sets)
 
 
-@app.route('/edit_paragraph/<string:slug>')
+@app.route('/edit_paragraph/<string:slug>', methods=['GET', 'POST'])
 def edit_paragraph(slug):
+    if request.method == 'POST':
+        name = request.form['paragraph-name-act-input']
+        text = request.form['paragraph-text-act-input']
+        base_data_repository.update_data('paragraphs', slug, name=name, text=text)
+        return redirect(url_for('edit_base'))
     item = base_data_repository.get_data_by_slug('paragraphs', slug)
     all_data = base_data_repository.get_data()
     inputs, variables_sets, paragraphs = process_all_data(all_data)
-    return render_template('add_paragraph.html', edit=True, paragraph_name=item['name'], paragraph_text=item['text'], inputs=inputs, variables_sets=variables_sets)
+    return render_template('add_paragraph.html', edit=True, paragraph_name=item['name'], paragraph_text=item['text'],
+                           inputs=inputs, variables_sets=variables_sets, slug=slug)
 
 
 @app.route('/drag_test')

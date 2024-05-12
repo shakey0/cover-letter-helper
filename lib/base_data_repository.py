@@ -19,7 +19,7 @@ class BaseDataRepository:
     def add_data(self, data_type, slug, **kwargs):
         all_data = self.get_data()
         for data in all_data[data_type]:
-            if get_slug(data['name']) == slug or data['code'] == kwargs['code']:
+            if get_slug(data['name']) == slug or ('code' in data and data['code'] == kwargs['code']):
                 return False
         all_data[data_type].append(kwargs)
         with open('lib/base_data.json', 'w') as json_file:
@@ -33,7 +33,7 @@ class BaseDataRepository:
                 for item in all_data[data_type]:
                     if item['name'] != data['name'] and item['name'] == kwargs['name']:
                         return False
-                    if item['code'] != data['code'] and item['code'] == kwargs['code']:
+                    if 'code' in item and item['code'] != data['code'] and item['code'] == kwargs['code']:
                         return False
                 data.update(kwargs)
                 with open('lib/base_data.json', 'w') as json_file:
