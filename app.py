@@ -1,11 +1,12 @@
-from flask import Flask, request, render_template, redirect, url_for, jsonify
+from flask import Flask, request, render_template, redirect, url_for, jsonify, flash
 from lib.base_data_repository import base_data_repository
 from lib.base_models import get_slug
-from lib.constants import process_all_data
+from lib.constants import process_all_data, get_flash_message
 from faker import Faker
 fake = Faker()
 
 app = Flask(__name__)
+app.secret_key = 'secret_key'
 
 
 class CoverLetter:
@@ -24,6 +25,12 @@ def index():
 
 @app.route('/edit_base')
 def edit_base():
+    action = request.args.get('action')
+    if action:
+        slug = request.args.get('slug')
+        data_type = request.args.get('data_type')
+        data = base_data_repository.get_data_by_slug(data_type, slug)
+        flash(get_flash_message(action + "_" + data_type[:-1], data['name'], data.get('code')), 'success emphasise-vars')
     all_data = base_data_repository.get_data()
     inputs, variables_sets, paragraphs = process_all_data(all_data)
     return render_template('edit_base.html', inputs=inputs, variables_sets=variables_sets, paragraphs=paragraphs)
@@ -37,7 +44,7 @@ def add_input():
         result = base_data_repository.add_data('inputs', get_slug(name), name=name, code=code)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base')})
+        return jsonify({'success': True, 'redirect': url_for('edit_base', action="new", data_type="inputs", slug=get_slug(name))})
     return render_template('add_input.html')
 
 
@@ -49,7 +56,7 @@ def edit_input(slug):
         result = base_data_repository.update_data('inputs', slug, name=name, code=code)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base')})
+        return jsonify({'success': True, 'redirect': url_for('edit_base', action="updated", data_type="inputs", slug=get_slug(name))})
     item = base_data_repository.get_data_by_slug('inputs', slug)
     return render_template('add_input.html', edit=True, input_name=item['name'], type_code=item['code'], slug=slug)
 
@@ -63,7 +70,7 @@ def add_variables():
         result = base_data_repository.add_data('variables_sets', get_slug(name), name=name, code=code, variables=variables)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base')})
+        return jsonify({'success': True, 'redirect': url_for('edit_base', action="new", data_type="variables_sets", slug=get_slug(name))})
     return render_template('add_variables.html')
 
 
@@ -76,7 +83,7 @@ def edit_variables(slug):
         result = base_data_repository.update_data('variables_sets', slug, name=name, code=code, variables=variables)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base')})
+        return jsonify({'success': True, 'redirect': url_for('edit_base', action="updated", data_type="variables_sets", slug=get_slug(name))})
     item = base_data_repository.get_data_by_slug('variables_sets', slug)
     return render_template('add_variables.html', edit=True, list_name=item['name'], type_code=item['code'],
                            values=item['variables'], slug=slug)
@@ -90,7 +97,7 @@ def add_paragraph():
         result = base_data_repository.add_data('paragraphs', get_slug(name), name=name, text=text)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base')})
+        return jsonify({'success': True, 'redirect': url_for('edit_base', action="new", data_type="paragraphs", slug=get_slug(name))})
     all_data = base_data_repository.get_data()
     inputs, variables_sets, paragraphs = process_all_data(all_data)
     return render_template('add_paragraph.html', inputs=inputs, variables_sets=variables_sets)
@@ -104,7 +111,7 @@ def edit_paragraph(slug):
         result = base_data_repository.update_data('paragraphs', slug, name=name, text=text)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base')})
+        return jsonify({'success': True, 'redirect': url_for('edit_base', action="updated", data_type="paragraphs", slug=get_slug(name))})
     item = base_data_repository.get_data_by_slug('paragraphs', slug)
     all_data = base_data_repository.get_data()
     inputs, variables_sets, paragraphs = process_all_data(all_data)

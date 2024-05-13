@@ -13,6 +13,13 @@
         <div class="top-line"></div>
         <a class="main-menu-btn" href="{{ url_for('index') }}">Main Menu</a>
         <h1 class="page-title">Your Base Data</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div onclick="this.classList.add('hidden')" class="{{ category }} main-page-flash">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <div class="center-wrapper">
             <div class="main-container">
                 <div class="section-container two-fifths">

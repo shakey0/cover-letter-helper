@@ -5,8 +5,8 @@
             "code": "##cna"
         },
         {
-            "name": "Industry",
-            "code": "##ind"
+            "name": "Main Industry",
+            "code": "##mi"
         },
         {
             "name": "Job Title Test",
@@ -14,23 +14,15 @@
         },
         {
             "name": "Job Focus",
-            "code": "##jf"
+            "code": "##jfp"
         },
         {
-            "name": "Bed sheets",
+            "name": "Bed sheet",
             "code": "##bs"
         },
         {
-            "name": "Clothing",
-            "code": "##clo"
-        },
-        {
-            "name": "Tea Towel",
-            "code": "##tt"
-        },
-        {
-            "name": "Companyafs",
-            "code": "##indff"
+            "name": "Washing Line",
+            "code": "##wl"
         }
     ],
     "variables_sets": [
@@ -104,7 +96,7 @@
             ]
         },
         {
-            "name": "Nice Food",
+            "name": "Nice Foodies",
             "code": "**nf",
             "variables": [
                 "apples",
@@ -139,6 +131,17 @@
                 "phone",
                 "headphones"
             ]
+        },
+        {
+            "name": "Pretty Colours",
+            "code": "**pc",
+            "variables": [
+                "red",
+                "blue",
+                "yellow",
+                "orange",
+                "purple"
+            ]
         }
     ],
     "paragraphs": [
@@ -147,8 +150,8 @@
             "text": "Official wonder result **ba crime item be fact. Than answer happy break. Likely school turn security service perform surface. Care account how figure author. Run instead evidence direction add **de. Company experience provide reach sing. Discuss particularly these kitchen where police most. Nearly same effect. Color **ss girl generation professor writer trade result. Beyond year out challenge much over only. Another **pal ##poe"
         },
         {
-            "name": "Experience",
-            "text": "Deal relate individual attorney. Want will attack check dark **pm charge white. Customer challenge rich **ba trade exactly. Western deal writer small. Decade you rock else. Shoulder little white prevent western public **fr. Interesting wear chair really wish Democrat discover. Nothing wife too front heart than church pull. Police civil before team society **de common strategy. Rather traditional eye less even including."
+            "name": "Experiences",
+            "text": "Deal relate individual attorney. Want will attack check dark **pm charge white. Customer challenge rich **ba trade exactly. Western deal writer small. Decade you rock else. Shoulder little white prevent western public **fr. Interesting wear chair really wish Democrat discover. Nothing wife too front heart than church pull. Police civil before team society **de common strategy. Rather traditional eye less even including. And then the end."
         },
         {
             "name": "Skills",
@@ -160,7 +163,7 @@
         },
         {
             "name": "New Times",
-            "text": "Test ##la day night **pa kite"
+            "text": "Test ##la day night **pa kite **panda and jump lamp ##paaa"
         }
     ]
 }
