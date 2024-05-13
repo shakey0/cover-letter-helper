@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, jsonify
 from lib.base_data_repository import base_data_repository
 from lib.base_models import get_slug
 from lib.constants import process_all_data
@@ -34,8 +34,10 @@ def add_input():
     if request.method == 'POST':
         name = request.form['input-name-act-input']
         code = request.form['input-code-act-input']
-        base_data_repository.add_data('inputs', get_slug(name), name=name, code=code)
-        return redirect(url_for('edit_base'))
+        result = base_data_repository.add_data('inputs', get_slug(name), name=name, code=code)
+        if result != True:
+            return jsonify({'error': result})
+        return jsonify({'success': True, 'redirect': url_for('edit_base')})
     return render_template('add_input.html')
 
 
@@ -44,8 +46,10 @@ def edit_input(slug):
     if request.method == 'POST':
         name = request.form['input-name-act-input']
         code = request.form['input-code-act-input']
-        base_data_repository.update_data('inputs', slug, name=name, code=code)
-        return redirect(url_for('edit_base'))
+        result = base_data_repository.update_data('inputs', slug, name=name, code=code)
+        if result != True:
+            return jsonify({'error': result})
+        return jsonify({'success': True, 'redirect': url_for('edit_base')})
     item = base_data_repository.get_data_by_slug('inputs', slug)
     return render_template('add_input.html', edit=True, input_name=item['name'], type_code=item['code'], slug=slug)
 

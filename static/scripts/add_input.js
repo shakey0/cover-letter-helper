@@ -11,6 +11,7 @@ function addInputName() {
         input.value = '';
         input.style.display = 'none';
         document.getElementById('input-name-btn').style.display = 'none';
+        document.getElementById('input-name-error').textContent = '';
     }
 }
 
@@ -38,6 +39,7 @@ function addInputCode() {
         input.value = '';
         input.style.display = 'none';
         document.getElementById('input-code-btn').style.display = 'none';
+        document.getElementById('input-code-error').textContent = '';
         
         document.getElementById('input-code-mes-lc').style.color = '#1f1f1f';
         document.getElementById('input-code-mes-min').style.color = '#1f1f1f';
@@ -90,6 +92,28 @@ saveInputForm.addEventListener('submit', function(event) {
 
     if (inputNameActInput.value.length < 1 || inputCodeActInput.value.length < 4 || inputNameAct.style.display === 'none' || inputCodeAct.style.display === 'none') {
         event.preventDefault();
+    } else {
+        event.preventDefault();
+
+        var formData = new FormData(saveInputForm);
+        var formAction = saveInputForm.getAttribute('action');
+        
+        fetch(formAction, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else {
+                if (data.error.includes('Name')) {
+                    document.getElementById('input-name-error').textContent = data.error;
+                } else if (data.error.includes('Code')) {
+                    document.getElementById('input-code-error').textContent = data.error;
+                }                
+            }
+        });
     }
 });
 

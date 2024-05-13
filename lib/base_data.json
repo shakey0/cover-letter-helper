@@ -17,24 +17,20 @@
             "code": "##jf"
         },
         {
-            "name": "Bed sheet",
+            "name": "Bed sheets",
             "code": "##bs"
         },
         {
             "name": "Clothing",
-            "code": "##cl"
+            "code": "##clo"
         },
         {
-            "name": "Pillow Case",
-            "code": "##pc"
+            "name": "Tea Towel",
+            "code": "##tt"
         },
         {
-            "name": "Three Word Name",
-            "code": "##twn"
-        },
-        {
-            "name": "Another try",
-            "code": "##at"
+            "name": "Companyafs",
+            "code": "##indff"
         }
     ],
     "variables_sets": [
@@ -152,6 +148,10 @@
         {
             "name": "New Test",
             "text": "Hello everyone **jafa"
+        },
+        {
+            "name": "New Times",
+            "text": "Test ##la day night **pa kite"
         }
     ]
 }

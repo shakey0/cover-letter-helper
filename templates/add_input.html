@@ -31,6 +31,9 @@
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-input-name-btn" onclick="editInputName()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="input-name-btn" onclick="addInputName()">Add</button>
                         </div>
+                        <div>
+                            <p class="error-msg" id="input-name-error"></p>
+                        </div>
                         <p style="margin: 0; transform: translateY(8px); font-style: italic;{% if edit %} display: none;{% endif %}" id="input-code-mes">Always begins with ##. Let's keep it simple by using <span id="input-code-mes-lc">only lowercase letters</span>, <span id="input-code-mes-min">at least 2</span>.</p>
                         <div class="input-code-box">
                             <p>Type code:</p>
@@ -39,6 +42,9 @@
                             <div {% if not edit %}style="display: none;" {% endif %}class="input-code-act" id="input-code-act">{% if edit %}{{ type_code }}{% endif %}</div>
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-input-code-btn" onclick="editInputCode()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="input-code-btn" onclick="addInputCode()">Add</button>
+                        </div>
+                        <div>
+                            <p class="error-msg" id="input-code-error"></p>
                         </div>
                         <input class="save-input-btn" id="save-input-btn" type="submit" value="Save Input" />
                     </form>
