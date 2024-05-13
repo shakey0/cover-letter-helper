@@ -60,8 +60,10 @@ def add_variables():
         name = request.form['list-name-act-input']
         code = request.form['var-code-act-input']
         variables = request.form.getlist('variables[]')
-        base_data_repository.add_data('variables_sets', get_slug(name), name=name, code=code, variables=variables)
-        return redirect(url_for('edit_base'))
+        result = base_data_repository.add_data('variables_sets', get_slug(name), name=name, code=code, variables=variables)
+        if result != True:
+            return jsonify({'error': result})
+        return jsonify({'success': True, 'redirect': url_for('edit_base')})
     return render_template('add_variables.html')
 
 
@@ -71,8 +73,10 @@ def edit_variables(slug):
         name = request.form['list-name-act-input']
         code = request.form['var-code-act-input']
         variables = request.form.getlist('variables[]')
-        base_data_repository.update_data('variables_sets', slug, name=name, code=code, variables=variables)
-        return redirect(url_for('edit_base'))
+        result = base_data_repository.update_data('variables_sets', slug, name=name, code=code, variables=variables)
+        if result != True:
+            return jsonify({'error': result})
+        return jsonify({'success': True, 'redirect': url_for('edit_base')})
     item = base_data_repository.get_data_by_slug('variables_sets', slug)
     return render_template('add_variables.html', edit=True, list_name=item['name'], type_code=item['code'],
                            values=item['variables'], slug=slug)
@@ -83,8 +87,10 @@ def add_paragraph():
     if request.method == 'POST':
         name = request.form['paragraph-name-act-input']
         text = request.form['paragraph-text-act-input']
-        base_data_repository.add_data('paragraphs', get_slug(name), name=name, text=text)
-        return redirect(url_for('edit_base'))
+        result = base_data_repository.add_data('paragraphs', get_slug(name), name=name, text=text)
+        if result != True:
+            return jsonify({'error': result})
+        return jsonify({'success': True, 'redirect': url_for('edit_base')})
     all_data = base_data_repository.get_data()
     inputs, variables_sets, paragraphs = process_all_data(all_data)
     return render_template('add_paragraph.html', inputs=inputs, variables_sets=variables_sets)
@@ -95,8 +101,10 @@ def edit_paragraph(slug):
     if request.method == 'POST':
         name = request.form['paragraph-name-act-input']
         text = request.form['paragraph-text-act-input']
-        base_data_repository.update_data('paragraphs', slug, name=name, text=text)
-        return redirect(url_for('edit_base'))
+        result = base_data_repository.update_data('paragraphs', slug, name=name, text=text)
+        if result != True:
+            return jsonify({'error': result})
+        return jsonify({'success': True, 'redirect': url_for('edit_base')})
     item = base_data_repository.get_data_by_slug('paragraphs', slug)
     all_data = base_data_repository.get_data()
     inputs, variables_sets, paragraphs = process_all_data(all_data)

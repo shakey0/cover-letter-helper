@@ -31,6 +31,9 @@
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-paragraph-name-btn" onclick="editParagraphName()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
                             <button {% if edit %}style="display: none;" {% endif %}type="button" id="paragraph-name-btn" onclick="addParagraphName()">Add</button>
                         </div>
+                        <div>
+                            <p class="error-msg" id="paragraph-name-error"></p>
+                        </div>
                         <div class="paragraph-text-box">
                             <p>Paragraph text:
                                 <img {% if not edit %}style="display: none;" {% endif %}id="edit-paragraph-text-btn" onclick="editParagraphText()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">

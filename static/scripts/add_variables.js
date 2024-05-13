@@ -46,6 +46,7 @@ function addListName() {
         input.value = '';
         input.style.display = 'none';
         document.getElementById('list-name-btn').style.display = 'none';
+        document.getElementById('list-name-error').textContent = '';
     }
 }
 
@@ -73,6 +74,7 @@ function addVarCode() {
         input.value = '';
         input.style.display = 'none';
         document.getElementById('var-code-btn').style.display = 'none';
+        document.getElementById('var-code-error').textContent = '';
         
         document.getElementById('var-code-mes-lc').style.color = '#1f1f1f';
         document.getElementById('var-code-mes-min').style.color = '#1f1f1f';
@@ -126,6 +128,28 @@ saveListForm.addEventListener('submit', function(event) {
 
     if (listNameActInput.value.length < 1 || varCodeActInput.value.length < 4 || varContainer.children.length < 1 || listNameAct.style.display === 'none' || varCodeAct.style.display === 'none') {
         event.preventDefault();
+    } else {
+        event.preventDefault();
+
+        var formData = new FormData(saveListForm);
+        var formAction = saveListForm.getAttribute('action');
+
+        fetch(formAction, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else {
+                if (data.error.includes('Name')) {
+                    document.getElementById('list-name-error').textContent = data.error;
+                } else if (data.error.includes('Code')) {
+                    document.getElementById('var-code-error').textContent = data.error;
+                }
+            }
+        });
     }
 });
 

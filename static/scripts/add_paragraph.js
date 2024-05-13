@@ -11,6 +11,7 @@ function addParagraphName() {
         input.value = '';
         input.style.display = 'none';
         document.getElementById('paragraph-name-btn').style.display = 'none';
+        document.getElementById('paragraph-name-error').textContent = '';
     }
 }
 
@@ -68,6 +69,26 @@ saveParagraphForm.addEventListener('submit', function(event) {
 
     if (paragraphNameActInput.value.length < 1 || paragraphTextActInput.value.length < 1 || paragraphNameAct.style.display === 'none' || paragraphTextAct.style.display === 'none') {
         event.preventDefault();
+    } else {
+        event.preventDefault();
+
+        var formData = new FormData(saveParagraphForm);
+        var formAction = saveParagraphForm.getAttribute('action');
+
+        fetch(formAction, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = data.redirect;
+            } else {
+                if (data.error.includes('Name')) {
+                    document.getElementById('paragraph-name-error').textContent = data.error;
+                }
+            }
+        });
     }
 });
 

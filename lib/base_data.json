@@ -123,12 +123,21 @@
             ]
         },
         {
-            "name": "Tables",
+            "name": "Tabley",
             "code": "**ta",
             "variables": [
                 "round",
                 "square",
                 "flat"
+            ]
+        },
+        {
+            "name": "Wires Alive",
+            "code": "**pp",
+            "variables": [
+                "Computer",
+                "phone",
+                "headphones"
             ]
         }
     ],
@@ -146,7 +155,7 @@
             "text": "Factor international usually herself benefit though need meeting **ss. Instead personal dark would appear difference state. Culture ten represent appear allow find language **fr music. Ball blood require reduce person while. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert **pm. Board again candidate among child daughter their. Among event although likely turn."
         },
         {
-            "name": "New Test",
+            "name": "New Test Test",
             "text": "Hello everyone **jafa"
         },
         {
