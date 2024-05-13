@@ -14,12 +14,6 @@ function addParagraphName() {
     }
 }
 
-document.getElementById('paragraph-name-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        addParagraphName();
-    }
-});
-
 function editParagraphName() {
     const input = document.getElementById('paragraph-name-input');
     input.style.display = 'block';
@@ -36,7 +30,7 @@ function addParagraphText() {
     const paragraphText = input.value.trim();
     if (paragraphText) {
         const paragraphTextAct = document.getElementById('paragraph-text-act');
-        paragraphTextAct.textContent = paragraphText;
+        paragraphTextAct.innerHTML = emphasiseVars(paragraphText);
         paragraphTextAct.style.display = 'block';
         document.getElementById('paragraph-text-act-input').value = paragraphText;
         document.getElementById('edit-paragraph-text-btn').style.display = 'inline-block';
@@ -46,12 +40,6 @@ function addParagraphText() {
         document.getElementById('paragraph-text-btn').style.display = 'none';
     }
 }
-
-document.getElementById('paragraph-text-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        addParagraphText();
-    }
-});
 
 function editParagraphText() {
     const input = document.getElementById('paragraph-text-input');
@@ -82,3 +70,24 @@ saveParagraphForm.addEventListener('submit', function(event) {
         event.preventDefault();
     }
 });
+
+document.body.addEventListener('keydown', function(event) {
+    if (event.target.id === 'paragraph-name-input' || event.target.id === 'paragraph-name-btn') {
+        if (event.key === 'Enter') {
+            addParagraphName();
+        }
+    }
+    if (event.target.id === 'paragraph-text-input' || event.target.id === 'paragraph-text-btn') {
+        if (event.key === 'Enter') {
+            addParagraphText();
+        }
+    }
+});
+
+function emphasiseVars(text) {
+    var regex = /(\*\*|##)\w+/g;
+    var result = text.replace(regex, function(match) {
+        return '<strong class="emphasise">' + match + '</strong>';
+    });
+    return result;
+}

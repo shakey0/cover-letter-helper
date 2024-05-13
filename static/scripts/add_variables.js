@@ -49,12 +49,6 @@ function addListName() {
     }
 }
 
-document.getElementById('list-name-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        addListName();
-    }
-});
-
 function editListName() {
     const input = document.getElementById('list-name-input');
     input.style.display = 'block';
@@ -88,12 +82,6 @@ function addVarCode() {
         document.getElementById('var-code-mes-min').style.color = 'red';
     }
 }
-
-document.getElementById('var-code-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        addVarCode();
-    }
-});
 
 function editVarCode() {
     const input = document.getElementById('var-code-input');
@@ -138,5 +126,23 @@ saveListForm.addEventListener('submit', function(event) {
 
     if (listNameActInput.value.length < 1 || varCodeActInput.value.length < 4 || varContainer.children.length < 1 || listNameAct.style.display === 'none' || varCodeAct.style.display === 'none') {
         event.preventDefault();
+    }
+});
+
+document.body.addEventListener('keydown', function(event) {
+    if (event.target.id === 'list-name-input' || event.target.id === 'list-name-btn') {
+        if (event.key === 'Enter') {
+            addListName();
+        }
+    }
+    if (event.target.id === 'var-code-input' || event.target.id === 'var-code-btn') {
+        if (event.key === 'Enter') {
+            addVarCode();
+        }
+    }
+    if (event.target.id === 'var-input' || event.target.id === 'var-btn') {
+        if (event.key === 'Enter') {
+            addVar();
+        }
     }
 });

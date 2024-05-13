@@ -18,17 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     setupEmphasiseVarsListeners();
-
-    const button = document.getElementById('paragraph-text-btn');
-    button.addEventListener('click', function() {
-        setupEmphasiseVarsListeners();
-    });
-    const input = document.getElementById('paragraph-text-input');
-    input.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            setupEmphasiseVarsListeners();
-        }
-    });
 });
 
 function emphasiseVars(text) {

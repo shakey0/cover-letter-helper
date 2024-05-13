@@ -14,12 +14,6 @@ function addInputName() {
     }
 }
 
-document.getElementById('input-name-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        addInputName();
-    }
-});
-
 function editInputName() {
     const input = document.getElementById('input-name-input');
     input.style.display = 'block';
@@ -53,12 +47,6 @@ function addInputCode() {
         document.getElementById('input-code-mes-min').style.color = 'red';
     }
 }
-
-document.getElementById('input-code-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        addInputCode();
-    }
-});
 
 function editInputCode() {
     const input = document.getElementById('input-code-input');
@@ -102,5 +90,18 @@ saveInputForm.addEventListener('submit', function(event) {
 
     if (inputNameActInput.value.length < 1 || inputCodeActInput.value.length < 4 || inputNameAct.style.display === 'none' || inputCodeAct.style.display === 'none') {
         event.preventDefault();
+    }
+});
+
+document.body.addEventListener('keydown', function(event) {
+    if (event.target.id === 'input-name-input' || event.target.id === 'input-name-btn') {
+        if (event.key === 'Enter') {
+            addInputName();
+        }
+    }
+    if (event.target.id === 'input-code-input' || event.target.id === 'input-code-btn') {
+        if (event.key === 'Enter') {
+            addInputCode();
+        }
     }
 });
