@@ -269,4 +269,5 @@ body {
     padding: 10px;
     font-size: 24px;
     font-style: italic;
+    cursor: pointer;
 }

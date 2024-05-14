@@ -20,8 +20,16 @@ function addVar() {
         deleteBtn.onclick = function () {
             box.remove();
         };
-
         box.appendChild(deleteBtn);
+
+        const byDefaultBox = document.createElement('input');
+        byDefaultBox.type = 'checkbox';
+        byDefaultBox.name = 'by_default[]';
+        byDefaultBox.value = variable;
+        byDefaultBox.id = 'by_default_' + variable;
+        byDefaultBox.className = 'by-default-box';
+        box.appendChild(byDefaultBox);
+        
         document.getElementById('var-container').appendChild(box);
         input.value = '';
     }

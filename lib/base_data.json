@@ -23,6 +23,10 @@
         {
             "name": "Washing Line",
             "code": "##wl"
+        },
+        {
+            "name": "Another Input for Tests",
+            "code": "##aift"
         }
     ],
     "variables_sets": [
@@ -141,6 +145,17 @@
                 "yellow",
                 "orange",
                 "purple"
+            ]
+        },
+        {
+            "name": "Something",
+            "code": "**some",
+            "variables": [
+                "joker",
+                "ice",
+                "water",
+                "fire",
+                "grass"
             ]
         }
     ],
