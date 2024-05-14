@@ -43,8 +43,7 @@
             "selected": [
                 "HTML",
                 "CSS",
-                "JavaScript",
-                "React"
+                "JavaScript"
             ]
         },
         {
@@ -78,7 +77,7 @@
             "selected": [
                 "Docker",
                 "AWS",
-                "Google Cloud"
+                "Azure"
             ]
         },
         {
@@ -170,6 +169,24 @@
             "selected": [
                 "floor",
                 "carpet"
+            ]
+        },
+        {
+            "name": "Hello List",
+            "code": "**hl",
+            "variables": [
+                "hello",
+                "bye",
+                "nice",
+                "to",
+                "see",
+                "you"
+            ],
+            "selected": [
+                "hello",
+                "bye",
+                "to",
+                "you"
             ]
         }
     ],

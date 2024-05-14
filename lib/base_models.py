@@ -11,10 +11,11 @@ class Input:
 
 
 class Variables:
-    def __init__(self, name, code, values):
+    def __init__(self, name, code, values, selected):
         self.name = name
         self.code = code
         self.values = values
+        self.selected = selected
         self.slug = get_slug(name)
 
 

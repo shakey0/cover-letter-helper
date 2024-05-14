@@ -48,7 +48,7 @@
                                     <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{variables.code}}</strong> - {{variables.name}}</h1>
                                     <div class="variables-list-box">
                                         {% for variable in variables.values %}
-                                            <p>{{variable}}</p>
+                                            <p>{{variable}}{% if variable in variables.selected %}✔{% endif %}</p>
                                         {% endfor %}
                                     </div>
                                 </a>
