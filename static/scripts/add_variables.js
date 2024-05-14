@@ -154,6 +154,8 @@ saveListForm.addEventListener('submit', function(event) {
                     document.getElementById('list-name-error').textContent = data.error;
                 } else if (data.error.includes('Code')) {
                     document.getElementById('var-code-error').textContent = data.error;
+                } else if (data.error.includes('Variable')) {
+                    document.getElementById('var-error').textContent = data.error;
                 }
             }
         });

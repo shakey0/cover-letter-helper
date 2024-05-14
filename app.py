@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for, jsonify, flash
 from lib.base_data_repository import base_data_repository
 from lib.base_models import get_slug
-from lib.constants import process_all_data, get_flash_message
+from lib.constants import process_all_data, get_flash_message, all_unique
 from faker import Faker
 fake = Faker()
 
@@ -67,6 +67,9 @@ def add_variables():
         name = request.form['list-name-act-input']
         code = request.form['var-code-act-input']
         variables = request.form.getlist('variables[]')
+        is_unique = all_unique(variables)
+        if is_unique != True:
+            return jsonify({'error': "Variable '{}' is duplicated".format(is_unique)})
         selected = request.form.getlist('by_default[]')
         result = base_data_repository.add_data('variables_sets', get_slug(name), name=name, code=code, variables=variables, selected=selected)
         if result != True:
@@ -81,6 +84,9 @@ def edit_variables(slug):
         name = request.form['list-name-act-input']
         code = request.form['var-code-act-input']
         variables = request.form.getlist('variables[]')
+        is_unique = all_unique(variables)
+        if is_unique != True:
+            return jsonify({'error': "Variable '{}' is duplicated".format(is_unique)})
         selected = request.form.getlist('by_default[]')
         result = base_data_repository.update_data('variables_sets', slug, name=name, code=code, variables=variables, selected=selected)
         if result != True:

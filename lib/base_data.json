@@ -35,14 +35,12 @@
             "code": "**fe",
             "variables": [
                 "HTML",
-                "CSS",
                 "JavaScript",
                 "React",
                 "Tailwind"
             ],
             "selected": [
                 "HTML",
-                "CSS",
                 "JavaScript"
             ]
         },
@@ -187,6 +185,31 @@
                 "bye",
                 "to",
                 "you"
+            ]
+        },
+        {
+            "name": "double",
+            "code": "**dd",
+            "variables": [
+                "two"
+            ],
+            "selected": [
+                "two"
+            ]
+        },
+        {
+            "name": "Animals of the desert",
+            "code": "**ad",
+            "variables": [
+                "camel",
+                "snake",
+                "mouse",
+                "lizard"
+            ],
+            "selected": [
+                "camel",
+                "snake",
+                "mouse"
             ]
         }
     ],

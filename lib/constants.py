@@ -19,3 +19,12 @@ flash_messages = {
 
 def get_flash_message(action, name, code=None):
     return flash_messages[action].format(name, code) if code else flash_messages[action].format(name)
+
+
+def all_unique(lst):
+    seen = set()
+    for item in lst:
+        if item in seen:
+            return item
+        seen.add(item)
+    return True
