@@ -39,6 +39,12 @@
                 "JavaScript",
                 "React",
                 "Tailwind"
+            ],
+            "selected": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "React"
             ]
         },
         {
@@ -50,9 +56,13 @@
                 "MongoDB",
                 "SQL",
                 "GraphQL",
-                "lakfjsa",
-                "lnkj",
-                "ljkj"
+                "lakfjsa"
+            ],
+            "selected": [
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "SQL"
             ]
         },
         {
@@ -63,6 +73,11 @@
                 "Kubernetes",
                 "AWS",
                 "Azure",
+                "Google Cloud"
+            ],
+            "selected": [
+                "Docker",
+                "AWS",
                 "Google Cloud"
             ]
         },
@@ -75,6 +90,10 @@
                 "Chai",
                 "Cypress",
                 "Selenium"
+            ],
+            "selected": [
+                "Jest",
+                "Chai"
             ]
         },
         {
@@ -86,6 +105,10 @@
                 "Kotlin",
                 "Flutter",
                 "Xamarin"
+            ],
+            "selected": [
+                "React Native",
+                "Swift"
             ]
         },
         {
@@ -97,6 +120,11 @@
                 "C#",
                 "Ruby",
                 "PHP"
+            ],
+            "selected": [
+                "Python",
+                "Java",
+                "C#"
             ]
         },
         {
@@ -107,55 +135,41 @@
                 "oranges",
                 "pie",
                 "cake"
+            ],
+            "selected": [
+                "apples",
+                "pie"
             ]
         },
         {
-            "name": "Lovely drinks",
-            "code": "**ld",
+            "name": "Loop Looper",
+            "code": "**lloo",
             "variables": [
-                "cola",
-                "apple juice",
-                "fizzy stuff"
+                "switch",
+                "bulb",
+                "light",
+                "lamp",
+                "picture"
+            ],
+            "selected": [
+                "light",
+                "lamp",
+                "picture"
             ]
         },
         {
-            "name": "Tabley",
-            "code": "**ta",
+            "name": "Inside Things",
+            "code": "**it",
             "variables": [
-                "round",
-                "square",
-                "flat"
-            ]
-        },
-        {
-            "name": "Wires Alive",
-            "code": "**pp",
-            "variables": [
-                "Computer",
-                "phone",
-                "headphones"
-            ]
-        },
-        {
-            "name": "Pretty Colours",
-            "code": "**pc",
-            "variables": [
-                "red",
-                "blue",
-                "yellow",
-                "orange",
-                "purple"
-            ]
-        },
-        {
-            "name": "Something",
-            "code": "**some",
-            "variables": [
-                "joker",
-                "ice",
-                "water",
-                "fire",
-                "grass"
+                "floor",
+                "ceiling",
+                "door",
+                "wall",
+                "carpet"
+            ],
+            "selected": [
+                "floor",
+                "carpet"
             ]
         }
     ],

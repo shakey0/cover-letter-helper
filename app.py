@@ -67,7 +67,8 @@ def add_variables():
         name = request.form['list-name-act-input']
         code = request.form['var-code-act-input']
         variables = request.form.getlist('variables[]')
-        result = base_data_repository.add_data('variables_sets', get_slug(name), name=name, code=code, variables=variables)
+        selected = request.form.getlist('by_default[]')
+        result = base_data_repository.add_data('variables_sets', get_slug(name), name=name, code=code, variables=variables, selected=selected)
         if result != True:
             return jsonify({'error': result})
         return jsonify({'success': True, 'redirect': url_for('edit_base', action="new", data_type="variables_sets", slug=get_slug(name))})
@@ -80,13 +81,14 @@ def edit_variables(slug):
         name = request.form['list-name-act-input']
         code = request.form['var-code-act-input']
         variables = request.form.getlist('variables[]')
-        result = base_data_repository.update_data('variables_sets', slug, name=name, code=code, variables=variables)
+        selected = request.form.getlist('by_default[]')
+        result = base_data_repository.update_data('variables_sets', slug, name=name, code=code, variables=variables, selected=selected)
         if result != True:
             return jsonify({'error': result})
         return jsonify({'success': True, 'redirect': url_for('edit_base', action="updated", data_type="variables_sets", slug=get_slug(name))})
     item = base_data_repository.get_data_by_slug('variables_sets', slug)
     return render_template('add_variables.html', edit=True, list_name=item['name'], type_code=item['code'],
-                           values=item['variables'], slug=slug)
+                           values=item['variables'], selected=item['selected'], slug=slug)
 
 
 @app.route('/add_paragraph', methods=['GET', 'POST'])

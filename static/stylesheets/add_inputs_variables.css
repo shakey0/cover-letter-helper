@@ -45,9 +45,6 @@
 }
 
 .by-default-box {
-    /* position: absolute;
-    top: -10px;
-    left: -10px; */
     order: -1;
     margin: 0;
     margin-left: 8px;
