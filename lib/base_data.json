@@ -9,8 +9,8 @@
             "code": "##mi"
         },
         {
-            "name": "Job Title Test",
-            "code": "##jtt"
+            "name": "Job Title",
+            "code": "##jt"
         },
         {
             "name": "Job Focus",
@@ -19,18 +19,6 @@
         {
             "name": "Bed sheet",
             "code": "##bs"
-        },
-        {
-            "name": "Washing Line",
-            "code": "##wl"
-        },
-        {
-            "name": "Another Input for Tests",
-            "code": "##aift"
-        },
-        {
-            "name": "company nam",
-            "code": "##aenlqt"
         }
     ],
     "variables_sets": [
@@ -141,86 +129,12 @@
                 "apples",
                 "pie"
             ]
-        },
-        {
-            "name": "Loop Looper",
-            "code": "**lloo",
-            "variables": [
-                "switch",
-                "bulb",
-                "light",
-                "lamp",
-                "picture"
-            ],
-            "selected": [
-                "light",
-                "lamp",
-                "picture"
-            ]
-        },
-        {
-            "name": "Inside Things",
-            "code": "**it",
-            "variables": [
-                "floor",
-                "ceiling",
-                "door",
-                "wall",
-                "carpet"
-            ],
-            "selected": [
-                "floor",
-                "carpet"
-            ]
-        },
-        {
-            "name": "Hello List",
-            "code": "**hl",
-            "variables": [
-                "hello",
-                "bye",
-                "nice",
-                "to",
-                "see",
-                "you"
-            ],
-            "selected": [
-                "hello",
-                "bye",
-                "to",
-                "you"
-            ]
-        },
-        {
-            "name": "double",
-            "code": "**dd",
-            "variables": [
-                "two"
-            ],
-            "selected": [
-                "two"
-            ]
-        },
-        {
-            "name": "Animals of the desert",
-            "code": "**ad",
-            "variables": [
-                "camel",
-                "snake",
-                "mouse",
-                "lizard"
-            ],
-            "selected": [
-                "camel",
-                "snake",
-                "mouse"
-            ]
         }
     ],
     "paragraphs": [
         {
             "name": "Intro",
-            "text": "Official wonder result **be crime item be fact. Than answer happy break. Likely school turn security service perform surface. Care account how ##mi figure author. Run instead evidence direction add **do. Company experience provide reach sing. Discuss particularly these kitchen where police most. Nearly same effect. Color **te girl generation professor writer trade result. Beyond year out challenge much over only. Another **ot ##jtt"
+            "text": "Official wonder result **be crime item be fact. Than answer happy break. Likely school turn security service perform surface. Care account how ##mi figure author. Run instead evidence direction add **do. Company experience provide reach sing. Discuss particularly these kitchen where police most. Nearly same effect. Color **te girl generation professor writer trade result. Beyond year out challenge much over only. Another **ot ##jt"
         },
         {
             "name": "Experiences",
@@ -236,7 +150,7 @@
         },
         {
             "name": "New Times",
-            "text": "Test ##jtt day night **be kite **ot and jump lamp ##cn"
+            "text": "Test ##jt day night **be kite **ot and jump lamp ##cn"
         }
     ]
 }

@@ -37,7 +37,12 @@ class BaseDataRepository:
                         return "Name already exists"
                     if 'code' in item and item['code'] != data['code'] and item['code'] == kwargs['code']:
                         return "Code already exists"
+                old_code = data['code'] if 'code' in data else None
                 data.update(kwargs)
+                if old_code:
+                    for paragraph in all_data['paragraphs']:
+                        if old_code in paragraph['text']:
+                            paragraph['text'] = paragraph['text'].replace(old_code, data['code'])
                 with open('lib/base_data.json', 'w') as json_file:
                     json.dump(all_data, json_file, indent=4)
                 return True
