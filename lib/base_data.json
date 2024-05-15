@@ -1,8 +1,8 @@
 {
     "inputs": [
         {
-            "name": "Company",
-            "code": "##cna"
+            "name": "Company Name",
+            "code": "##cn"
         },
         {
             "name": "Main Industry",
@@ -27,6 +27,10 @@
         {
             "name": "Another Input for Tests",
             "code": "##aift"
+        },
+        {
+            "name": "company nam",
+            "code": "##aenlqt"
         }
     ],
     "variables_sets": [

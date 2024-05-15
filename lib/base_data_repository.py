@@ -33,7 +33,7 @@ class BaseDataRepository:
         for data in all_data[data_type]:
             if get_slug(data['name']) == slug:
                 for item in all_data[data_type]:
-                    if item['name'] != data['name'] and item['name'] == kwargs['name']:
+                    if get_slug(item['name']) != get_slug(data['name']) and get_slug(item['name']) == get_slug(kwargs['name']):
                         return "Name already exists"
                     if 'code' in item and item['code'] != data['code'] and item['code'] == kwargs['code']:
                         return "Code already exists"
