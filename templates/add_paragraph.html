@@ -37,6 +37,7 @@
                         <div class="paragraph-text-box">
                             <p>Paragraph text:
                                 <img {% if not edit %}style="display: none;" {% endif %}id="edit-paragraph-text-btn" onclick="editParagraphText()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">
+                                <span class="error-msg" id="paragraph-text-error"></span>
                             </p>
                             <textarea {% if edit %}style="display: none;" {% endif %} class="paragraph-text-input" id="paragraph-text-input" rows="8"></textarea>
                             <input type="hidden" id="paragraph-text-act-input" name="paragraph-text-act-input" {% if edit %}value="{{ paragraph_text }}" {% endif %}/>

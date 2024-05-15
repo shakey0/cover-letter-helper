@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for, jsonify, flash
 from lib.base_data_repository import base_data_repository
 from lib.base_models import get_slug
-from lib.constants import process_all_data, get_flash_message, all_unique
+from lib.constants import process_all_data, get_flash_message, all_unique, validate_paragraph
 from faker import Faker
 fake = Faker()
 
@@ -99,30 +99,36 @@ def edit_variables(slug):
 
 @app.route('/add_paragraph', methods=['GET', 'POST'])
 def add_paragraph():
+    all_data = base_data_repository.get_data()
+    inputs, variables_sets, paragraphs = process_all_data(all_data)
     if request.method == 'POST':
         name = request.form['paragraph-name-act-input']
         text = request.form['paragraph-text-act-input']
+        is_valid = validate_paragraph(text, inputs, variables_sets)
+        if is_valid != True:
+            return jsonify({'error': is_valid})
         result = base_data_repository.add_data('paragraphs', get_slug(name), name=name, text=text)
         if result != True:
             return jsonify({'error': result})
         return jsonify({'success': True, 'redirect': url_for('edit_base', action="new", data_type="paragraphs", slug=get_slug(name))})
-    all_data = base_data_repository.get_data()
-    inputs, variables_sets, paragraphs = process_all_data(all_data)
     return render_template('add_paragraph.html', inputs=inputs, variables_sets=variables_sets)
 
 
 @app.route('/edit_paragraph/<string:slug>', methods=['GET', 'POST'])
 def edit_paragraph(slug):
+    all_data = base_data_repository.get_data()
+    inputs, variables_sets, paragraphs = process_all_data(all_data)
     if request.method == 'POST':
         name = request.form['paragraph-name-act-input']
         text = request.form['paragraph-text-act-input']
+        is_valid = validate_paragraph(text, inputs, variables_sets)
+        if is_valid != True:
+            return jsonify({'error': is_valid})
         result = base_data_repository.update_data('paragraphs', slug, name=name, text=text)
         if result != True:
             return jsonify({'error': result})
         return jsonify({'success': True, 'redirect': url_for('edit_base', action="updated", data_type="paragraphs", slug=get_slug(name))})
     item = base_data_repository.get_data_by_slug('paragraphs', slug)
-    all_data = base_data_repository.get_data()
-    inputs, variables_sets, paragraphs = process_all_data(all_data)
     return render_template('add_paragraph.html', edit=True, paragraph_name=item['name'], paragraph_text=item['text'],
                            inputs=inputs, variables_sets=variables_sets, slug=slug)
 

@@ -1,4 +1,5 @@
 from lib.base_models import Input, Variables, Paragraph
+import re
 
 
 def process_all_data(all_data):
@@ -27,4 +28,16 @@ def all_unique(lst):
         if item in seen:
             return item
         seen.add(item)
+    return True
+
+
+def validate_paragraph(text, inputs, variables_sets):
+    inputs_in_text = re.findall(r'(##\w+)', text)
+    for input in inputs_in_text:
+        if input not in [input.code for input in inputs]:
+            return "Input '{}' has not been created".format(input)
+    variables_in_text = re.findall(r'(\*\*\w+)', text)
+    for variable in variables_in_text:
+        if variable not in [variables.code for variables in variables_sets]:
+            return "Variables set '{}' has not been created".format(variable)
     return True

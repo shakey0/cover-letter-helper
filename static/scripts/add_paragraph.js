@@ -39,6 +39,7 @@ function addParagraphText() {
         input.value = '';
         input.style.display = 'none';
         document.getElementById('paragraph-text-btn').style.display = 'none';
+        document.getElementById('paragraph-text-error').textContent = '';
     }
 }
 
@@ -86,6 +87,8 @@ saveParagraphForm.addEventListener('submit', function(event) {
             } else {
                 if (data.error.includes('Name')) {
                     document.getElementById('paragraph-name-error').textContent = data.error;
+                } else if (data.error.includes('has not been created')) {
+                    document.getElementById('paragraph-text-error').textContent = data.error;
                 }
             }
         });
