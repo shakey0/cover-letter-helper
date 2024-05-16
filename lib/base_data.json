@@ -14,11 +14,15 @@
         },
         {
             "name": "Job Focus",
-            "code": "##jfp"
+            "code": "##jf"
         },
         {
             "name": "Bed sheet",
             "code": "##bs"
+        },
+        {
+            "name": "Laugh",
+            "code": "##la"
         }
     ],
     "variables_sets": [
@@ -128,6 +132,22 @@
             "selected": [
                 "apples",
                 "pie"
+            ]
+        },
+        {
+            "name": "Green Things",
+            "code": "**gt",
+            "variables": [
+                "grass",
+                "leaves",
+                "plants",
+                "trees",
+                "bushes"
+            ],
+            "selected": [
+                "grass",
+                "leaves",
+                "plants"
             ]
         }
     ],

@@ -34,7 +34,7 @@
                         <div>
                             <p class="error-msg" id="input-name-error"></p>
                         </div>
-                        <p style="margin: 0; transform: translateY(8px); font-style: italic;{% if edit %} display: none;{% endif %}" id="input-code-mes">Always begins with ##. Let's keep it simple by using <span id="input-code-mes-lc">only lowercase letters</span>, <span id="input-code-mes-min">at least 2</span>.</p>
+                        <p style="margin: 0; transform: translateY(8px); font-style: italic;{% if edit %} display: none;{% endif %}" id="input-code-mes">Always begins with ##. Let's keep it simple by using <span id="input-code-mes-lc">only lowercase letters</span>, <span id="input-code-mes-min">at least 2</span>.{% if edit %}<br />Your code will be automatically updated in all your paragraphs.{% endif %}</p>
                         <div class="input-code-box">
                             <p>Type code:</p>
                             <input {% if edit %}style="display: none;" {% endif %}type="text" value="##" id="input-code-input" />
