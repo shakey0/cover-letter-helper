@@ -48,6 +48,12 @@
                         </div>
                         <input class="save-input-btn" id="save-input-btn" type="submit" value="Save Input" />
                     </form>
+                    <img class="delete-input" id="delete-input" src="{{ url_for('static', filename='images/bin.png') }}">
+                    <div class="delete-input-box" id="delete-input-box">
+                        <p>Delete this for sure?</p>
+                        <button id="delete-input-yes" onclick="deleteInput()">Yes</button>
+                        <button id="delete-input-no" onclick="cancelDeleteInput()">No</button>
+                    </div>
                 </div>
             </div>
         </div>

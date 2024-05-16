@@ -271,3 +271,71 @@ body {
     font-style: italic;
     cursor: pointer;
 }
+
+.delete-input {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    bottom: 0px;
+    right: 0px;
+    padding: 10px 5px;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 #e0e0e0;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.delete-input:hover {
+    box-shadow: 0 0 15px 0 #c1c1c1;
+    transform: scale(1.05);
+}
+
+.delete-input-box {
+    position: absolute;
+    bottom: -16px;
+    right: 50px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px 0 #e0e0e0;
+    border-radius: 10px;
+}
+
+.delete-input-box p {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 12px;
+    margin-bottom: 0;
+}
+
+.delete-input-box button {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    padding: 5px 10px;
+    border: none;
+    box-shadow: 0 0 10px 0 #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#delete-input-yes {
+    background-color: #ff0000;
+    color: white;
+}
+
+#delete-input-yes:hover {
+    box-shadow: 0 0 15px 0 #c1c1c1;
+    transform: scale(1.05);
+}
+
+#delete-input-no {
+    background-color: #55bbff;
+    color: black;
+}
+
+#delete-input-no:hover {
+    box-shadow: 0 0 15px 0 #c1c1c1;
+    transform: scale(1.05);
+}
