@@ -46,6 +46,17 @@
                         </div>
                         <input class="save-paragraph-btn" id="save-paragraph-btn" type="submit" value="Save Paragraph" />
                     </form>
+                    {% if edit %}
+                    <img class="delete-paragraph" id="delete-paragraph-btn" onclick="deleteParagraph()" src="{{ url_for('static', filename='images/bin.png') }}">
+                    <div class="delete-paragraph-box" id="delete-paragraph-box">
+                        <p>Delete this for sure?</p>
+                        <button type="button" id="delete-paragraph-yes" onclick="confirmDeleteParagraph()">Yes</button>
+                        <button type="button" id="delete-paragraph-no" onclick="closeDeleteParagraph()">No</button>
+                        <form action="{{ url_for('delete_paragraph', slug=slug) }}" method="post" id="delete-paragraph-form">
+                            <input type="hidden" name="delete-paragraph" id="delete-paragraph" value="yes" />
+                        </form>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="main-container" style="margin-top: 0;">

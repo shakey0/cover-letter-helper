@@ -129,3 +129,47 @@ document.body.addEventListener('keydown', function(event) {
         }
     }
 });
+
+const deleteInputBtn = document.getElementById('delete-input-btn');
+const deleteInputBox = document.getElementById('delete-input-box');
+let deleteInputBoxOpen = false;
+
+function closeDeleteInput() {
+    deleteInputBoxOpen = false;
+    deleteInputBox.style.display = 'none';
+}
+
+function deleteInput() {
+    if (deleteInputBoxOpen) {
+        closeDeleteInput();
+        return;
+    }
+    deleteInputBoxOpen = true;
+    deleteInputBox.style.display = 'block';
+}
+
+function hideModal(event) {
+    if (!deleteInputBox.contains(event.target) && !deleteInputBtn.contains(event.target)) {
+        closeDeleteInput();
+    }
+}
+
+function confirmDeleteInput() {
+    const deleteInputForm = document.getElementById('delete-input-form');
+
+    var formData = new FormData(deleteInputForm);
+    var formAction = deleteInputForm.getAttribute('action');
+
+    fetch(formAction, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = data.redirect;
+        }
+    });
+}
+
+window.addEventListener('click', hideModal);

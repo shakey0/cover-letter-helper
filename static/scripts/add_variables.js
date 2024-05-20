@@ -179,3 +179,47 @@ document.body.addEventListener('keydown', function(event) {
         }
     }
 });
+
+const deleteListBtn = document.getElementById('delete-list-btn');
+const deleteListBox = document.getElementById('delete-list-box');
+let deleteListBoxOpen = false;
+
+function closeDeleteList() {
+    deleteListBoxOpen = false;
+    deleteListBox.style.display = 'none';
+}
+
+function deleteList() {
+    if (deleteListBoxOpen) {
+        closeDeleteList();
+        return;
+    }
+    deleteListBoxOpen = true;
+    deleteListBox.style.display = 'block';
+}
+
+function hideModal(event) {
+    if (!deleteListBox.contains(event.target) && !deleteListBtn.contains(event.target)) {
+        closeDeleteList();
+    }
+}
+
+function confirmDeleteList() {
+    const deleteListForm = document.getElementById('delete-list-form');
+
+    var formData = new FormData(deleteListForm);
+    var formAction = deleteListForm.getAttribute('action');
+
+    fetch(formAction, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = data.redirect;
+        }
+    });
+}
+
+window.addEventListener('click', hideModal);

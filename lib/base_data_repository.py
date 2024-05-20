@@ -9,11 +9,19 @@ class BaseDataRepository:
             data = json.load(json_file)
         return data
     
-    def get_data_by_slug(self, data_type, slug):
+    def get_data_by_slug(self, data_type, slug, get_used=False):
         all_data = self.get_data()
         for data in all_data[data_type]:
             if get_slug(data['name']) == slug:
-                return data
+                if not get_used:
+                    return data
+                else:
+                    used = False
+                    for paragraph in all_data['paragraphs']:
+                        if data['code'] in paragraph['text']:
+                            used = True
+                            break
+                    return data, used
         return None
     
     def add_data(self, data_type, slug, **kwargs):
@@ -43,6 +51,16 @@ class BaseDataRepository:
                     for paragraph in all_data['paragraphs']:
                         if old_code in paragraph['text']:
                             paragraph['text'] = paragraph['text'].replace(old_code, data['code'])
+                with open('lib/base_data.json', 'w') as json_file:
+                    json.dump(all_data, json_file, indent=4)
+                return True
+        return "Data not found"
+    
+    def delete_data(self, data_type, slug):
+        all_data = self.get_data()
+        for i, data in enumerate(all_data[data_type]):
+            if get_slug(data['name']) == slug:
+                del all_data[data_type][i]
                 with open('lib/base_data.json', 'w') as json_file:
                     json.dump(all_data, json_file, indent=4)
                 return True

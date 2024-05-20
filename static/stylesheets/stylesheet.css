@@ -272,7 +272,7 @@ body {
     cursor: pointer;
 }
 
-.delete-input {
+.delete-input, .delete-list, .delete-paragraph {
     position: absolute;
     height: 30px;
     width: 30px;
@@ -287,28 +287,29 @@ body {
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.delete-input:hover {
+.delete-input:hover, .delete-list:hover, .delete-paragraph:hover {
     box-shadow: 0 0 15px 0 #c1c1c1;
     transform: scale(1.05);
 }
 
-.delete-input-box {
+.delete-input-box, .delete-list-box, .delete-paragraph-box {
     position: absolute;
     bottom: -16px;
     right: 50px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 10px 0 #e0e0e0;
     border-radius: 10px;
+    display: none;
 }
 
-.delete-input-box p {
+.delete-input-box p, .delete-list-box p, .delete-paragraph-box p {
     font-size: 20px;
     font-weight: bold;
     margin: 10px 12px;
     margin-bottom: 0;
 }
 
-.delete-input-box button {
+.delete-input-box button, .delete-list-box button, .delete-paragraph-box button {
     font-size: 20px;
     font-weight: bold;
     margin: 10px;
@@ -320,22 +321,22 @@ body {
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-#delete-input-yes {
+#delete-input-yes, #delete-list-yes, #delete-paragraph-yes {
     background-color: #ff0000;
     color: white;
 }
 
-#delete-input-yes:hover {
+#delete-input-yes:hover, #delete-list-yes:hover, #delete-paragraph-yes:hover {
     box-shadow: 0 0 15px 0 #c1c1c1;
     transform: scale(1.05);
 }
 
-#delete-input-no {
+#delete-input-no, #delete-list-no, #delete-paragraph-no {
     background-color: #55bbff;
     color: black;
 }
 
-#delete-input-no:hover {
+#delete-input-no:hover, #delete-list-no:hover, #delete-paragraph-no:hover {
     box-shadow: 0 0 15px 0 #c1c1c1;
     transform: scale(1.05);
 }

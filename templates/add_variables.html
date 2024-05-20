@@ -77,6 +77,22 @@
                         {% endif %}
                         <input class="save-list-btn" id="save-list-btn" type="submit" value="Save List" />
                     </form>
+                    {% if edit %}
+                    <img class="delete-list" id="delete-list-btn" onclick="deleteList()" src="{{ url_for('static', filename='images/bin.png') }}">
+                    <div class="delete-list-box" id="delete-list-box">
+                        {% if used %}
+                        <p>This lists set is used at least once in your paragraphs.<br />Please remove its use in the paragraph(s) first.</p>
+                        <button type="button" id="delete-list-no" onclick="closeDeleteList()">Close</button>
+                        {% else %}
+                        <p>Delete this for sure?</p>
+                        <button type="button" id="delete-list-yes" onclick="confirmDeleteList()">Yes</button>
+                        <button type="button" id="delete-list-no" onclick="closeDeleteList()">No</button>
+                        <form action="{{ url_for('delete_variables', slug=slug) }}" method="post" id="delete-list-form">
+                            <input type="hidden" name="delete-list" id="delete-list" value="yes" />
+                        </form>
+                        {% endif %}
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

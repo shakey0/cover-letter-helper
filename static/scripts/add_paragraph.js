@@ -115,3 +115,47 @@ function emphasiseVars(text) {
     });
     return result;
 }
+
+const deleteParagraphBtn = document.getElementById('delete-paragraph-btn');
+const deleteParagraphBox = document.getElementById('delete-paragraph-box');
+let deleteParagraphBoxOpen = false;
+
+function closeDeleteParagraph() {
+    deleteParagraphBoxOpen = false;
+    deleteParagraphBox.style.display = 'none';
+}
+
+function deleteParagraph() {
+    if (deleteParagraphBoxOpen) {
+        closeDeleteParagraph();
+        return;
+    }
+    deleteParagraphBoxOpen = true;
+    deleteParagraphBox.style.display = 'block';
+}
+
+function hideModal(event) {
+    if (!deleteParagraphBox.contains(event.target) && !deleteParagraphBtn.contains(event.target)) {
+        closeDeleteParagraph();
+    }
+}
+
+function confirmDeleteParagraph() {
+    const deleteParagraphForm = document.getElementById('delete-paragraph-form');
+
+    var formData = new FormData(deleteParagraphForm);
+    var formAction = deleteParagraphForm.getAttribute('action');
+
+    fetch(formAction, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = data.redirect;
+        }
+    });
+}
+
+window.addEventListener('click', hideModal);

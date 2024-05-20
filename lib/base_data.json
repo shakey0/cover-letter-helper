@@ -19,10 +19,6 @@
         {
             "name": "Bed sheet",
             "code": "##bs"
-        },
-        {
-            "name": "Laugh",
-            "code": "##la"
         }
     ],
     "variables_sets": [
@@ -133,22 +129,6 @@
                 "apples",
                 "pie"
             ]
-        },
-        {
-            "name": "Green Things",
-            "code": "**gt",
-            "variables": [
-                "grass",
-                "leaves",
-                "plants",
-                "trees",
-                "bushes"
-            ],
-            "selected": [
-                "grass",
-                "leaves",
-                "plants"
-            ]
         }
     ],
     "paragraphs": [
@@ -163,14 +143,6 @@
         {
             "name": "Skills",
             "text": "Factor international usually herself benefit though need meeting **te. Instead personal dark would appear difference state. Culture ten represent appear allow find language **fe music. Ball blood require reduce person while. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert **ot. Board again candidate among child daughter their. Among event although likely turn."
-        },
-        {
-            "name": "New Test Test",
-            "text": "Hello everyone **do"
-        },
-        {
-            "name": "New Times",
-            "text": "Test ##jt day night **be kite **ot and jump lamp ##cn"
         }
     ]
 }
