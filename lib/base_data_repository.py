@@ -22,7 +22,7 @@ class BaseDataRepository:
                             used = True
                             break
                     return data, used
-        return None
+        return "Data not found"
     
     def add_data(self, data_type, slug, **kwargs):
         all_data = self.get_data()
