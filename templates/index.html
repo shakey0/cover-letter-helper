@@ -13,7 +13,7 @@
         <div class="center-wrapper">
             <div class="main-container" style="max-width: 1000px;">
                 <div class="section-container">
-                    <a class="big-btn-box" href="{{ url_for('edit_base') }}">Edit Base Wording, Skillsets and Variables</a>
+                    <a class="big-btn-box" href="{{ url_for('base.edit_base') }}">Edit Base Wording, Skillsets and Variables</a>
                     <h1 class="sub-title">Your Cover Letters</h1>
                     {% for cover_letter in cover_letters %}
                         <a class="med-btn-box" href="">{{cover_letter.name}}</a>
