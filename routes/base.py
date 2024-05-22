@@ -31,7 +31,7 @@ def add_input():
         result = base_data_repository.add_data('inputs', get_slug(name), name=name, code=code)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base', action="new", data_type="inputs", slug=get_slug(name))})
+        return jsonify({'success': True, 'redirect': url_for('base.edit_base', action="new", data_type="inputs", slug=get_slug(name))})
     return render_template('add_input.html')
 
 
@@ -43,7 +43,7 @@ def edit_input(slug):
         result = base_data_repository.update_data('inputs', slug, name=name, code=code)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base', action="updated", data_type="inputs", slug=get_slug(name))})
+        return jsonify({'success': True, 'redirect': url_for('base.edit_base', action="updated", data_type="inputs", slug=get_slug(name))})
     item, used = base_data_repository.get_data_by_slug('inputs', slug, get_used=True)
     return render_template('add_input.html', edit=True, input_name=item['name'], type_code=item['code'], slug=slug, used=used)
 
@@ -53,7 +53,7 @@ def delete_input(slug):
     result = base_data_repository.delete_data('inputs', slug)
     # if result != True:
     #     return jsonify({'error': result})
-    return jsonify({'success': True, 'redirect': url_for('edit_base', action="deleted", data_type="inputs", slug=slug)})
+    return jsonify({'success': True, 'redirect': url_for('base.edit_base', action="deleted", data_type="inputs", slug=slug)})
 
 
 @base.route('/add_variables', methods=['GET', 'POST'])
@@ -69,7 +69,7 @@ def add_variables():
         result = base_data_repository.add_data('variables_sets', get_slug(name), name=name, code=code, variables=variables, selected=selected)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base', action="new", data_type="variables_sets", slug=get_slug(name))})
+        return jsonify({'success': True, 'redirect': url_for('base.edit_base', action="new", data_type="variables_sets", slug=get_slug(name))})
     return render_template('add_variables.html')
 
 
@@ -86,7 +86,7 @@ def edit_variables(slug):
         result = base_data_repository.update_data('variables_sets', slug, name=name, code=code, variables=variables, selected=selected)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base', action="updated", data_type="variables_sets", slug=get_slug(name))})
+        return jsonify({'success': True, 'redirect': url_for('base.edit_base', action="updated", data_type="variables_sets", slug=get_slug(name))})
     item, used = base_data_repository.get_data_by_slug('variables_sets', slug, get_used=True)
     return render_template('add_variables.html', edit=True, list_name=item['name'], type_code=item['code'],
                            values=item['variables'], selected=item['selected'], slug=slug, used=used)
@@ -97,7 +97,7 @@ def delete_variables(slug):
     result = base_data_repository.delete_data('variables_sets', slug)
     # if result != True:
     #     return jsonify({'error': result})
-    return jsonify({'success': True, 'redirect': url_for('edit_base', action="deleted", data_type="variables_sets", slug=slug)})
+    return jsonify({'success': True, 'redirect': url_for('base.edit_base', action="deleted", data_type="variables_sets", slug=slug)})
 
 
 @base.route('/add_paragraph', methods=['GET', 'POST'])
@@ -113,7 +113,7 @@ def add_paragraph():
         result = base_data_repository.add_data('paragraphs', get_slug(name), name=name, text=text)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base', action="new", data_type="paragraphs", slug=get_slug(name))})
+        return jsonify({'success': True, 'redirect': url_for('base.edit_base', action="new", data_type="paragraphs", slug=get_slug(name))})
     return render_template('add_paragraph.html', inputs=inputs, variables_sets=variables_sets)
 
 
@@ -130,7 +130,7 @@ def edit_paragraph(slug):
         result = base_data_repository.update_data('paragraphs', slug, name=name, text=text)
         if result != True:
             return jsonify({'error': result})
-        return jsonify({'success': True, 'redirect': url_for('edit_base', action="updated", data_type="paragraphs", slug=get_slug(name))})
+        return jsonify({'success': True, 'redirect': url_for('base.edit_base', action="updated", data_type="paragraphs", slug=get_slug(name))})
     item = base_data_repository.get_data_by_slug('paragraphs', slug)
     return render_template('add_paragraph.html', edit=True, paragraph_name=item['name'], paragraph_text=item['text'],
                            inputs=inputs, variables_sets=variables_sets, slug=slug)
@@ -141,4 +141,4 @@ def delete_paragraph(slug):
     result = base_data_repository.delete_data('paragraphs', slug)
     # if result != True:
     #     return jsonify({'error': result})
-    return jsonify({'success': True, 'redirect': url_for('edit_base', action="deleted", data_type="paragraphs", slug=slug)})
+    return jsonify({'success': True, 'redirect': url_for('base.edit_base', action="deleted", data_type="paragraphs", slug=slug)})

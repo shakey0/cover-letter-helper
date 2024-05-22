@@ -31,6 +31,7 @@ function addVar() {
         
         document.getElementById('var-container').appendChild(box);
         input.value = '';
+        input.focus();
     }
 }
 
@@ -54,12 +55,27 @@ function addListName() {
         input.style.display = 'none';
         document.getElementById('list-name-btn').style.display = 'none';
         document.getElementById('list-name-error').textContent = '';
+
+        code_input = document.getElementById('var-code-input');
+        var_input = document.getElementById('var-input');
+        if (code_input.style.display !== 'none') {
+            code_input.focus();
+            const value = code_input.value;
+            code_input.value = '';
+            code_input.value = value;
+        } else if (var_input.style.display !== 'none') {
+            var_input.focus();
+            const value = var_input.value;
+            var_input.value = '';
+            var_input.value = value;
+        }
     }
 }
 
 function editListName() {
     const input = document.getElementById('list-name-input');
     input.style.display = 'block';
+    input.focus();
     const listNameAct = document.getElementById('list-name-act');
     input.value = listNameAct.textContent;
     listNameAct.style.display = 'none';
@@ -87,6 +103,20 @@ function addVarCode() {
         document.getElementById('var-code-mes-min').style.color = '#1f1f1f';
         document.getElementById('var-code-mes').style.display = 'none';
 
+        var_input = document.getElementById('var-input');
+        name_input = document.getElementById('list-name-input');
+        if (var_input.style.display !== 'none') {
+            var_input.focus();
+            const value = var_input.value;
+            var_input.value = '';
+            var_input.value = value;
+        } else if (name_input.style.display !== 'none') {
+            name_input.focus();
+            const value = name_input.value;
+            name_input.value = '';
+            name_input.value = value;
+        }
+
     } else if (varCode && varCode.length < 4) {
         document.getElementById('var-code-mes-min').style.color = 'red';
     }
@@ -95,6 +125,7 @@ function addVarCode() {
 function editVarCode() {
     const input = document.getElementById('var-code-input');
     input.style.display = 'block';
+    input.focus();
     const varCodeAct = document.getElementById('var-code-act');
     input.value = varCodeAct.textContent;
     varCodeAct.style.display = 'none';
@@ -222,4 +253,6 @@ function confirmDeleteList() {
     });
 }
 
-window.addEventListener('click', hideModal);
+if (deleteListBtn) {
+    window.addEventListener('click', hideModal);
+}

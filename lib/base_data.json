@@ -15,6 +15,10 @@
         {
             "name": "Job Focus",
             "code": "##jf"
+        },
+        {
+            "name": "Next Input More",
+            "code": "##nim"
         }
     ],
     "variables_sets": [

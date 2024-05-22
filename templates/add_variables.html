@@ -25,7 +25,7 @@
                     {% endif %}
                         <div class="list-name-box">
                             <p>List name:</p>
-                            <input {% if edit %}style="display: none;" {% endif %}type="text" id="list-name-input" />
+                            <input {% if edit %}style="display: none;" {% else %}autofocus {% endif %}type="text" id="list-name-input" />
                             <input type="hidden" id="list-name-act-input" name="list-name-act-input" {% if edit %}value="{{ list_name }}" {% endif %}/>
                             <div {% if not edit %}style="display: none;" {% endif %}class="list-name-act" id="list-name-act">{% if edit %}{{ list_name }}{% endif %}</div>
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-list-name-btn" onclick="editListName()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">

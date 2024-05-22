@@ -25,7 +25,7 @@
                     {% endif %}
                         <div class="paragraph-name-box">
                             <p>Paragraph name:</p>
-                            <input {% if edit %}style="display: none;" {% endif %}type="text" id="paragraph-name-input" />
+                            <input {% if edit %}style="display: none;" {% else %}autofocus {% endif %}type="text" id="paragraph-name-input" />
                             <input type="hidden" id="paragraph-name-act-input" name="paragraph-name-act-input" {% if edit %}value="{{ paragraph_name }}" {% endif %}/>
                             <div {% if not edit %}style="display: none;" {% endif %}class="paragraph-name-act" id="paragraph-name-act">{% if edit %}{{ paragraph_name }}{% endif %}</div>
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-paragraph-name-btn" onclick="editParagraphName()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">

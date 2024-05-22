@@ -12,12 +12,21 @@ function addInputName() {
         input.style.display = 'none';
         document.getElementById('input-name-btn').style.display = 'none';
         document.getElementById('input-name-error').textContent = '';
+
+        code_input = document.getElementById('input-code-input');
+        if (code_input.style.display !== 'none') {
+            code_input.focus();
+            const value = code_input.value;
+            code_input.value = '';
+            code_input.value = value;
+        }
     }
 }
 
 function editInputName() {
     const input = document.getElementById('input-name-input');
     input.style.display = 'block';
+    input.focus();
     const inputNameAct = document.getElementById('input-name-act');
     input.value = inputNameAct.textContent;
     inputNameAct.style.display = 'none';
@@ -45,6 +54,14 @@ function addInputCode() {
         document.getElementById('input-code-mes-min').style.color = '#1f1f1f';
         document.getElementById('input-code-mes').style.display = 'none';
 
+        name_input = document.getElementById('input-name-input');
+        if (name_input.style.display !== 'none') {
+            name_input.focus();
+            const value = name_input.value;
+            name_input.value = '';
+            name_input.value = value;
+        }
+
     } else if (inputCode && inputCode.length < 4) {
         document.getElementById('input-code-mes-min').style.color = 'red';
     }
@@ -53,6 +70,7 @@ function addInputCode() {
 function editInputCode() {
     const input = document.getElementById('input-code-input');
     input.style.display = 'block';
+    input.focus();
     const inputCodeAct = document.getElementById('input-code-act');
     input.value = inputCodeAct.textContent;
     inputCodeAct.style.display = 'none';
@@ -172,4 +190,6 @@ function confirmDeleteInput() {
     });
 }
 
-window.addEventListener('click', hideModal);
+if (deleteInputBtn) {
+    window.addEventListener('click', hideModal);
+}

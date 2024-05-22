@@ -25,7 +25,7 @@
                     {% endif %}
                         <div class="input-name-box">
                             <p>Input name:</p>
-                            <input {% if edit %}style="display: none;" {% endif %}type="text" id="input-name-input" />
+                            <input {% if edit %}style="display: none;" {% else %}autofocus {% endif %}type="text" id="input-name-input" />
                             <input type="hidden" id="input-name-act-input" name="input-name-act-input" {% if edit %}value="{{ input_name }}" {% endif %}/>
                             <div {% if not edit %}style="display: none;" {% endif %}class="input-name-act" id="input-name-act">{% if edit %}{{ input_name }}{% endif %}</div>
                             <img {% if not edit %}style="display: none;" {% endif %}id="edit-input-name-btn" onclick="editInputName()" src="{{ url_for('static', filename='images/pencil.png') }}" alt="edit">

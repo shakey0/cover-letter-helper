@@ -12,12 +12,21 @@ function addParagraphName() {
         input.style.display = 'none';
         document.getElementById('paragraph-name-btn').style.display = 'none';
         document.getElementById('paragraph-name-error').textContent = '';
+
+        text_input = document.getElementById('paragraph-text-input');
+        if (text_input.style.display !== 'none') {
+            text_input.focus();
+            const value = text_input.value;
+            text_input.value = '';
+            text_input.value = value;
+        }
     }
 }
 
 function editParagraphName() {
     const input = document.getElementById('paragraph-name-input');
     input.style.display = 'block';
+    input.focus();
     const paragraphNameAct = document.getElementById('paragraph-name-act');
     input.value = paragraphNameAct.textContent;
     paragraphNameAct.style.display = 'none';
@@ -40,12 +49,21 @@ function addParagraphText() {
         input.style.display = 'none';
         document.getElementById('paragraph-text-btn').style.display = 'none';
         document.getElementById('paragraph-text-error').textContent = '';
+
+        name_input = document.getElementById('paragraph-name-input');
+        if (name_input.style.display !== 'none') {
+            name_input.focus();
+            const value = name_input.value;
+            name_input.value = '';
+            name_input.value = value;
+        }
     }
 }
 
 function editParagraphText() {
     const input = document.getElementById('paragraph-text-input');
     input.style.display = 'block';
+    input.focus();
     const paragraphTextAct = document.getElementById('paragraph-text-act');
     input.value = paragraphTextAct.textContent;
     paragraphTextAct.style.display = 'none';
