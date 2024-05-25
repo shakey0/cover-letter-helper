@@ -111,20 +111,6 @@
                 "Java",
                 "C#"
             ]
-        },
-        {
-            "name": "Birds",
-            "code": "**bi",
-            "variables": [
-                "Eagle",
-                "Parrot",
-                "Owl",
-                "Crow"
-            ],
-            "selected": [
-                "Eagle",
-                "Owl"
-            ]
         }
     ],
     "paragraphs": [
@@ -139,6 +125,10 @@
         {
             "name": "Skills",
             "text": "Factor international usually herself benefit though need meeting **ot. Instead personal dark would appear difference state. Culture ten represent appear allow find language **te music. Ball blood require reduce person while **fe. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert ##cn. Board again candidate among child daughter their. Among event ##in although likely turn."
+        },
+        {
+            "name": "Next Paragraph More",
+            "text": "This is another lovely test paragraph. More text."
         }
     ]
 }

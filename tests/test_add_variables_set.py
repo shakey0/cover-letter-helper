@@ -133,5 +133,3 @@ def test_add_varibles_set_working(reseed_base_data, page, test_web_address):
     expect(new_set).to_be_visible()
     expect(new_set).to_contain_text('**bi - Birds')
     expect(new_set).to_contain_text('Eagle✔\nParrot\nOwl✔\nCrow')
-
-    # page.screenshot(path="screenshot.png")

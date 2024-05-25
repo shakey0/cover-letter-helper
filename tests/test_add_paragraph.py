@@ -1,0 +1,79 @@
+from playwright.sync_api import expect
+
+
+def test_add_paragraph_working(reseed_base_data, page, test_web_address):
+    
+    # Go to edit_base page and click on add paragraph button
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.click('.add-btn-par img')
+    page.wait_for_timeout(100)
+    
+    # Type 'Test Paragraph' in the name box (already in focus) and press Enter
+    page.keyboard.type('Test Paragraph')
+    page.keyboard.press('Enter')
+    act_input = page.locator('#paragraph-name-act-input')
+    expect(act_input).to_have_value('Test Paragraph')
+    
+    # Type some text in the text box (already in focus) and press Enter
+    page.keyboard.type('This is a very nice test paragraph.')
+    page.keyboard.press('Enter')
+    act_code = page.locator('#paragraph-text-act-input')
+    expect(act_code).to_have_value('This is a very nice test paragraph.')
+    
+    # Click the edit button and type ' More' in the name box and press Enter
+    page.click('.paragraph-name-box img')
+    page.keyboard.type(' More')
+    page.keyboard.press('Enter')
+    act_input = page.locator('#paragraph-name-act-input')
+    expect(act_input).to_have_value('Test Paragraph More')
+    
+    # Click the edit button and type some more text in the text box and press Enter
+    page.click('.paragraph-text-box img')
+    page.keyboard.type(' More text.')
+    page.keyboard.press('Enter')
+    act_code = page.locator('#paragraph-text-act-input')
+    expect(act_code).to_have_value('This is a very nice test paragraph. More text.')
+    
+    # Go to edit_base page and click on add paragraph button
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.click('.add-btn-par img')
+    page.wait_for_timeout(100)
+    
+    # Click on the text box and type some text and click the Add button
+    page.click('#paragraph-text-input')
+    page.keyboard.type('This is another lovely test paragraph.')
+    page.click('.paragraph-text-box button:has-text("Preview Paragraph")')
+    act_code = page.locator('#paragraph-text-act-input')
+    expect(act_code).to_have_value('This is another lovely test paragraph.')
+    
+    # Type 'Next Paragraph' in the name box (already in focus) and click the Add button
+    page.keyboard.type('Next Paragraph')
+    page.click('.paragraph-name-box button:has-text("Add")')
+    act_input = page.locator('#paragraph-name-act-input')
+    expect(act_input).to_have_value('Next Paragraph')
+    
+    # Click the edit button and type ' More' in the name box and click the Add button
+    page.click('.paragraph-name-box img')
+    page.keyboard.type(' More')
+    page.click('.paragraph-name-box button:has-text("Add")')
+    act_input = page.locator('#paragraph-name-act-input')
+    expect(act_input).to_have_value('Next Paragraph More')
+    
+    # Click the edit button and type some more text in the text box and click the Add button
+    page.click('.paragraph-text-box img')
+    page.keyboard.type(' More text.')
+    page.click('.paragraph-text-box button:has-text("Preview Paragraph")')
+    act_code = page.locator('#paragraph-text-act-input')
+    expect(act_code).to_have_value('This is another lovely test paragraph. More text.')
+    
+    # Click the Save Paragraph button
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("New paragraph [ Next Paragraph More ] added successfully.")')
+    expect(success_msg).to_be_visible()
+    new_set = page.locator('.paragraph-click-box').nth(-1)
+    expect(new_set).to_be_visible()
+    expect(new_set).to_contain_text('Next Paragraph More')
+    expect(new_set).to_contain_text('This is another lovely test paragraph. More text.')
