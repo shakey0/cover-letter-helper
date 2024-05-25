@@ -15,10 +15,6 @@
         {
             "name": "Job Focus",
             "code": "##jf"
-        },
-        {
-            "name": "Next Input More",
-            "code": "##nim"
         }
     ],
     "variables_sets": [
@@ -114,6 +110,20 @@
                 "Python",
                 "Java",
                 "C#"
+            ]
+        },
+        {
+            "name": "Birds",
+            "code": "**bi",
+            "variables": [
+                "Eagle",
+                "Parrot",
+                "Owl",
+                "Crow"
+            ],
+            "selected": [
+                "Eagle",
+                "Owl"
             ]
         }
     ],
