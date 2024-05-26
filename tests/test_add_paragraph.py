@@ -121,3 +121,72 @@ def test_save_paragraph_disabled_when_input_boxes_are_open(reseed_base_data, pag
     expect(page.locator('text="Your Base Data"')).to_be_visible()
     page_title = page.locator('.page-title')
     expect(page_title).to_have_text('Your Base Data')
+
+
+def test_add_paragraph_rejected_if_name_is_already_in_use(reseed_base_data, page, test_web_address):
+    
+    # Add a paragraph with name 'Test Paragraph' and some text
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    page.keyboard.type('Test Paragraph')
+    page.keyboard.press('Enter')
+    page.keyboard.type('This is a wonderful test paragraph.')
+    page.keyboard.press('Enter')
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    
+    # Add a paragraph with name 'Test Paragraph'
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    page.keyboard.type('Test Paragraph')
+    page.keyboard.press('Enter')
+    page.keyboard.type('This is a wonderful test paragraph.') # Paragraph text is not checked for uniqueness
+    page.keyboard.press('Enter')
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    expect(page.locator('.error-msg:has-text("Name already exists")')).to_be_visible()
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Paragraph')
+    
+
+def test_add_paragraph_rejected_if_inputs_or_variables_sets_are_not_found(reseed_base_data, page, test_web_address):
+    
+    # Add a paragraph with name 'Test Paragraph' and some text with an input and a variables set
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    page.keyboard.type('Test Paragraph')
+    page.keyboard.press('Enter')
+    page.keyboard.type('This is a wonderful test paragraph. [input: ##cn] [variables: **fe]')
+    page.keyboard.press('Enter')
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('Your Base Data')
+    new_set = page.locator('.paragraph-click-box').nth(-1)
+    expect(new_set).to_contain_text('Test Paragraph')
+    expect(new_set).to_contain_text('This is a wonderful test paragraph. [input: ##cn] [variables: **fe]')
+    
+    # Add a paragraph with name 'Test Paragraph' and some text with an input that does not exist
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    page.keyboard.type('Test Paragraph 2')
+    page.keyboard.press('Enter')
+    page.keyboard.type('This is a wonderful test paragraph. [input: ##aa] [variables: **fe]')
+    page.keyboard.press('Enter')
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    expect(page.locator('.error-msg:has-text("Input \'##aa\' has not been created")')).to_be_visible()
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Paragraph')
+    
+    # Add a paragraph with name 'Test Paragraph' and some text with a variables set that does not exist
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    page.keyboard.type('Test Paragraph 3')
+    page.keyboard.press('Enter')
+    page.keyboard.type('This is a wonderful test paragraph. [input: ##cn] [variables: **aa]')
+    page.keyboard.press('Enter')
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    expect(page.locator('.error-msg:has-text("Variables set \'**aa\' has not been created")')).to_be_visible()
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Paragraph')
