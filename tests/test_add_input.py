@@ -76,3 +76,47 @@ def test_add_input_working(reseed_base_data, page, test_web_address):
     new_input = page.locator('.input-click-box').nth(-1)
     expect(new_input).to_be_visible()
     expect(new_input).to_contain_text('##nim - Next Input More')
+
+
+def test_save_input_disabled_when_input_boxes_are_open(reseed_base_data, page, test_web_address):
+    
+    # Click the Save Input button without filling in any fields
+    page.goto(f"http://{test_web_address}/add_input")
+    page.click('text="Save Input"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Input')
+    
+    # Fill in the name field and click the Save Input button
+    page.goto(f"http://{test_web_address}/add_input")
+    page.keyboard.type('Test Input')
+    page.keyboard.press('Enter')
+    page.click('text="Save Input"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Input')
+    
+    # Fill in the code field and click the Save Input button
+    page.goto(f"http://{test_web_address}/add_input")
+    page.click('#input-code-input')
+    page.keyboard.type('ti')
+    page.keyboard.press('Enter')
+    page.click('text="Save Input"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Input')
+    
+    # Fill in the name and code fields and click the Save Input button
+    page.goto(f"http://{test_web_address}/add_input")
+    page.keyboard.type('Test Input')
+    page.keyboard.press('Enter')
+    page.keyboard.type('ti')
+    page.keyboard.press('Enter')
+    page.click('text="Save Input"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('Your Base Data')
