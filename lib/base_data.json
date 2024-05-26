@@ -112,7 +112,7 @@
             ]
         },
         {
-            "name": "est Set",
+            "name": "Test Set",
             "code": "**ts",
             "variables": [
                 "Word"

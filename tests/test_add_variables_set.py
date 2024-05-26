@@ -196,3 +196,47 @@ def test_save_list_disabled_when_input_boxes_are_open(reseed_base_data, page, te
     expect(page.locator('text="Your Base Data"')).to_be_visible()
     page_title = page.locator('.page-title')
     expect(page_title).to_have_text('Your Base Data')
+
+
+def test_add_variables_set_rejected_if_name_or_code_is_already_in_use(reseed_base_data, page, test_web_address):
+    
+    # Add a variables set with name 'Test Set' and code 'ts'
+    page.goto(f"http://{test_web_address}/add_variables")
+    page.keyboard.type('Test Set')
+    page.keyboard.press('Enter')
+    page.keyboard.type('ts')
+    page.keyboard.press('Enter')
+    page.keyboard.type('Word')
+    page.keyboard.press('Enter')
+    page.click('text="Save List"')
+    page.wait_for_timeout(100)
+    
+    # Add a variables set with the name 'Test Set'
+    page.goto(f"http://{test_web_address}/add_variables")
+    page.keyboard.type('Test Set')
+    page.keyboard.press('Enter')
+    page.keyboard.type('tt') # This code is not in use
+    page.keyboard.press('Enter')
+    page.keyboard.type('Word')
+    page.keyboard.press('Enter')
+    page.click('text="Save List"')
+    page.wait_for_timeout(100)
+    expect(page.locator('.error-msg:has-text("Name already exists")')).to_be_visible()
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Variables List')
+    
+    # Add a variables set with the code 'ts'
+    page.goto(f"http://{test_web_address}/add_variables")
+    page.keyboard.type('Another Set') # This name is not in use
+    page.keyboard.press('Enter')
+    page.keyboard.type('ts')
+    page.keyboard.press('Enter')
+    page.keyboard.type('Word')
+    page.keyboard.press('Enter')
+    page.click('text="Save List"')
+    page.wait_for_timeout(100)
+    expect(page.locator('.error-msg:has-text("Code already exists")')).to_be_visible()
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Variables List')

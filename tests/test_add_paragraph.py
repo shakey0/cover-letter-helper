@@ -89,7 +89,7 @@ def test_save_paragraph_disabled_when_input_boxes_are_open(reseed_base_data, pag
     page_title = page.locator('.page-title')
     expect(page_title).to_have_text('New Paragraph')
     
-    # Fill in the name field and click the Save Input button
+    # Fill in the name field and click the Save Paragraph button
     page.goto(f"http://{test_web_address}/add_paragraph")
     page.keyboard.type('Test Paragraph')
     page.keyboard.press('Enter')
@@ -99,7 +99,7 @@ def test_save_paragraph_disabled_when_input_boxes_are_open(reseed_base_data, pag
     page_title = page.locator('.page-title')
     expect(page_title).to_have_text('New Paragraph')
     
-    # Fill in the code field and click the Save Input button
+    # Fill in the text field and click the Save Paragraph button
     page.goto(f"http://{test_web_address}/add_paragraph")
     page.click('#paragraph-text-input')
     page.keyboard.type('This is a beautiful test paragraph.')
@@ -110,7 +110,7 @@ def test_save_paragraph_disabled_when_input_boxes_are_open(reseed_base_data, pag
     page_title = page.locator('.page-title')
     expect(page_title).to_have_text('New Paragraph')
     
-    # Fill in the name and code fields and click the Save Input button
+    # Fill in the name and text fields and click the Save Paragraph button
     page.goto(f"http://{test_web_address}/add_paragraph")
     page.keyboard.type('Test Paragraph')
     page.keyboard.press('Enter')
