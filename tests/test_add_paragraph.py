@@ -77,3 +77,47 @@ def test_add_paragraph_working(reseed_base_data, page, test_web_address):
     expect(new_set).to_be_visible()
     expect(new_set).to_contain_text('Next Paragraph More')
     expect(new_set).to_contain_text('This is another lovely test paragraph. More text.')
+
+
+def test_save_paragraph_disabled_when_input_boxes_are_open(reseed_base_data, page, test_web_address):
+    
+    # Click the Save Paragraph button without filling in any fields
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Paragraph')
+    
+    # Fill in the name field and click the Save Input button
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    page.keyboard.type('Test Paragraph')
+    page.keyboard.press('Enter')
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Paragraph')
+    
+    # Fill in the code field and click the Save Input button
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    page.click('#paragraph-text-input')
+    page.keyboard.type('This is a beautiful test paragraph.')
+    page.keyboard.press('Enter')
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).not_to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('New Paragraph')
+    
+    # Fill in the name and code fields and click the Save Input button
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    page.keyboard.type('Test Paragraph')
+    page.keyboard.press('Enter')
+    page.keyboard.type('This is a beautiful test paragraph.')
+    page.keyboard.press('Enter')
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('Your Base Data')
