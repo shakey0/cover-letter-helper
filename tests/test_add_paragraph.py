@@ -193,6 +193,7 @@ def test_add_paragraph_rejected_if_inputs_or_variables_sets_are_not_found(reseed
 
 
 def test_edit_paragraph_working(reseed_base_data, page, test_web_address):
+    
     # Go to edit_base page and click on the 'Experiences' input
     page.goto(f"http://{test_web_address}/edit_base")
     page.locator('.paragraph-click-box').nth(1).click()
@@ -237,3 +238,43 @@ def test_edit_paragraph_working(reseed_base_data, page, test_web_address):
     updated_paragraph = page.locator('.paragraph-click-box').nth(1)
     expect(updated_paragraph).to_be_visible()
     expect(updated_paragraph).to_contain_text('Deal relate individual attorney. Want will attack check dark **mo charge white. Customer challenge rich **be trade exactly. Western deal writer small. Decade you rock else. Shoulder little white prevent western public **do. Interesting wear chair really wish Democrat discover. Nothing wife too front heart than church pull. Police civil before team society ##jf common strategy. Rather traditional eye less even including. And then the end. This **fe is another ##cn sentence.')
+
+
+def test_delete_paragraph_working(reseed_base_data, page, test_web_address):
+
+    # Go to edit_base page and click on add paragraph button
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.click('.add-btn-par img')
+    page.wait_for_timeout(100)
+    
+    # Fill in the name and text fields and click the Save Paragraph button
+    page.keyboard.type('Test Paragraph')
+    page.keyboard.press('Enter')
+    page.keyboard.type('This is a beautiful test paragraph.')
+    page.keyboard.press('Enter')
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('Your Base Data')
+    new_paragraph = page.locator('.paragraph-click-box').nth(-1)
+    expect(new_paragraph).to_be_visible()
+    expect(new_paragraph).to_contain_text('Test Paragraph')
+    expect(new_paragraph).to_contain_text('This is a beautiful test paragraph.')
+    
+    # Click on the 'Test Paragraph' paragraph and click the delete button
+    new_paragraph.click()
+    page.wait_for_timeout(100)
+    page.click('.delete-paragraph')
+    delete_paragraph_box = page.locator('.delete-paragraph-box')
+    expect(delete_paragraph_box).to_be_visible()
+    expect(delete_paragraph_box).to_contain_text('Delete this for sure?')
+    page.click('.delete-paragraph-box button:has-text("Yes")')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).to_be_visible()
+    success_msg = page.locator('.success:has-text("Paragraph deleted successfully.")')
+    expect(success_msg).to_be_visible()
+    expect(page.locator('.paragraph-click-box').nth(-1)).not_to_contain_text('Test Paragraph')
+    expect(page.locator('.paragraph-click-box').nth(-1)).not_to_contain_text('This is a beautiful test paragraph.')
+    expect(page.locator('.paragraph-click-box').nth(-1)).to_contain_text('Skills')
+    expect(page.locator('.paragraph-click-box').nth(-1)).to_contain_text('Factor international usually herself benefit though need meeting **ot. Instead personal dark would appear difference state. Culture ten represent appear allow find language **te music. Ball blood require reduce person while **fe. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert ##cn. Board again candidate among child daughter their. Among event ##in although likely turn.')

@@ -161,6 +161,7 @@ def test_add_input_rejected_if_name_or_code_is_already_in_use(reseed_base_data, 
 
 
 def test_edit_input_working(reseed_base_data, page, test_web_address):
+    
     # Go to edit_base page and click on the 'Industry' input
     page.goto(f"http://{test_web_address}/edit_base")
     page.locator('.input-click-box').nth(1).click()
@@ -208,3 +209,52 @@ def test_edit_input_working(reseed_base_data, page, test_web_address):
     paragraph = page.locator('.paragraph-click-box').nth(0)
     expect(paragraph).to_contain_text('##inm girl')
     expect(paragraph).not_to_contain_text('##in girl')
+
+
+def test_delete_input_working(reseed_base_data, page, test_web_address):
+
+    # Go to edit_base page and click on add input button
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.click('.add-btn-input img')
+    page.wait_for_timeout(100)
+    
+    # Fill in the name and code fields and click the Save Input button
+    page.keyboard.type('Test Input')
+    page.keyboard.press('Enter')
+    page.keyboard.type('ti')
+    page.keyboard.press('Enter')
+    page.click('text="Save Input"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('Your Base Data')
+    new_input = page.locator('.input-click-box').nth(-1)
+    expect(new_input).to_be_visible()
+    expect(new_input).to_contain_text('##ti - Test Input')
+    
+    # Click on the 'Test Input' input and click the delete button
+    new_input.click()
+    page.wait_for_timeout(100)
+    page.click('.delete-input')
+    delete_input_box = page.locator('.delete-input-box')
+    expect(delete_input_box).to_be_visible()
+    expect(delete_input_box).to_contain_text('Delete this for sure?')
+    page.click('.delete-input-box button:has-text("Yes")')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).to_be_visible()
+    success_msg = page.locator('.success:has-text("Input deleted successfully.")')
+    expect(success_msg).to_be_visible()
+    expect(page.locator('.input-click-box').nth(-1)).not_to_contain_text('##ti - Test Input')
+    expect(page.locator('.input-click-box').nth(-1)).to_contain_text('##jf - Job Focus')
+
+
+def test_delete_not_allowed_when_input_is_used_in_paragraph(reseed_base_data, page, test_web_address):
+    
+    # Go to edit_base page and click on add input button
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.locator('.input-click-box').nth(1).click() # Click on the 'Industry More' input which is used in a paragraph
+    page.wait_for_timeout(100)
+    page.click('.delete-input')
+    delete_input_box = page.locator('.delete-input-box')
+    expect(delete_input_box).to_be_visible()
+    expect(delete_input_box).to_contain_text('This input is used at least once in your paragraphs.Please remove its use in the paragraph(s) first.')

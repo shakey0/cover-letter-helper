@@ -361,3 +361,55 @@ def test_edit_variables_set_working(reseed_base_data, page, test_web_address):
     expect(updated_var_set).to_be_visible()
     expect(updated_var_set).to_contain_text('**bem - Backend More')
     expect(updated_var_set).to_contain_text('Node.js✔\nExpress\nSQL✔\nGraphQL✔')
+
+
+def test_delete_variables_set_working(reseed_base_data, page, test_web_address):
+
+    # Go to edit_base page and click on add variables set button
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.click('.add-btn-var img')
+    page.wait_for_timeout(100)
+    
+    # Fill in the name and code fields and click the Save List button
+    page.keyboard.type('Test Set')
+    page.keyboard.press('Enter')
+    page.keyboard.type('ts')
+    page.keyboard.press('Enter')
+    page.keyboard.type('Word')
+    page.keyboard.press('Enter')
+    page.click('text="Save List"')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).to_be_visible()
+    page_title = page.locator('.page-title')
+    expect(page_title).to_have_text('Your Base Data')
+    new_var_set = page.locator('.variables-click-box').nth(-1)
+    expect(new_var_set).to_be_visible()
+    expect(new_var_set).to_contain_text('**ts - Test Set')
+    expect(new_var_set).to_contain_text('Word')
+    
+    # Click on the 'Test Set' variables set and click the delete button
+    new_var_set.click()
+    page.wait_for_timeout(100)
+    page.click('.delete-list')
+    delete_list_box = page.locator('.delete-list-box')
+    expect(delete_list_box).to_be_visible()
+    expect(delete_list_box).to_contain_text('Delete this for sure?')
+    page.click('.delete-list-box button:has-text("Yes")')
+    page.wait_for_timeout(100)
+    expect(page.locator('text="Your Base Data"')).to_be_visible()
+    success_msg = page.locator('.success:has-text("Variables set deleted successfully.")')
+    expect(success_msg).to_be_visible()
+    expect(page.locator('.variables-click-box').nth(-1)).not_to_contain_text('**ts - Test Set')
+    expect(page.locator('.variables-click-box').nth(-1)).to_contain_text('**ot - Other')
+
+
+def test_delete_not_allowed_when_variables_set_is_used_in_paragraph(reseed_base_data, page, test_web_address):
+    
+    # Go to edit_base page and click on add vairables set button
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.locator('.variables-click-box').nth(1).click() # Click on the 'Backend' variables set which is used in a paragraph
+    page.wait_for_timeout(100)
+    page.click('.delete-list')
+    delete_list_box = page.locator('.delete-list-box')
+    expect(delete_list_box).to_be_visible()
+    expect(delete_list_box).to_contain_text('This set is used at least once in your paragraphs.Please remove its use in the paragraph(s) first.')

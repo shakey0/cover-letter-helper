@@ -81,7 +81,7 @@
                     <img class="delete-list" id="delete-list-btn" onclick="deleteList()" src="{{ url_for('static', filename='images/bin.png') }}">
                     <div class="delete-list-box" id="delete-list-box">
                         {% if used %}
-                        <p>This lists set is used at least once in your paragraphs.<br />Please remove its use in the paragraph(s) first.</p>
+                        <p>This set is used at least once in your paragraphs.<br />Please remove its use in the paragraph(s) first.</p>
                         <button type="button" id="delete-list-no" onclick="closeDeleteList()">Close</button>
                         {% else %}
                         <p>Delete this for sure?</p>
