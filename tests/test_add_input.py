@@ -158,3 +158,53 @@ def test_add_input_rejected_if_name_or_code_is_already_in_use(reseed_base_data, 
     expect(page.locator('text="Your Base Data"')).not_to_be_visible()
     page_title = page.locator('.page-title')
     expect(page_title).to_have_text('New Input')
+
+
+def test_edit_input_working(reseed_base_data, page, test_web_address):
+    # Go to edit_base page and click on the 'Industry' input
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.locator('.input-click-box').nth(1).click()
+    page.wait_for_timeout(100)
+
+    # Click the edit button and type ' More' in the name box and press Enter
+    page.click('.input-name-box img')
+    page.keyboard.type(' More')
+    page.keyboard.press('Enter')
+    act_input = page.locator('#input-name-act-input')
+    expect(act_input).to_have_value('Industry More')
+    
+    # Click the Save Input button
+    page.click('text="Save Input"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("Input [ Industry More - ##in ] updated successfully.")')
+    expect(success_msg).to_be_visible()
+    updated_input = page.locator('.input-click-box').nth(1)
+    expect(updated_input).to_be_visible()
+    expect(updated_input).to_contain_text('##in - Industry More')
+    
+    # Click on the 'Industry More' input
+    page.locator('.input-click-box').nth(1).click()
+    page.wait_for_timeout(100)
+    
+    # Click the edit button and type 'm' in the code box and press Enter
+    page.click('.input-code-box img')
+    page.keyboard.type('m')
+    page.keyboard.press('Enter')
+    act_code = page.locator('#input-code-act-input')
+    expect(act_code).to_have_value('##inm')
+    
+    # Click the Save Input button
+    page.click('text="Save Input"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("Input [ Industry More - ##inm ] updated successfully.")')
+    expect(success_msg).to_be_visible()
+    updated_input = page.locator('.input-click-box').nth(1)
+    expect(updated_input).to_be_visible()
+    expect(updated_input).to_contain_text('##inm - Industry More')
+    paragraph = page.locator('.paragraph-click-box').nth(0)
+    expect(paragraph).to_contain_text('##inm girl')
+    expect(paragraph).not_to_contain_text('##in girl')

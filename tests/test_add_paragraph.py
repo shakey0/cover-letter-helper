@@ -17,8 +17,8 @@ def test_add_paragraph_working(reseed_base_data, page, test_web_address):
     # Type some text in the text box (already in focus) and press Enter
     page.keyboard.type('This is a very nice test paragraph.')
     page.keyboard.press('Enter')
-    act_code = page.locator('#paragraph-text-act-input')
-    expect(act_code).to_have_value('This is a very nice test paragraph.')
+    act_text = page.locator('#paragraph-text-act-input')
+    expect(act_text).to_have_value('This is a very nice test paragraph.')
     
     # Click the edit button and type ' More' in the name box and press Enter
     page.click('.paragraph-name-box img')
@@ -31,8 +31,8 @@ def test_add_paragraph_working(reseed_base_data, page, test_web_address):
     page.click('.paragraph-text-box img')
     page.keyboard.type(' More text.')
     page.keyboard.press('Enter')
-    act_code = page.locator('#paragraph-text-act-input')
-    expect(act_code).to_have_value('This is a very nice test paragraph. More text.')
+    act_text = page.locator('#paragraph-text-act-input')
+    expect(act_text).to_have_value('This is a very nice test paragraph. More text.')
     
     # Go to edit_base page and click on add paragraph button
     page.goto(f"http://{test_web_address}/edit_base")
@@ -43,8 +43,8 @@ def test_add_paragraph_working(reseed_base_data, page, test_web_address):
     page.click('#paragraph-text-input')
     page.keyboard.type('This is another lovely test paragraph.')
     page.click('.paragraph-text-box button:has-text("Preview Paragraph")')
-    act_code = page.locator('#paragraph-text-act-input')
-    expect(act_code).to_have_value('This is another lovely test paragraph.')
+    act_text = page.locator('#paragraph-text-act-input')
+    expect(act_text).to_have_value('This is another lovely test paragraph.')
     
     # Type 'Next Paragraph' in the name box (already in focus) and click the Add button
     page.keyboard.type('Next Paragraph')
@@ -63,8 +63,8 @@ def test_add_paragraph_working(reseed_base_data, page, test_web_address):
     page.click('.paragraph-text-box img')
     page.keyboard.type(' More text.')
     page.click('.paragraph-text-box button:has-text("Preview Paragraph")')
-    act_code = page.locator('#paragraph-text-act-input')
-    expect(act_code).to_have_value('This is another lovely test paragraph. More text.')
+    act_text = page.locator('#paragraph-text-act-input')
+    expect(act_text).to_have_value('This is another lovely test paragraph. More text.')
     
     # Click the Save Paragraph button
     page.click('text="Save Paragraph"')
@@ -190,3 +190,50 @@ def test_add_paragraph_rejected_if_inputs_or_variables_sets_are_not_found(reseed
     expect(page.locator('text="Your Base Data"')).not_to_be_visible()
     page_title = page.locator('.page-title')
     expect(page_title).to_have_text('New Paragraph')
+
+
+def test_edit_paragraph_working(reseed_base_data, page, test_web_address):
+    # Go to edit_base page and click on the 'Experiences' input
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.locator('.paragraph-click-box').nth(1).click()
+    page.wait_for_timeout(100)
+    
+    # Click the edit button and type ' More' in the name box and press Enter
+    page.click('.paragraph-name-box img')
+    page.keyboard.type(' More')
+    page.keyboard.press('Enter')
+    act_input = page.locator('#paragraph-name-act-input')
+    expect(act_input).to_have_value('Experiences More')
+    
+    # Click the Save Paragraph button
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("Paragraph [ Experiences More ] updated successfully.")')
+    expect(success_msg).to_be_visible()
+    new_paragraph = page.locator('.paragraph-click-box').nth(1)
+    expect(new_paragraph).to_be_visible()
+    expect(new_paragraph).to_contain_text('Experiences More')
+    
+    # Go to edit_base page and click on the 'Experiences' input
+    page.locator('.paragraph-click-box').nth(1).click()
+    page.wait_for_timeout(100)
+    
+    # Click the edit button and type some more text in the text box and press Enter
+    page.click('.paragraph-text-box img')
+    page.keyboard.type(' This **fe is another ##cn sentence.')
+    page.keyboard.press('Enter')
+    act_text = page.locator('#paragraph-text-act-input')
+    expect(act_text).to_have_value('Deal relate individual attorney. Want will attack check dark **mo charge white. Customer challenge rich **be trade exactly. Western deal writer small. Decade you rock else. Shoulder little white prevent western public **do. Interesting wear chair really wish Democrat discover. Nothing wife too front heart than church pull. Police civil before team society ##jf common strategy. Rather traditional eye less even including. And then the end. This **fe is another ##cn sentence.')
+
+    # Click the Save Input button
+    page.click('text="Save Paragraph"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("Paragraph [ Experiences More ] updated successfully.")')
+    expect(success_msg).to_be_visible()
+    updated_paragraph = page.locator('.paragraph-click-box').nth(1)
+    expect(updated_paragraph).to_be_visible()
+    expect(updated_paragraph).to_contain_text('Deal relate individual attorney. Want will attack check dark **mo charge white. Customer challenge rich **be trade exactly. Western deal writer small. Decade you rock else. Shoulder little white prevent western public **do. Interesting wear chair really wish Democrat discover. Nothing wife too front heart than church pull. Police civil before team society ##jf common strategy. Rather traditional eye less even including. And then the end. This **fe is another ##cn sentence.')

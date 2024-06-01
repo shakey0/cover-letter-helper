@@ -129,10 +129,10 @@ def test_add_varibles_set_working(reseed_base_data, page, test_web_address):
     expect(page_title).to_be_visible()
     success_msg = page.locator('.success:has-text("New variables set [ Birds - **bi ] added successfully.")')
     expect(success_msg).to_be_visible()
-    new_set = page.locator('.variables-click-box').nth(-1)
-    expect(new_set).to_be_visible()
-    expect(new_set).to_contain_text('**bi - Birds')
-    expect(new_set).to_contain_text('Eagle✔\nParrot\nOwl✔\nCrow')
+    new_var_set = page.locator('.variables-click-box').nth(-1)
+    expect(new_var_set).to_be_visible()
+    expect(new_var_set).to_contain_text('**bi - Birds')
+    expect(new_var_set).to_contain_text('Eagle✔\nParrot\nOwl✔\nCrow')
 
 
 def test_save_list_disabled_when_input_boxes_are_open(reseed_base_data, page, test_web_address):
@@ -240,3 +240,124 @@ def test_add_variables_set_rejected_if_name_or_code_is_already_in_use(reseed_bas
     expect(page.locator('text="Your Base Data"')).not_to_be_visible()
     page_title = page.locator('.page-title')
     expect(page_title).to_have_text('New Variables List')
+
+
+def test_edit_variables_set_working(reseed_base_data, page, test_web_address):
+    
+    # Go to edit_base page and click on the 'Backend' variables set
+    page.goto(f"http://{test_web_address}/edit_base")
+    page.locator('.variables-click-box').nth(1).click()
+    page.wait_for_timeout(100)
+
+    # Click the edit button and type ' More' in the name box and press Enter
+    page.click('.list-name-box img')
+    page.keyboard.type(' More')
+    page.keyboard.press('Enter')
+    act_input = page.locator('#list-name-act-input')
+    expect(act_input).to_have_value('Backend More')
+    
+    # Click the Save List button
+    page.click('text="Save List"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("Variables set [ Backend More - **be ] updated successfully.")')
+    expect(success_msg).to_be_visible()
+    updated_var_set = page.locator('.variables-click-box').nth(1)
+    expect(updated_var_set).to_be_visible()
+    expect(updated_var_set).to_contain_text('**be - Backend More')
+    
+    # Click on the 'Backend More' variables set
+    page.locator('.variables-click-box').nth(1).click()
+    page.wait_for_timeout(100)
+    
+    # Click the edit button and type 'm' in the code box and press Enter
+    page.click('.var-code-box img')
+    page.keyboard.type('m')
+    page.keyboard.press('Enter')
+    act_code = page.locator('#var-code-act-input')
+    expect(act_code).to_have_value('**bem')
+    
+    # Click the Save List button
+    page.click('text="Save List"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("Variables set [ Backend More - **bem ] updated successfully.")')
+    expect(success_msg).to_be_visible()
+    updated_var_set = page.locator('.variables-click-box').nth(1)
+    expect(updated_var_set).to_be_visible()
+    expect(updated_var_set).to_contain_text('**bem - Backend More')
+    paragraph = page.locator('.paragraph-click-box').nth(1)
+    expect(paragraph).to_contain_text('**bem trade')
+    expect(paragraph).not_to_contain_text('**be trade')
+
+    # Click on the 'Backend More' variables set
+    page.locator('.variables-click-box').nth(1).click()
+    page.wait_for_timeout(100)
+    
+    # Click the add variable input box and type 'Word' and press Enter
+    page.click('.add-var-box input')
+    page.keyboard.type('Word')
+    page.keyboard.press('Enter')
+    var_boxes = page.locator('.var-box').all_text_contents()
+    cleaned_var_boxes = [text.strip().replace('\n', '').replace(' ', '') for text in var_boxes]
+    assert cleaned_var_boxes == ['Node.jsx', 'Expressx', 'MongoDBx', 'SQLx', 'GraphQLx', 'Wordx']
+    
+    # Click the Save List button
+    page.click('text="Save List"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("Variables set [ Backend More - **bem ] updated successfully.")')
+    expect(success_msg).to_be_visible()
+    updated_var_set = page.locator('.variables-click-box').nth(1)
+    expect(updated_var_set).to_be_visible()
+    expect(updated_var_set).to_contain_text('**bem - Backend More')
+    expect(updated_var_set).to_contain_text('Node.js✔\nExpress✔\nMongoDB✔\nSQL✔\nGraphQL\nWord')
+    
+    # Click on the 'Backend More' variables set
+    page.locator('.variables-click-box').nth(1).click()
+    page.wait_for_timeout(100)
+    
+    # Click the delete buttons for the second and fourth variable words
+    page.locator('.var-box .delete-btn').nth(2).click()
+    page.locator('.var-box .delete-btn').nth(4).click()
+    var_boxes = page.locator('.var-box').all_text_contents()
+    cleaned_var_boxes = [text.strip().replace('\n', '').replace(' ', '') for text in var_boxes]
+    assert cleaned_var_boxes == ['Node.jsx', 'Expressx', 'SQLx', 'GraphQLx']
+    
+    # Click the Save List button
+    page.click('text="Save List"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("Variables set [ Backend More - **bem ] updated successfully.")')
+    expect(success_msg).to_be_visible()
+    updated_var_set = page.locator('.variables-click-box').nth(1)
+    expect(updated_var_set).to_be_visible()
+    expect(updated_var_set).to_contain_text('**bem - Backend More')
+    expect(updated_var_set).to_contain_text('Node.js✔\nExpress✔\nSQL✔\nGraphQL')
+    
+    # Click on the 'Backend More' variables set
+    page.locator('.variables-click-box').nth(1).click()
+    page.wait_for_timeout(100)
+    
+    # Click the checkboxes for the second and fourth variable words
+    page.locator('.var-box .by-default-box').nth(1).click()
+    page.locator('.var-box .by-default-box').nth(3).click()
+    var_boxes = page.locator('.var-box').all_text_contents()
+    cleaned_var_boxes = [text.strip().replace('\n', '').replace(' ', '') for text in var_boxes]
+    assert cleaned_var_boxes == ['Node.jsx', 'Expressx', 'SQLx', 'GraphQLx']
+    
+    # Click the Save List button
+    page.click('text="Save List"')
+    page.wait_for_timeout(100)
+    page_title = page.locator('text="Your Base Data"')
+    expect(page_title).to_be_visible()
+    success_msg = page.locator('.success:has-text("Variables set [ Backend More - **bem ] updated successfully.")')
+    expect(success_msg).to_be_visible()
+    updated_var_set = page.locator('.variables-click-box').nth(1)
+    expect(updated_var_set).to_be_visible()
+    expect(updated_var_set).to_contain_text('**bem - Backend More')
+    expect(updated_var_set).to_contain_text('Node.js✔\nExpress\nSQL✔\nGraphQL✔')
