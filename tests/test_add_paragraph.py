@@ -73,10 +73,10 @@ def test_add_paragraph_working(reseed_base_data, page, test_web_address):
     expect(page_title).to_be_visible()
     success_msg = page.locator('.success:has-text("New paragraph [ Next Paragraph More ] added successfully.")')
     expect(success_msg).to_be_visible()
-    new_set = page.locator('.paragraph-click-box').nth(-1)
-    expect(new_set).to_be_visible()
-    expect(new_set).to_contain_text('Next Paragraph More')
-    expect(new_set).to_contain_text('This is another lovely test paragraph. More text.')
+    new_paragraph = page.locator('.paragraph-click-box').nth(-1)
+    expect(new_paragraph).to_be_visible()
+    expect(new_paragraph).to_contain_text('Next Paragraph More')
+    expect(new_paragraph).to_contain_text('This is another lovely test paragraph. More text.')
 
 
 def test_save_paragraph_disabled_when_input_boxes_are_open(reseed_base_data, page, test_web_address):
@@ -161,9 +161,9 @@ def test_add_paragraph_rejected_if_inputs_or_variables_sets_are_not_found(reseed
     expect(page.locator('text="Your Base Data"')).to_be_visible()
     page_title = page.locator('.page-title')
     expect(page_title).to_have_text('Your Base Data')
-    new_set = page.locator('.paragraph-click-box').nth(-1)
-    expect(new_set).to_contain_text('Test Paragraph')
-    expect(new_set).to_contain_text('This is a wonderful test paragraph. [input: ##cn] [variables: **fe]')
+    new_paragraph = page.locator('.paragraph-click-box').nth(-1)
+    expect(new_paragraph).to_contain_text('Test Paragraph')
+    expect(new_paragraph).to_contain_text('This is a wonderful test paragraph. [input: ##cn] [variables: **fe]')
     
     # Add a paragraph with name 'Test Paragraph' and some text with an input that does not exist
     page.goto(f"http://{test_web_address}/add_paragraph")
@@ -194,7 +194,7 @@ def test_add_paragraph_rejected_if_inputs_or_variables_sets_are_not_found(reseed
 
 def test_edit_paragraph_working(reseed_base_data, page, test_web_address):
     
-    # Go to edit_base page and click on the 'Experiences' input
+    # Go to edit_base page and click on the 'Experiences' paragraph
     page.goto(f"http://{test_web_address}/edit_base")
     page.locator('.paragraph-click-box').nth(1).click()
     page.wait_for_timeout(100)
