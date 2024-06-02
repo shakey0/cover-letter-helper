@@ -65,7 +65,7 @@
                         <h1 class="sub-title">Your Inputs</h1>
                         <div class="add-flex" id="reorder-inputs">
                             {% for input in inputs %}
-                                <span class="input-click-box" style="cursor: pointer;">
+                                <span class="input-click-box" data-id="{{ input.slug }}" style="cursor: pointer;">
                                     <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{input.code}}</strong> - {{input.name}}</h1>
                                 </span>
                             {% endfor %}
@@ -78,7 +78,7 @@
                         <p style="margin-top: 0; margin-bottom: 10px; font-style: italic;">Ticked variables are selected by default.</p>
                         <div class="add-flex" id="reorder-variables">
                             {% for variables in variables_sets %}
-                                <span class="variables-click-box" style="cursor: pointer;">
+                                <span class="variables-click-box" data-id="{{ variables.slug }}" style="cursor: pointer;">
                                     <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{variables.code}}</strong> - {{variables.name}}</h1>
                                     <div class="variables-list-box">
                                         {% for variable in variables.values %}

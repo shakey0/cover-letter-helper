@@ -28,13 +28,13 @@
                         <a class="add-btn-input" href="{{ url_for('base.add_input') }}">
                             <img class="plus-sign" src="static/images/plus_2795.png" alt="Add input">
                         </a>
-                        <div class="add-flex" id="reorder-inputs">
+                        <form class="add-flex" id="reorder-inputs">
                             {% for input in inputs %}
-                                <a class="input-click-box" href="{{ url_for('base.edit_input', slug=input.slug)}}">
+                                <a class="input-click-box" data-id="{{ input.slug }}" href="{{ url_for('base.edit_input', slug=input.slug)}}">
                                     <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{input.code}}</strong> - {{input.name}}</h1>
                                 </a>
                             {% endfor %}
-                        </div>
+                        </form>
                     </div>
                     <div style="height: 15px;"></div>
                     <div class="add-position">
@@ -44,7 +44,7 @@
                         </a>
                         <div class="add-flex" id="reorder-variables">
                             {% for variables in variables_sets %}
-                                <a class="variables-click-box" href="{{ url_for('base.edit_variables', slug=variables.slug)}}">
+                                <a class="variables-click-box" data-id="{{ variables.slug }}" href="{{ url_for('base.edit_variables', slug=variables.slug)}}">
                                     <h1 style="margin: 12px 0;"><strong style="color: black; text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);">{{variables.code}}</strong> - {{variables.name}}</h1>
                                     <div class="variables-list-box">
                                         {% for variable in variables.values %}
@@ -64,7 +64,7 @@
                     </a>
                     <div class="add-flex" id="reorder-paragraphs">
                         {% for paragraph in paragraphs %}
-                            <a class="paragraph-click-box" href="{{ url_for('base.edit_paragraph', slug=paragraph.slug)}}">
+                            <a class="paragraph-click-box" data-id="{{ paragraph.slug }}" href="{{ url_for('base.edit_paragraph', slug=paragraph.slug)}}">
                                 <h1>{{ paragraph.name }}</h1>
                                 <p class="emphasise-vars">{{ paragraph.text }}</p>
                             </a>

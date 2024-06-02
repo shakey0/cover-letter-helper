@@ -56,6 +56,20 @@ class BaseDataRepository:
                 return True
         return "Data not found"
     
+    def update_order(self, data_type, order):
+        all_data = self.get_data()
+        type_to_update = all_data[data_type]
+        reordered = []
+        for item in order:
+            for data in type_to_update:
+                if get_slug(data['name']) == item:
+                    reordered.append(data)
+                    break
+        all_data[data_type] = reordered
+        with open('lib/base_data.json', 'w') as json_file:
+            json.dump(all_data, json_file, indent=4)
+        return True
+    
     def delete_data(self, data_type, slug):
         all_data = self.get_data()
         for i, data in enumerate(all_data[data_type]):

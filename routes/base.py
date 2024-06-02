@@ -23,6 +23,15 @@ def edit_base():
     return render_template('edit_base.html', inputs=inputs, variables_sets=variables_sets, paragraphs=paragraphs)
 
 
+@base.route('/update-order', methods=['POST'])
+def update_order():
+    data = request.get_json()
+    order = data['order']
+    data_type = data['type']
+    base_data_repository.update_order(data_type, order)
+    return jsonify(success=True)
+
+
 @base.route('/add_input', methods=['GET', 'POST'])
 def add_input():
     if request.method == 'POST':
