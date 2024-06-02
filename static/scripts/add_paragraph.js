@@ -176,4 +176,6 @@ function confirmDeleteParagraph() {
     });
 }
 
-window.addEventListener('click', hideModal);
+if (deleteParagraphBtn) {
+    window.addEventListener('click', hideModal);
+}

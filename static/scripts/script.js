@@ -20,7 +20,6 @@ dragula([document.getElementById('reorder-inputs')])
         .catch(error => console.error('Error updating order:', error));
     });
 
-
 dragula([document.getElementById('reorder-variables')])
     .on('drop', function (el, target, source, sibling) {
         let order = Array.from(target.children).map(function(item, index) {
@@ -63,6 +62,7 @@ dragula([document.getElementById('reorder-paragraphs')])
 
 dragula([document.getElementById('var-container')]);
 
+// CKEDITOR.replace('paragraph-text-input', { width: '100%' });
 
 document.addEventListener('DOMContentLoaded', function() {
     function setupEmphasiseVarsListeners() {
