@@ -258,3 +258,43 @@ def test_delete_not_allowed_when_input_is_used_in_paragraph(reseed_base_data, pa
     delete_input_box = page.locator('.delete-input-box')
     expect(delete_input_box).to_be_visible()
     expect(delete_input_box).to_contain_text('This input is used at least once in your paragraphs.Please remove its use in the paragraph(s) first.')
+
+
+def test_reorder_inputs_on_edit_base_page(reseed_base_data, page, test_web_address):
+    
+    # Go to edit_base page and reorder the inputs
+    page.goto(f"http://{test_web_address}/edit_base")
+    item_to_drag = page.locator('.input-click-box').nth(1)
+    drop_target = page.locator('.input-click-box').nth(0)
+    item_to_drag.drag_to(target=drop_target)
+    item_to_drag = page.locator('.input-click-box').nth(2)
+    item_to_drag.drag_to(target=drop_target)
+    page.goto(f"http://{test_web_address}/edit_base")
+    first_input = page.locator('.input-click-box').nth(0)
+    expect(first_input).to_contain_text('##jt - Job Title')
+    second_input = page.locator('.input-click-box').nth(1)
+    expect(second_input).to_contain_text('##in - Industry')
+    third_input = page.locator('.input-click-box').nth(2)
+    expect(third_input).to_contain_text('##cn - Company Name')
+    fourth_input = page.locator('.input-click-box').nth(3)
+    expect(fourth_input).to_contain_text('##jf - Job Focus')
+
+
+def test_reorder_inputs_on_add_paragraph_page(reseed_base_data, page, test_web_address):
+    
+    # Go to add_paragraph page and reorder the inputs
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    item_to_drag = page.locator('.input-click-box').nth(1)
+    drop_target = page.locator('.input-click-box').nth(0)
+    item_to_drag.drag_to(target=drop_target)
+    item_to_drag = page.locator('.input-click-box').nth(2)
+    item_to_drag.drag_to(target=drop_target)
+    page.goto(f"http://{test_web_address}/edit_base")
+    first_input = page.locator('.input-click-box').nth(0)
+    expect(first_input).to_contain_text('##jt - Job Title')
+    second_input = page.locator('.input-click-box').nth(1)
+    expect(second_input).to_contain_text('##in - Industry')
+    third_input = page.locator('.input-click-box').nth(2)
+    expect(third_input).to_contain_text('##cn - Company Name')
+    fourth_input = page.locator('.input-click-box').nth(3)
+    expect(fourth_input).to_contain_text('##jf - Job Focus')

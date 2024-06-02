@@ -278,3 +278,26 @@ def test_delete_paragraph_working(reseed_base_data, page, test_web_address):
     expect(page.locator('.paragraph-click-box').nth(-1)).not_to_contain_text('This is a beautiful test paragraph.')
     expect(page.locator('.paragraph-click-box').nth(-1)).to_contain_text('Skills')
     expect(page.locator('.paragraph-click-box').nth(-1)).to_contain_text('Factor international usually herself benefit though need meeting **ot. Instead personal dark would appear difference state. Culture ten represent appear allow find language **te music. Ball blood require reduce person while **fe. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert ##cn. Board again candidate among child daughter their. Among event ##in although likely turn.')
+
+
+def test_reorder_paragraphs_on_edit_base_page(reseed_base_data, page, test_web_address):
+
+    # Go to edit_base page and reorder the paragraphs
+    page.goto(f"http://{test_web_address}/edit_base")
+    item_to_drag = page.locator('.paragraph-click-box').nth(0)
+    drop_target = page.locator('.paragraph-click-box').nth(2)
+    item_to_drag.drag_to(target=drop_target)
+    page.screenshot(path="screenshot.png")
+    item_to_drag = page.locator('.paragraph-click-box').nth(2)
+    drop_target = page.locator('.paragraph-click-box').nth(0)
+    item_to_drag.drag_to(target=drop_target)
+    page.goto(f"http://{test_web_address}/edit_base")
+    first_paragraph = page.locator('.paragraph-click-box').nth(0)
+    expect(first_paragraph).to_contain_text('Skills')
+    expect(first_paragraph).to_contain_text('Factor international usually herself benefit though need meeting **ot. Instead personal dark would appear difference state. Culture ten represent appear allow find language **te music. Ball blood require reduce person while **fe. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert ##cn. Board again candidate among child daughter their. Among event ##in although likely turn.')
+    second_paragraph = page.locator('.paragraph-click-box').nth(1)
+    expect(second_paragraph).to_contain_text('Experiences')
+    expect(second_paragraph).to_contain_text('Deal relate individual attorney. Want will attack check dark **mo charge white. Customer challenge rich **be trade exactly. Western deal writer small. Decade you rock else. Shoulder little white prevent western public **do. Interesting wear chair really wish Democrat discover. Nothing wife too front heart than church pull. Police civil before team society ##jf common strategy. Rather traditional eye less even including. And then the end.')
+    third_paragraph = page.locator('.paragraph-click-box').nth(2)
+    expect(third_paragraph).to_contain_text('Intro')
+    expect(third_paragraph).to_contain_text('Official wonder result ##cn crime item be fact. Than answer happy break. Likely school turn security service perform surface. Care account how **fe figure author. Run instead evidence direction add **mo. Company experience provide reach sing. Discuss particularly these kitchen where police most. Nearly same effect. Color ##in girl generation professor writer trade result. Beyond year out ##jt challenge much over only.')

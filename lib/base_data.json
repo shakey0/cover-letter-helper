@@ -1,42 +1,36 @@
 {
     "inputs": [
         {
-            "name": "Job Title",
-            "code": "##jt"
-        },
-        {
-            "name": "Job Focus",
-            "code": "##jf"
+            "name": "Company Name",
+            "code": "##cn"
         },
         {
             "name": "Industry",
             "code": "##in"
         },
         {
-            "name": "Next Input More",
-            "code": "##nim"
+            "name": "Job Title",
+            "code": "##jt"
         },
         {
-            "name": "Company Name",
-            "code": "##cn"
+            "name": "Job Focus",
+            "code": "##jf"
         }
     ],
     "variables_sets": [
         {
-            "name": "Backend",
-            "code": "**be",
+            "name": "Testing",
+            "code": "**te",
             "variables": [
-                "Node.js",
-                "Express",
-                "MongoDB",
-                "SQL",
-                "GraphQL"
+                "Jest",
+                "Mocha",
+                "Chai",
+                "Cypress",
+                "Selenium"
             ],
             "selected": [
-                "Node.js",
-                "Express",
-                "MongoDB",
-                "SQL"
+                "Jest",
+                "Chai"
             ]
         },
         {
@@ -70,22 +64,6 @@
             ]
         },
         {
-            "name": "Other",
-            "code": "**ot",
-            "variables": [
-                "Python",
-                "Java",
-                "C#",
-                "Ruby",
-                "PHP"
-            ],
-            "selected": [
-                "Python",
-                "Java",
-                "C#"
-            ]
-        },
-        {
             "name": "Mobile",
             "code": "**mo",
             "variables": [
@@ -101,26 +79,40 @@
             ]
         },
         {
-            "name": "Testing",
-            "code": "**te",
+            "name": "Backend",
+            "code": "**be",
             "variables": [
-                "Jest",
-                "Mocha",
-                "Chai",
-                "Cypress",
-                "Selenium"
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "SQL",
+                "GraphQL"
             ],
             "selected": [
-                "Jest",
-                "Chai"
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "SQL"
+            ]
+        },
+        {
+            "name": "Other",
+            "code": "**ot",
+            "variables": [
+                "Python",
+                "Java",
+                "C#",
+                "Ruby",
+                "PHP"
+            ],
+            "selected": [
+                "Python",
+                "Java",
+                "C#"
             ]
         }
     ],
     "paragraphs": [
-        {
-            "name": "Skills",
-            "text": "Factor international usually herself benefit though need meeting **ot. Instead personal dark would appear difference state. Culture ten represent appear allow find language **te music. Ball blood require reduce person while **fe. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert ##cn. Board again candidate among child daughter their. Among event ##in although likely turn."
-        },
         {
             "name": "Intro",
             "text": "Official wonder result ##cn crime item be fact. Than answer happy break. Likely school turn security service perform surface. Care account how **fe figure author. Run instead evidence direction add **mo. Company experience provide reach sing. Discuss particularly these kitchen where police most. Nearly same effect. Color ##in girl generation professor writer trade result. Beyond year out ##jt challenge much over only."
@@ -128,6 +120,10 @@
         {
             "name": "Experiences",
             "text": "Deal relate individual attorney. Want will attack check dark **mo charge white. Customer challenge rich **be trade exactly. Western deal writer small. Decade you rock else. Shoulder little white prevent western public **do. Interesting wear chair really wish Democrat discover. Nothing wife too front heart than church pull. Police civil before team society ##jf common strategy. Rather traditional eye less even including. And then the end."
+        },
+        {
+            "name": "Skills",
+            "text": "Factor international usually herself benefit though need meeting **ot. Instead personal dark would appear difference state. Culture ten represent appear allow find language **te music. Ball blood require reduce person while **fe. Court education general support best always study. Citizen memory can. Person itself letter morning return buy fund. Scene many capital money support expert ##cn. Board again candidate among child daughter their. Among event ##in although likely turn."
         }
     ]
 }

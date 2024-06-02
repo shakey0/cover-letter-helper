@@ -413,3 +413,53 @@ def test_delete_not_allowed_when_variables_set_is_used_in_paragraph(reseed_base_
     delete_list_box = page.locator('.delete-list-box')
     expect(delete_list_box).to_be_visible()
     expect(delete_list_box).to_contain_text('This set is used at least once in your paragraphs.Please remove its use in the paragraph(s) first.')
+
+
+def test_reorder_variables_sets_on_edit_base_page(reseed_base_data, page, test_web_address):
+    
+    # Go to edit_base page and reorder the variables sets
+    page.goto(f"http://{test_web_address}/edit_base")
+    item_to_drag = page.locator('.variables-click-box').nth(1)
+    drop_target = page.locator('.variables-click-box').nth(5)
+    item_to_drag.drag_to(target=drop_target)
+    item_to_drag = page.locator('.variables-click-box').nth(2)
+    drop_target = page.locator('.variables-click-box').nth(0)
+    item_to_drag.drag_to(target=drop_target)
+    page.goto(f"http://{test_web_address}/edit_base")
+    first_var_set = page.locator('.variables-click-box').nth(0)
+    expect(first_var_set).to_contain_text('**te - Testing')
+    second_var_set = page.locator('.variables-click-box').nth(1)
+    expect(second_var_set).to_contain_text('**fe - Frontend')
+    third_var_set = page.locator('.variables-click-box').nth(2)
+    expect(third_var_set).to_contain_text('**do - DevOps')
+    fourth_var_set = page.locator('.variables-click-box').nth(3)
+    expect(fourth_var_set).to_contain_text('**mo - Mobile')
+    sixth_var_set = page.locator('.variables-click-box').nth(4)
+    expect(sixth_var_set).to_contain_text('**be - Backend')
+    fifth_var_set = page.locator('.variables-click-box').nth(5)
+    expect(fifth_var_set).to_contain_text('**ot - Other')
+
+
+def test_reorder_variables_sets_on_add_paragraph_page(reseed_base_data, page, test_web_address):
+    
+    # Go to add_paragraph page and reorder the variables sets
+    page.goto(f"http://{test_web_address}/add_paragraph")
+    item_to_drag = page.locator('.variables-click-box').nth(1)
+    drop_target = page.locator('.variables-click-box').nth(5)
+    item_to_drag.drag_to(target=drop_target)
+    item_to_drag = page.locator('.variables-click-box').nth(2)
+    drop_target = page.locator('.variables-click-box').nth(0)
+    item_to_drag.drag_to(target=drop_target)
+    page.goto(f"http://{test_web_address}/edit_base")
+    first_var_set = page.locator('.variables-click-box').nth(0)
+    expect(first_var_set).to_contain_text('**te - Testing')
+    second_var_set = page.locator('.variables-click-box').nth(1)
+    expect(second_var_set).to_contain_text('**fe - Frontend')
+    third_var_set = page.locator('.variables-click-box').nth(2)
+    expect(third_var_set).to_contain_text('**do - DevOps')
+    fourth_var_set = page.locator('.variables-click-box').nth(3)
+    expect(fourth_var_set).to_contain_text('**mo - Mobile')
+    sixth_var_set = page.locator('.variables-click-box').nth(4)
+    expect(sixth_var_set).to_contain_text('**be - Backend')
+    fifth_var_set = page.locator('.variables-click-box').nth(5)
+    expect(fifth_var_set).to_contain_text('**ot - Other')
